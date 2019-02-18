@@ -1,26 +1,212 @@
 /*全体に適応されるscss*/
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-h1, h2 {
+.l-justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-w80 {
+  width: 70%;
+}
+
+.u-mt10 {
+  margin-top: 10vh;
+}
+
+.u-mt8 {
+  margin-top: 8vh;
+}
+
+.u-mh1 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.u-fs080 {
+  font-size: 0.8rem;
+}
+
+.u-fs150 {
+  font-size: 1.5rem;
+}
+
+.u-fs200 {
+  font-size: 2rem;
+}
+
+.d-087 {
+  /*普通のテキスト*/
+  color: rgba(0,0,0,0.87);
+}
+
+.d-054 {
+  /*サブテキスト*/
+  color: rgba(0,0,0,0.54);
+}
+
+.d-026 {
+  /*使えない、押せない、存在感薄*/
+  color: rgba(0,0,0,0.26);
+}
+
+.d-012 {
+  /*この世のすべてのボーダー*/
+  color: rgba(0,0,0,0.12);
+}
+
+.l-100 {
+  color: rgba(255,255,255,1.00);
+}
+
+.l-070 {
+  color: rgba(255,255,255,0.70);
+}
+
+.l-030 {
+  color: rgba(255,255,255,0.30);
+}
+
+.l-012 {
+  color: rgba(255,255,255,0.12);
+}
+
+.header {
+  background: #1D1D27;
+  height: 6vh;
+}
+
+.nav {
+  background: #1D1D27;
+  height: 8vh;
+}
+
+#dropmenu{
+  list-style-type: none;
+  width: 240px;
+  height: 50px;
+  margin: 5vh;
+  padding: 0;
+  background: #8a9b0f;
+  border-bottom: 5px solid #535d09;
+  border-radius: 30px 30px 30px 30px;
+}
+#dropmenu li{
+  position: relative;
+  width: 100%; /*メニューが一つなら100%*/
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#dropmenu li a{
+  display: block;
+  margin: 0;
+  padding: 15px 0 11px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+}
+#dropmenu li:hover > a{
+  background: #6e7c0c;
+  color: #eff7b1;
+}
+#dropmenu > li:hover > a{
+  border-radius: 30px 30px 0px 0px;
+}
+#dropmenu li ul{
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 30px 30px 30px 30px;
+}
+#dropmenu li:last-child ul{
+  width: 100%
+}
+#dropmenu li ul li{
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  color: #fff;
+  -moz-transition: .2s;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  -ms-transition: .2s;
+  transition: .2s;
+}
+#dropmenu li ul li a{
+  padding: 13px 15px;
+  background: #6e7c0c;
+  text-align: left;
+  font-size: 12px;
   font-weight: normal;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+#dropmenu li:hover ul li{
+  overflow: visible;
+  height: 38px;
+  border-top: 1px solid #7c8c0e;
+  border-bottom: 1px solid #616d0b;
+}
+#dropmenu li:hover ul li:first-child{
+  border-top: 0;
+}
+#dropmenu li:hover ul li:last-child{
+  border-bottom: 0;
+}
+#dropmenu li:hover ul li:last-child a{
+  border-radius: 0px 0px 30px 30px;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
+svg .logo{
+  fill: none;
+  stroke: #16B2B2; /*線の色を指定する*/
+  stroke-dasharray: 2000;/*線の間隔を指定する*/
+  stroke-dashoffset: 0;/*線の位置を指定する(IEは効かない属性)*/
+  stroke-width: 20;/*線の太さを指定する*/
+  -webkit-animation: hello 5s ease-in forwards;
+  animation: hello 5s ease-in forwards infinite;
 }
 
-a {
-  color: #42b983;
+ @-webkit-keyframes hello {
+   0% {
+   stroke-dashoffset: 2000;
+  }
+   30% {
+    stroke: #16B2B2;;
+   /*fill:transparent;*/ /*透過*/
+  }
+   40% {
+    stroke: #E84379;
+  }
+   100% {
+     stroke: #E84379;
+     stroke-dashoffset: 0;
+   /*fill:#333;*/
+  }
+}
+
+@keyframes hello {
+  0% {
+  stroke-dashoffset: 2000;
+ }
+  30% {
+   stroke: #16B2B2;;
+  /*fill:transparent;*/ /*透過*/
+ }
+  40% {
+   stroke: #E84379;
+ }
+  100% {
+    stroke: #E84379;
+    stroke-dashoffset: 0;
+  /*fill:#333;*/
+ }
 }
