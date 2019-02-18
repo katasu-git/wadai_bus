@@ -11,12 +11,22 @@
   align-items: center;
 }
 
+.l-justify-space-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .u-w020 {
   width: 20%;
 }
 
 .u-w060 {
   width: 60%;
+}
+
+.u-w095 {
+  width: 95%;
 }
 
 .u-mt-5 {
@@ -64,8 +74,16 @@
   text-align: center;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .u-fs060 {
   font-size: 0.6rem;
+}
+
+.u-fs075 {
+  font-size: 0.75rem;
 }
 
 .u-fs080 {

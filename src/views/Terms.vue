@@ -4,55 +4,57 @@
     <div class="header l-justify-center l-100 u-fs150">
       <div class="text">BUSBUS</div>
     </div>
-    <div class="nav l-justify-center u-pt1 u-ph1">
+    <div class="nav l-justify-center">
+      <div class="l-justify-space-around">
 
-      <span class="">
+      <div class="">
         <div class="l-012 u-tx-al-c">
           {{ pHour }} : {{ pMin }}
         </div>
         <div class="u-fs060 u-tx-al-c l-000 u-mt1">
           さらに次のバス
         </div>
-      </span>
+      </div>
 
-      <span class="u-mh1">
+      <div class="u-fs060 u-ph1">
         <div class="l-012">
           ・・・
         </div>
         <div class="u-fs060 u-tx-al-c l-000 u-mt1">
           透明化
         </div>
-      </span>
+      </div>
 
-      <span class="">
+      <div class="">
         <div class="whitebox d-087 u-ph3">
           {{ nHour }} : {{ nMin }}
         </div>
         <div class="u-fs060 u-tx-al-c l-100 u-mt1">
           次のバス
         </div>
-      </span>
+      </div>
 
-      <span class="u-mh1">
+      <div class="u-fs060 u-ph1">
           <div class="l-070">
             ・・・
           </div>
           <div class="u-fs060 u-tx-al-c l-000 u-mt1">
             透明化
           </div>
-      </span>
+      </div>
 
-      <span class="">
-        <span class="u-tx-al-c">
+      <div class="">
+        <div class="u-tx-al-c">
           <div class="l-070">
             {{ nnHour }} : {{ nnMin }}
           </div>
           <div class="u-fs060 l-070 u-mt1">
             さらに次のバス
           </div>
-        </span>
-      </span>
+        </div>
+      </div>
 
+    </div>
     </div>
 
   <div class="l-justify-center u-mt10">
@@ -94,7 +96,7 @@
   <div class="l-justify-center u-mt1 d-087">まだ余裕</div>
   <div class="l-justify-center u-mt1 d-054 u-fs080">次のバスは {{nHour}} : {{nMin}}</div>
 
-    <div class="l-justify-center u-mt18">
+    <div class="l-justify-center u-mt10">
       <ul id="dropmenu" contouchstart="">
         <li><a href="#">行き先を選択</a>
           <ul>
