@@ -2,7 +2,7 @@
 
   <div id="terms">
     <div class="header l-justify-center l-100 u-fs150">
-      <div class="text">BUSBUS</div>
+      <div class="text">WADAI BUS</div>
     </div>
     <div class="nav l-justify-center">
       <div class="l-justify-space-around">
@@ -57,8 +57,9 @@
     </div>
     </div>
 
-  <div class="l-justify-center u-mt10">
-    <div class="u-w060">
+    <div class="l-position-t90">
+  <div class="">
+    <div class="">
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 249">
 
@@ -81,7 +82,7 @@
   </div>
 
   <div class="l-justify-center">
-    <div class="u-w020 u-mt-5">
+    <div class="u-w040 u-mt-5">
       <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
         <path class="walk" d="M129.71 51.34a18.67 18.67 0 1 0 19.45-17.85 18.68 18.68 0 0 0-19.45 17.85zM121.87 121c-.01 0-.05.09 0 0z"/>
         <path class="walk" d="M90.45 148l15.16-34.28a9.83 9.83 0 0 1 .68-1.12 8.83 8.83 0 0 1 1.43-2.5s9-18.16 16.46-25.44c5.06-5.26 10.81-8.56
@@ -96,8 +97,10 @@
   <div class="l-justify-center u-mt1 d-087">まだ余裕</div>
   <div class="l-justify-center u-mt1 d-054 u-fs080">次のバスは {{nHour}} : {{nMin}}</div>
 
-    <div class="l-justify-center u-mt10">
-      <ul id="dropmenu" contouchstart="">
+</div>
+
+    <div class="l-position-b090">
+      <ul id="dropmenu" class="l-justify-center" contouchstart="">
         <li><a href="#">行き先を選択</a>
           <ul>
             <li><router-link :to="{ name: 'top' }"><div class="l-justify-center">TOPに戻る</div></router-link></li>
@@ -167,7 +170,7 @@ const retTimeTable1 = () => {
     [7, 22, 55],//18
     [19, 40, 50],//19
     [18, 25, 41],//20
-    [19, 49],//21
+    [19,52,58],//21
     [null],
     [null],
   ];
@@ -231,8 +234,13 @@ const getNextNext = (timeTable) => { //時刻表が引数
           nextNextHour = Math.floor(nextNum / 6); //通し番号から時刻を復元
           nextNextMin = timeTable[nextNextHour][nextNum % 6]; //通し番号から分数を復元
           break;
+        } else {
+          nextNum++; //通し番号の中身がnullの場合は、番号に移る
+          if(nextNum > 143) {
+            //終電です
+            nextNum = 0;
+          }
         }
-        nextNum++; //通し番号の中身がnullの場合は、番号に移る
       }
       break;
     }
@@ -340,10 +348,8 @@ return ("0" + number).slice(-2)
 
 #dropmenu{
   list-style-type: none;
-  width: 240px;
-  height: 50px;
-  margin: 5vh;
-  padding: 0;
+  width: 50vw;
+  height: 5vh;
   background: #16B2B2;
   /*border-bottom: 5px solid #535d09;*/
   border-radius: 30px 30px 30px 30px;
@@ -378,7 +384,7 @@ return ("0" + number).slice(-2)
   left: 0;
   margin: 0;
   padding: 0;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 30px 30px 0px 0px;
 }
 #dropmenu li:last-child ul{
   width: 100%
