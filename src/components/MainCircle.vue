@@ -53,15 +53,14 @@ export default {
   },
   data() {
     return {
-      lefHour: 0,
-      lefMin: 0,
-      lefSec: 0,
+      lefHour: this.getDouble(this.getLeftTime(this.tTable)[0]),
+      lefMin: this.getDouble(this.getLeftTime(this.tTable)[1]),
+      lefSec: this.getDouble(this.getLeftTime(this.tTable)[2]),
       pathLength: 600,
       strColor: "#16B2B2", //#E84379
     }
   },
-  created: function(){
-    this.acr = false;
+  beforeCreate: function(){
     setInterval(() => {
       this.lefHour = this.getDouble(this.getLeftTime(this.tTable)[0]);
       this.lefMin = this.getDouble(this.getLeftTime(this.tTable)[1]);

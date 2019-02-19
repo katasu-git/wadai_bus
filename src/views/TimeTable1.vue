@@ -1,6 +1,6 @@
 <template>
 
-  <div id="terms">
+  <div id="timetable1">
 
     <div class="header l-justify-center l-100 u-fs120">
       <div class="text">WADAI BUS</div>
@@ -10,7 +10,7 @@
     <Selector></Selector>
 
     <div class="l-justify-center d-087 u-fs120 u-mt3">
-      <div class="text">大学　→　南海 大学前</div>
+      <div class="text">大学　→　JR 和歌山</div>
     </div>
 
   </div>
@@ -22,7 +22,7 @@ import MainCircle from "../components/MainCircle.vue";
 import Selector from "../components/Selector.vue";
 
 export default {
-  name: "terms",
+  name: "timetable1",
   data() {
     return {
       timeTable: [
@@ -33,22 +33,22 @@ export default {
           [null],
           [null],
           [null],
-          [24, 52], //[7][0,1] 7時
-          [30, 39],
-          [2, 32, 54],
-          [8, 28, 38],
-          [13, 52],
-          [29, 53],
-          [22, 52],
-          [22, 48],
-          [22, 52],//15
-          [25, 30, 52],//16
-          [22, 48],//17
-          [8, 17, 47],//18
-          [19, 41, 49],//19
-          [18, 41],//20
-          [19, 49],//21
-          [null],
+          [50], //[7][0,1] 7時
+          [59],
+          [9],
+          [1, 47],
+          [23, 53],
+          [28],
+          [23, 53],
+          [23, 53],
+          [53],//15
+          [28],//16
+          [25, 53],//17
+          [15, 45],//18
+          [16, 50],//19
+          [16, 49],//20
+          [18, 49],//21
+          [15],
           [null],
       ]
     }

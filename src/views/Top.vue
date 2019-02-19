@@ -2,9 +2,9 @@
   <div id="top">
     <Home v-if="!isLogin"></Home>
     <Editor v-if="isLogin" :user="userData"></Editor>
-    <div class="l-justify-center u-mt3">
-      <router-link :to="{ name: 'terms' }" >バスアプリはここをクリック</router-link>
-    </div>
+      <div class="l-justify-center u-mt3">
+        <router-link :to="{ name: 'terms' }" >バスアプリはここをクリック</router-link>
+      </div>
   </div>
 </template>
 
@@ -39,8 +39,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #top {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
+
 </style>

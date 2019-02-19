@@ -4,22 +4,21 @@
   <div class="acr-inner l-bottom020">
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'top' }" >大学　→　南海大学前</router-link>
+        <router-link :to="{ name: 'terms' }" >大学　→　南海 大学前</router-link>
       </div>
     </transition>
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'top' }" >大学　→　JR和歌山</router-link>
+        <router-link :to="{ name: 'timetable1' }" >大学　→　JR 和歌山</router-link>
       </div>
     </transition>
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'top' }" >南海大学前　→　大学</router-link>
+        <router-link :to="{ name: 'top' }" >TOPにとぶ</router-link>
       </div>
     </transition>
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'top' }" >JR和歌山　→　大学</router-link>
       </div>
     </transition>
     <!--切り替えボタン-->
@@ -102,5 +101,4 @@ export default {
   /*transform: translateY(-30px);*/
   opacity: 0;
 }
-
 </style>
