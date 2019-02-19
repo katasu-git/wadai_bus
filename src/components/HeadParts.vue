@@ -72,7 +72,7 @@ export default {
   created: function(){
     this.acr = false;
     setInterval(() => {
-      this.nHour = this.getDouble(this.getNextMin(this.tTable)[0])
+      this.nHour = this.getDouble(this.getNextMin(this.tTable)[0]);
       this.nMin = this.getDouble(this.getNextMin(this.tTable)[1]);
       this.pHour = this.getDouble(this.getPre(this.tTable)[0]);
       this.pMin = this.getDouble(this.getPre(this.tTable)[1]);
@@ -98,7 +98,7 @@ export default {
           //配列末尾が空の場合はnextHour++の最初を選ぶ
           nextHour++;
           //nextHour++が空の場合の対策
-          nextHour = this.getNextHour(nextHour, timeTable);
+          nextHour = this.getNextHour(nextHour, this.tTable);
           nextMin = timeTable[nextHour][0];
           break;
         } else if(timeTable[nextHour][i] > nowMin) {
@@ -168,7 +168,7 @@ export default {
       //処理終了
       return [preHour, preMin];
     },
-    getNextHour: function() {
+    getNextHour: function(nextHour, timeTable) {
       for(;;){
         //23時以降は0時に戻す
         if(nextHour > 23) {

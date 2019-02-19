@@ -6,7 +6,7 @@
       <div class="text">WADAI BUS</div>
     </div>
     <HeadParts :tTable="timeTable"></Headparts>
-    <MainCircle></maincircle>
+    <MainCircle :tTable="timeTable"></maincircle>
     <Selector></Selector>
 
   </div>
@@ -40,8 +40,8 @@ export default {
           [22, 52],//15
           [30, 52],//16
           [22, 44, 46],//17
-          [7, 34, 55],//18
-          [19, 40, 50],//19
+          [7, 34, 55, 59],//18
+          [5],//19
           [18, 25, 41],//20
           [19,52,58],//21
           [51],
