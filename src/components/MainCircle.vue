@@ -39,7 +39,6 @@
 
     <div v-if="human" class="l-justify-center u-mt1 d-087">まだ余裕</div>
       <div v-else class="l-justify-center u-mt1 d-087">急いで！！</div>
-    <div class="l-justify-center u-mt1 d-054 u-fs080">次のバスは {{nHour}} : {{nMin}}</div>
 
   </div>
 
@@ -147,8 +146,8 @@ const retTimeTable1 = () => {
     [22, 48],
     [22, 52],//15
     [30, 52],//16
-    [22, 44, 46],//17
-    [7, 22, 55],//18
+    [22, 31, 33, 46],//17
+    [7, 34, 55],//18
     [19, 40, 50],//19
     [18, 25, 41],//20
     [19,52,58],//21
