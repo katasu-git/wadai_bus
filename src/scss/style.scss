@@ -30,6 +30,18 @@
   width: 60vw;
 }
 
+.l-bottom {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+}
+
+.l-bottom020 {
+  position: absolute;
+  left: 25%;
+  bottom: 20%;
+}
+
 .u-w020 {
   width: 20%;
 }
@@ -81,6 +93,11 @@
 .u-mh1 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.u-mh5 {
+  margin-right: 5rem;
+  margin-left: 5rem;
 }
 
 .u-ph1 {

@@ -1,7 +1,11 @@
 <template>
   <div id="home">
-    <h1>{{ msg }}</h1>
-    <button @click="googleLogin">Googleアカウントでログイン</button>
+    <div class="l-justify-center u-mt3">
+      意味のないトップページ
+    </div>
+    <div class="l-justify-center u-mt3">
+      <button @click="googleLogin">意味のないログイン</button>
+    </div>
   </div>
 </template>
 

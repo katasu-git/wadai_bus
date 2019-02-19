@@ -54,67 +54,85 @@
         </div>
       </div>
 
-    </div>
+      </div>
     </div>
 
     <div class="l-position-t90">
-  <div class="">
-    <div class="">
+      <div class="">
+        <div class="">
 
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 249">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 249">
+            <!--後ろの白いところ-->
+            <path d="M48.1 239a135 135 0 1 1 193.8 0" fill="none" stroke="#efefef" stroke-linecap="round"
+                stroke-miterlimit="10" stroke-width="20"/>
+            <!--伸びる線-->
+            <path v-show="progress" class="logo" id="mypath" v-bind:style="prog" d="M48.1 239a135 135 0 1 1 193.8 0" fill="none" stroke="#16b2b2" stroke-linecap="round"
+                stroke-miterlimit="10" stroke-width="20" data-name="レイヤー 1"/>
+            <text class="d-054 u-fs080" x="100" y="110">バスが来るまで</text>
+            <text class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
+          </svg>
+        </div>
+      </div>
 
-        <!--後ろの白いところ-->
-          <path d="M48.1 239a135 135 0 1 1 193.8 0" fill="none" stroke="#efefef" stroke-linecap="round"
-            stroke-miterlimit="10" stroke-width="20"/>
+      <div class="l-justify-center">
+        <div class="u-w040 u-mt-5">
+          <svg v-if="human" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+            <path class="walk" d="M129.71 51.34a18.67 18.67 0 1 0 19.45-17.85 18.68 18.68 0 0 0-19.45 17.85zM121.87 121c-.01 0-.05.09 0 0z"/>
+            <path class="walk" d="M90.45 148l15.16-34.28a9.83 9.83 0 0 1 .68-1.12 8.83 8.83 0 0 1 1.43-2.5s9-18.16 16.46-25.44c5.06-5.26 10.81-8.56
+                17.66-8.53 11.4.07 17.57 5.4 21 11l16.35 26.41 28 21.76a7.26 7.26 0 0 1-8.4 11.85L169.08 128c.29 7.82 9.89 127.82 9.89 127.82a9.47 9.47
+                  0 0 1-18.78 2.53l-9-49.81-1.81 5.25a20.76 20.76 0 0 1-3.36 5.89l-29.9 31.72a8.52 8.52 0 1 1-12.26-11.84l23.67-34 8.31-33.41c-.07-5-8.91-56.87-8.91-56.87l-5 5.67s0-.08
+                    0 0l-18.41 33.48a7.26 7.26 0 1 1-13-6.46z"/>
+            <path fill="none" d="M0 0h300v300H0z"/>
+          </svg>
 
-        <!--伸びる線-->
-          <path v-show="progress" class="logo" id="mypath" v-bind:style="prog" d="M48.1 239a135 135 0 1 1 193.8 0" fill="none" stroke="#16b2b2" stroke-linecap="round"
-            stroke-miterlimit="10" stroke-width="20" data-name="レイヤー 1"/>
+          <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+            <path fill="none" d="M0 0h300v300H0z"/>
+            <path class="dash" d="M71.95 100.43l57.24 1.39v-2.78l-57.24 1.39zM38.52 141.44l87.61 2.12v-4.25l-87.61 2.13zM62.73 173.05l45.54 1.1v-2.21l-45.54 1.11zM255.93 77.15a18.79 18.79 0 1 1-19.83-17.67 18.8 18.8 0 0 1 19.83 17.67z"/>
+            <path class="dash" d="M254.23 141.7l-30-2.94V113.4c0-7.49 1.61-25.53-31.82-25.53h-38.76c-3 0-7.06.74-9.93 3.59l-24.38 22.4a6.9 6.9 0 0 0 8.83 10.58l25.07-18.26 19.58 1.74c.08 0-94.85 118.26-94.85 118.26a8.46 8.46 0 0 0 .4 11.86 8.24 8.24 0 0 0 11.73.12l31.72-29s67-3.91 72.79-4.28c6.88-.44 12.57-8 9.11-16.72l-15-36.94 15.12-14.82s1 10.22 1.34 13.14 3.61 6.85 8.31 6.85l40.57.27a7 7 0 0 0 7.41-7.09 7.77 7.77 0 0 0-7.24-7.87zM169 185.56l-26 4.56 21.88-19.76 4.83 12.5c.66 1.72.37 2.44.71 2.7z"/>
+          </svg>
 
-        <text class="d-054 u-fs080" x="100" y="110">バスが来るまで</text>
-        <text class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
+        </div>
+      </div>
 
-      </svg>
+      <div v-if="human" class="l-justify-center u-mt1 d-087">まだ余裕</div>
+        <div v-else class="l-justify-center u-mt1 d-087">急いで！！</div>
+      <div class="l-justify-center u-mt1 d-054 u-fs080">次のバスは {{nHour}} : {{nMin}}</div>
 
     </div>
-  </div>
 
-  <div class="l-justify-center">
-    <div class="u-w040 u-mt-5">
-      <svg v-if="human" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-        <path class="walk" d="M129.71 51.34a18.67 18.67 0 1 0 19.45-17.85 18.68 18.68 0 0 0-19.45 17.85zM121.87 121c-.01 0-.05.09 0 0z"/>
-        <path class="walk" d="M90.45 148l15.16-34.28a9.83 9.83 0 0 1 .68-1.12 8.83 8.83 0 0 1 1.43-2.5s9-18.16 16.46-25.44c5.06-5.26 10.81-8.56
-              17.66-8.53 11.4.07 17.57 5.4 21 11l16.35 26.41 28 21.76a7.26 7.26 0 0 1-8.4 11.85L169.08 128c.29 7.82 9.89 127.82 9.89 127.82a9.47 9.47
-                0 0 1-18.78 2.53l-9-49.81-1.81 5.25a20.76 20.76 0 0 1-3.36 5.89l-29.9 31.72a8.52 8.52 0 1 1-12.26-11.84l23.67-34 8.31-33.41c-.07-5-8.91-56.87-8.91-56.87l-5 5.67s0-.08
-                0 0l-18.41 33.48a7.26 7.26 0 1 1-13-6.46z"/>
-        <path fill="none" d="M0 0h300v300H0z"/>
-      </svg>
-
-      <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-        <path fill="none" d="M0 0h300v300H0z"/>
-        <path class="dash" d="M71.95 100.43l57.24 1.39v-2.78l-57.24 1.39zM38.52 141.44l87.61 2.12v-4.25l-87.61 2.13zM62.73 173.05l45.54 1.1v-2.21l-45.54 1.11zM255.93 77.15a18.79 18.79 0 1 1-19.83-17.67 18.8 18.8 0 0 1 19.83 17.67z"/>
-        <path class="dash" d="M254.23 141.7l-30-2.94V113.4c0-7.49 1.61-25.53-31.82-25.53h-38.76c-3 0-7.06.74-9.93 3.59l-24.38 22.4a6.9 6.9 0 0 0 8.83 10.58l25.07-18.26 19.58 1.74c.08 0-94.85 118.26-94.85 118.26a8.46 8.46 0 0 0 .4 11.86 8.24 8.24 0 0 0 11.73.12l31.72-29s67-3.91 72.79-4.28c6.88-.44 12.57-8 9.11-16.72l-15-36.94 15.12-14.82s1 10.22 1.34 13.14 3.61 6.85 8.31 6.85l40.57.27a7 7 0 0 0 7.41-7.09 7.77 7.77 0 0 0-7.24-7.87zM169 185.56l-26 4.56 21.88-19.76 4.83 12.5c.66 1.72.37 2.44-.71 2.7z"/></svg>
+    <div v-on:click="close" class="acr-wrapper l-bottom">
+    <div class="acr-inner l-bottom020">
+      <transition name="fade">
+        <div v-show="acr" class="acordion l-justify-center l-100">
+          <router-link :to="{ name: 'top' }" >大学　→　南海大学前</router-link>
+        </div>
+      </transition>
+      <transition name="fade">
+        <div v-show="acr" class="acordion l-justify-center l-100">
+          <router-link :to="{ name: 'top' }" >大学　→　JR和歌山</router-link>
+        </div>
+      </transition>
+      <transition name="fade">
+        <div v-show="acr" class="acordion l-justify-center l-100">
+          <router-link :to="{ name: 'top' }" >南海大学前　→　大学</router-link>
+        </div>
+      </transition>
+      <transition name="fade">
+        <div v-show="acr" class="acordion l-justify-center l-100">
+          <router-link :to="{ name: 'top' }" >JR和歌山　→　大学</router-link>
+        </div>
+      </transition>
+      <!--切り替えボタン-->
+      <transition name="fade">
+      <div v-if="acr" v-on:click="toggle" class="acordion-active l-justify-center d-087">
+        閉じる
+      </div>
+      <div v-else v-on:click="toggle" class="acordion-main l-justify-center l-100">
+        行き先を選択
+      </div>
+      </transition>
 
     </div>
-  </div>
-
-  <div v-if="human" class="l-justify-center u-mt1 d-087">まだ余裕</div>
-  <div v-else class="l-justify-center u-mt1 d-087">急いで！！</div>
-  <div class="l-justify-center u-mt1 d-054 u-fs080">次のバスは {{nHour}} : {{nMin}}</div>
-
-</div>
-
-    <div class="l-position-b090">
-      <ul id="dropmenu" class="l-justify-center" contouchstart="">
-        <li><a href="#">行き先を選択</a>
-          <ul>
-            <li><router-link :to="{ name: 'top' }"><div class="l-justify-center">TOPに戻る</div></router-link></li>
-            <li><router-link :to="{ name: 'top' }"><div class="l-justify-center">TOPに戻る</div></router-link></li>
-            <li><router-link :to="{ name: 'top' }"><div class="l-justify-center">TOPに戻る</div></router-link></li>
-            <li><router-link :to="{ name: 'top' }"><div class="l-justify-center">TOPに戻る</div></router-link></li>
-          </ul>
-        </li>
-      </ul>
     </div>
 
   </div>
@@ -135,10 +153,12 @@ export default {
       lefMin: doF()[7],
       lefSec: doF()[8],
       pathLength: 0,
-      strColor: "#16B2B2" //#E84379
+      strColor: "#16B2B2", //#E84379
+      acr: true
     }
   },
   created: function(){
+    this.acr = false;
     setInterval(() => {
       this.nHour = doF()[0];
       this.nMin = doF()[1];
@@ -184,6 +204,18 @@ export default {
       let position = Number(this.pathLength) / 600 * (Number(this.lefMin) * 60 + Number(this.lefSec));
       return position;
     },
+  },
+  methods: {
+    toggle: function() {
+      if(this.acr) {
+        this.acr = false;
+      } else {
+        this.acr = true;
+      }
+    },
+    close: function() {
+      //this.acr = true;
+    }
   }
 };
 
@@ -388,81 +420,34 @@ return ("0" + number).slice(-2)
   border-radius: 20px;
 }
 
-#dropmenu{
-  list-style-type: none;
+.acr-wrapper {
+  width: 100vw;
+  height: 20vh;
+}
+
+.acordion {
+  background: #16B2B2;
   width: 50vw;
   height: 5vh;
+  opacity: .9;
+}
+
+.acordion-main {
   background: #16B2B2;
-  /*border-bottom: 5px solid #535d09;*/
-  border-radius: 30px 30px 30px 30px;
+  width: 50vw;
+  height: 5vh;
+  opacity: .9;
 }
-#dropmenu li{
-  position: relative;
-  width: 100%; /*メニューが一つなら100%*/
-  margin: 0;
-  padding: 0;
-  text-align: center;
+
+.acordion-active {
+  border: solid 2px #16B2B2;
+  background: white;
+  width: 50vw;
+  height: 5vh;
 }
-#dropmenu li a{
-  display: block;
-  margin: 0;
-  padding: 15px 0 11px;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1;
-  text-decoration: none;
-}
-#dropmenu li:hover > a{
-  background: #16B2B2;
-  color: #eff7b1;
-}
-#dropmenu > li:hover > a{
-  border-radius: 30px 30px 0px 0px;
-}
-#dropmenu li ul{
-  list-style: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  border-radius: 30px 30px 0px 0px;
-}
-#dropmenu li:last-child ul{
-  width: 100%
-}
-#dropmenu li ul li{
-  overflow: hidden;
-  width: 100%;
-  height: 0;
-  color: #fff;
-  -moz-transition: .2s;
-  -webkit-transition: .2s;
-  -o-transition: .2s;
-  -ms-transition: .2s;
-  transition: .2s;
-}
-#dropmenu li ul li a{
-  padding: 13px 15px;
-  background: #16B2B2;
-  text-align: left;
-  font-size: 12px;
-  font-weight: normal;
-}
-#dropmenu li:hover ul li{
-  overflow: visible;
-  height: 38px;
-  /*border-top: 1px solid #7c8c0e;
-  border-bottom: 1px solid #616d0b;*/
-}
-#dropmenu li:hover ul li:first-child{
-  border-top: 0;
-}
-#dropmenu li:hover ul li:last-child{
-  border-bottom: 0;
-}
-#dropmenu li:hover ul li:last-child a{
-  border-radius: 0px 0px 30px 30px;
+
+.acordion:hover {
+  opacity: .5;
 }
 
 svg .logo{
@@ -482,6 +467,17 @@ svg .walk {
 
 svg .dash {
   fill: #E84379;
+}
+
+.fade-enter-active, .fade-leave-active {
+  /*表示されているときのcss*/
+  transition: opacity .3s ease;
+}
+
+.fade-enter, .fade-leave-to {
+  /*非表示のcss*/
+  /*transform: translateY(-30px);*/
+  opacity: 0;
 }
 
 </style>

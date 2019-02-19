@@ -2,7 +2,9 @@
   <div id="top">
     <Home v-if="!isLogin"></Home>
     <Editor v-if="isLogin" :user="userData"></Editor>
-    <router-link :to="{ name: 'terms' }" >利用規約</router-link>
+    <div class="l-justify-center u-mt3">
+      <router-link :to="{ name: 'terms' }" >バスアプリはここをクリック</router-link>
+    </div>
   </div>
 </template>
 
