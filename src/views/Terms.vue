@@ -135,6 +135,7 @@ export default {
       lefMin: doF()[7],
       lefSec: doF()[8],
       pathLength: 0,
+      strColor: "#16B2B2" //#E84379
     }
   },
   created: function(){
@@ -155,27 +156,32 @@ export default {
   },
   computed: {
     human: function() {
-      if(this.lefMin > 3) {
+      if(this.lefMin > 2) {
+        //まだ余裕
+        this.strColor = "#16B2B2"
+        return true;
+      } else {
+        //急いで！
+        this.strColor = "#E84379";
+        return false;
+      }
+    },
+    progress: function() {
+      if(this.lefMin < 10) {
         return true;
       } else {
         return false;
       }
     },
-    progress: function() {
-      if(this.lefMin < 5) {
-        return true;
-      } else {
-        return true;
-      }
-    },
     prog: function() {
       return {
         '--pathLength': `${this.pathLength}`,
-        '--pathPosition': `${this.pathPosition}`
+        '--pathPosition': `${this.pathPosition}`,
+        '--strColor': `${this.strColor}`
       }
     },
     pathPosition: function() {
-      let position = this.pathLength / 60 * this.lefSec;
+      let position = Number(this.pathLength) / 600 * (Number(this.lefMin) * 60 + Number(this.lefSec));
       return position;
     },
   }
@@ -196,7 +202,7 @@ const retTimeTable1 = () => {
     [2, 32, 54],
     [null],
     [13, 52],
-    [27, 53],
+    [17, 24, 28, 53],
     [22, 52],
     [22, 48],
     [22, 52],//15
@@ -461,32 +467,13 @@ return ("0" + number).slice(-2)
 
 svg .logo{
   fill: none;
-  stroke: #16B2B2;
+  stroke: var(--strColor);
   stroke-dasharray: var(--pathLength) var(--pathLength);
   stroke-dashoffset: var(--pathPosition);
   stroke-width: 20;
   /*-webkit-animation: var(--prog);*/
   animation: var(--prog);
   /*animation: hello 5s linear infinite;*/
-}
-
- @-webkit-keyframes hello {
-}
-
-@keyframes hello {
-  0% {
-   stroke-dashoffset: var(--pathPosition);
-  }
-   30% {
-    stroke: #16B2B2;
-  }
-   40% {
-    stroke: #E84379;
-  }
-   100% {
-     stroke: #E84379;
-     stroke-dashoffset: 0;
-  }
 }
 
 svg .walk {
