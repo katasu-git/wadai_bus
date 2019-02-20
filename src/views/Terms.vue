@@ -24,8 +24,13 @@ import Selector from "../components/Selector.vue";
 export default {
   name: "terms",
   data() {
-    return {
-      timeTable: [
+    return {}
+  },
+  computed: {
+    timeTable: function() {
+      const nowTime = new Date();
+      const dayOfWeek = nowTime.getDay();//6が土曜 0が日曜
+      const weekday = [ //平日ダイヤ
           [null],
           [null],
           [null],
@@ -33,7 +38,7 @@ export default {
           [null],
           [null],
           [null],
-          [24, 52], //[7][0,1] 7時
+          [24, 52], //7時
           [30, 39],
           [2, 32, 54],
           [8, 28, 38],
@@ -41,16 +46,47 @@ export default {
           [29, 53],
           [22, 52],
           [22, 48],
-          [22, 52],//15
-          [25, 30, 52],//16
-          [22, 48],//17
-          [8, 17, 47],//18
-          [19, 41, 49],//19
-          [18, 41],//20
-          [19, 49],//21
+          [22, 52],
+          [25, 30, 52],
+          [22, 48],
+          [8, 17, 47],
+          [19, 41, 49],
+          [18, 41],
+          [19, 49],
           [null],
           [null],
-      ]
+      ];
+      const holiday = [ //休日ダイヤ
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [5, 53],
+          [13, 46],
+          [13, 38, 58],
+          [18, 38, 58],
+          [18, 46, 58],
+          [18, 38, 58],
+          [18, 38, 58],
+          [18, 38, 58],
+          [18, 38, 58],
+          [19, 38, 58],
+          [18, 38, 59],
+          [18, 45],
+          [16, 45],
+          [15, 45],
+          [null],
+          [null],
+      ];
+      if(dayOfWeek === 0 || dayOfWeek === 6) {
+        return holiday;
+      } else {
+        return weekday;
+      }
     }
   },
   components: {

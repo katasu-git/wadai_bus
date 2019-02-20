@@ -24,8 +24,13 @@ import Selector from "../components/Selector.vue";
 export default {
   name: "timetable1",
   data() {
-    return {
-      timeTable: [
+    return {}
+  },
+  computed: {
+    timeTable: function() {
+      const nowTime = new Date();
+      const dayOfWeek = nowTime.getDay();//6が土曜 0が日曜
+      const weekday = [
           [null],
           [null],
           [null],
@@ -50,7 +55,38 @@ export default {
           [18, 49],//21
           [15],
           [null],
-      ]
+      ];
+      const holiday = [ //休日ダイヤ
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [null],
+          [33],
+          [18, 48],
+          [16, 48],
+          [5, 25, 48],
+          [5, 45],
+          [5, 25, 45],
+          [5, 25, 45],
+          [5, 25, 45],
+          [5, 25, 45],
+          [25, 45],
+          [5, 25, 45],
+          [5, 25, 54],
+          [24, 54],
+          [24, 54],
+          [24],
+          [null],
+      ];
+      if(dayOfWeek === 0 || dayOfWeek === 6) {
+        return holiday;
+      } else {
+        return weekday;
+      }
     }
   },
   components: {
