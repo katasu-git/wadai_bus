@@ -97,7 +97,8 @@ export default {
       }
     },
     pathPosition: function() {
-      let position = Number(this.pathLength) / 600 * (Number(this.lefMin) * 60 + Number(this.lefSec));
+      //60*カウントスタート分
+      let position = Number(this.pathLength) / 900 * (Number(this.lefMin) * 60 + Number(this.lefSec));
       return position;
     },
   },
