@@ -1,24 +1,24 @@
 <template>
 
-  <div v-on:click="close" class="acr-wrapper l-bottom">
   <div class="acr-inner l-bottom020">
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'terms' }" >大学　→　南海 大学前</router-link>
+        <router-link :to="{ name: 'timetable0' }" >大学 → 南海大学前</router-link>
       </div>
     </transition>
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'timetable1' }" >大学　→　JR 和歌山</router-link>
+        <router-link :to="{ name: 'timetable1' }" >大学 → JR和歌山</router-link>
       </div>
     </transition>
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'top' }" >TOPにとぶ</router-link>
+        <router-link :to="{ name: 'timetable2' }" >南海大学前 → 大学</router-link>
       </div>
     </transition>
     <transition name="fade">
       <div v-show="acr" class="acordion l-justify-center l-100">
+        <router-link :to="{ name: 'timetable3' }" >JR和歌山 → 大学</router-link>
       </div>
     </transition>
     <!--切り替えボタン-->
@@ -31,7 +31,6 @@
     </div>
     </transition>
 
-  </div>
   </div>
 
 </template>
@@ -61,30 +60,27 @@ export default {
 
 <style lang="scss" scoped>
 
-.acr-wrapper {
-  width: 100vw;
-  height: 20vh;
-}
-
 .acordion {
+  border: solid .5px rgba(0,0,0,0.26);
   background: #16B2B2;
-  width: 50vw;
-  height: 5vh;
+  width: 70vw;
+  height: 6vh;
   opacity: .9;
 }
 
 .acordion-main {
+  border-radius: 30px;
   background: #16B2B2;
-  width: 50vw;
-  height: 5vh;
+  width: 70vw;
+  height: 6vh;
   opacity: .9;
 }
 
 .acordion-active {
-  border: solid 2px #16B2B2;
-  background: white;
-  width: 50vw;
-  height: 5vh;
+  color: white;
+  background: #E271A0; //main-20%
+  width: 70vw;
+  height: 6vh;
 }
 
 .acordion:hover {
@@ -93,7 +89,7 @@ export default {
 
 .fade-enter-active, .fade-leave-active {
   /*表示されているときのcss*/
-  transition: opacity .3s ease;
+  transition: opacity .5s ease;
 }
 
 .fade-enter, .fade-leave-to {

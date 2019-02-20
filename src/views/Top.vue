@@ -3,7 +3,7 @@
     <Home v-if="!isLogin"></Home>
     <Editor v-if="isLogin" :user="userData"></Editor>
       <div class="l-justify-center u-mt3">
-        <router-link :to="{ name: 'terms' }" >バスアプリはここをクリック</router-link>
+        <router-link :to="{ name: 'timetable0' }" >バスアプリはここをクリック</router-link>
       </div>
   </div>
 </template>
