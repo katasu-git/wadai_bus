@@ -1,8 +1,6 @@
 <template>
 
-  <div class="l-position-t90">
-    <div class="">
-      <div class="">
+  <div id="maincircle">
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 249">
           <!--後ろの白いところ-->
@@ -15,8 +13,6 @@
           <text v-if="leftTime" class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
           <text v-else class="d-087 u-fs200" x="75" y="160">1時間 以上</text>
         </svg>
-      </div>
-    </div>
 
     <div class="l-justify-center">
       <div class="u-w040 u-mt-5">

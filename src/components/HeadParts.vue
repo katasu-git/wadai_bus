@@ -1,4 +1,10 @@
 <template>
+  <div id="headparts">
+
+    <div class="header l-justify-center l-100 u-fs120">
+      <div class="text">WADAI BUS</div>
+    </div>
+
   <div class="nav l-justify-center">
     <div class="l-justify-space-around">
 
@@ -51,6 +57,7 @@
 
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -192,7 +199,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+#headparts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .nav {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   background: #1D1D27;
   height: 10vh;
 }
@@ -200,5 +216,11 @@ export default {
 .whitebox {
   background: white;
   border-radius: 20px;
+}
+
+.header {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  background: #1D1D27;
+  height: 5vh;
 }
 </style>

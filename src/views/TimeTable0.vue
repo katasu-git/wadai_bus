@@ -2,16 +2,11 @@
 
   <div id="timetable0">
 
-    <div class="header l-justify-center l-100 u-fs120">
-      <div class="text">WADAI BUS</div>
-    </div>
     <HeadParts :tTable="timeTable"></Headparts>
-    <MainCircle :tTable="timeTable"></maincircle>
-    <Selector></Selector>
-
-    <div class="l-justify-center d-087 u-fs120 u-mt3">
-      <div class="text">大学 → 南海大学前</div>
+    <div class="l-position-t90">
+      <MainCircle :tTable="timeTable"></maincircle>
     </div>
+    <Selector :route="route"></Selector>
 
   </div>
 
@@ -25,7 +20,9 @@ import Selector from "../components/Selector.vue";
 export default {
   name: "timetable0",
   data() {
-    return {}
+    return {
+      route: "大学 → 南海大学前"
+    }
   },
   computed: {
     timeTable: function() {
@@ -100,8 +97,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
-  background: #1D1D27;
-  height: 5vh;
-}
+
 </style>

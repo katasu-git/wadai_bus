@@ -27,7 +27,7 @@
       閉じる
     </div>
     <div v-else v-on:click="toggle" class="acordion-main l-justify-center l-100">
-      行き先を選択
+      <p>{{route}}</p>
     </div>
     </transition>
 
@@ -42,6 +42,9 @@ export default {
     return {
       acr: false
     }
+  },
+  props: {
+    route: String
   },
   methods: {
     toggle: function() {
@@ -62,25 +65,31 @@ export default {
 
 .acordion {
   border: solid .5px rgba(0,0,0,0.26);
+  border-radius: 5px;
   background: #16B2B2;
-  width: 70vw;
-  height: 6vh;
+  width: 60vw;
+  height: 7vh;
   opacity: .9;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  margin: 3px 0;
 }
 
 .acordion-main {
   border-radius: 30px;
   background: #16B2B2;
-  width: 70vw;
-  height: 6vh;
+  width: 60vw;
+  height: 7vh;
   opacity: .9;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .acordion-active {
   color: white;
+  border-radius: 5px;
   background: #E271A0; //main-20%
-  width: 70vw;
-  height: 6vh;
+  width: 60vw;
+  height: 7vh;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .acordion:hover {
@@ -94,7 +103,6 @@ export default {
 
 .fade-enter, .fade-leave-to {
   /*非表示のcss*/
-  /*transform: translateY(-30px);*/
   opacity: 0;
 }
 </style>
