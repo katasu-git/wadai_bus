@@ -12,7 +12,8 @@
           <path v-show="progress" class="logo" id="mypath" v-bind:style="prog" d="M48.1 239a135 135 0 1 1 193.8 0" fill="none" stroke="#16b2b2" stroke-linecap="round"
               stroke-miterlimit="10" stroke-width="20" data-name="レイヤー 1"/>
           <text class="d-054 u-fs080" x="100" y="110">バスが来るまで</text>
-          <text class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
+          <text v-if="leftTime" class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
+          <text v-else class="d-087 u-fs200" x="75" y="160">1時間 以上</text>
         </svg>
       </div>
     </div>
@@ -72,7 +73,7 @@ export default {
   },
   computed: {
     human: function() {
-      if(this.lefMin > 2) {
+      if(this.lefMin > 2 || this.lefHour > 0) {
         //まだ余裕
         this.strColor = "#16B2B2"
         return true;
@@ -83,7 +84,7 @@ export default {
       }
     },
     progress: function() {
-      if(this.lefMin < 10) {
+      if(this.lefMin <= 15 && this.lefHour < 1) {
         return true;
       } else {
         return false;
@@ -101,6 +102,14 @@ export default {
       let position = Number(this.pathLength) / 900 * (Number(this.lefMin) * 60 + Number(this.lefSec));
       return position;
     },
+    leftTime: function() {
+      if(this.lefHour > 0) {
+        //1時間 以上と表示
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
   methods: {
     getNow: function() {
