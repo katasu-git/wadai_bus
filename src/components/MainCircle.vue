@@ -53,7 +53,7 @@ export default {
       lefHour: this.getDouble(this.getLeftTime(this.tTable)[0]),
       lefMin: this.getDouble(this.getLeftTime(this.tTable)[1]),
       lefSec: this.getDouble(this.getLeftTime(this.tTable)[2]),
-      pathLength: 600,
+      pathLength: 0,
       strColor: "#16B2B2", //#E84379
     }
   },
@@ -80,7 +80,7 @@ export default {
       }
     },
     progress: function() {
-      if(this.lefMin <= 15 && this.lefHour < 1) {
+      if(this.lefMin < 15 && this.lefHour < 1) {
         return true;
       } else {
         return false;
