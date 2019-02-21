@@ -51,6 +51,9 @@ export default {
     },
     wakeRoute: function() {
       //帰るボタン
+      if(this.routeNum === 0 || this.routeNum === 1){
+        this.toggle();
+      }
       if(this.routeNum === 0 || this.routeNum === 2) {
         //今いるページが南海のとき
         this.$router.push({ path: 'timetable0' });
@@ -60,6 +63,9 @@ export default {
     },
     wakeRoute2: function() {
       //行くボタン
+      if(this.routeNum === 2 || this.routeNum === 3){
+        this.toggle();
+      }
       if(this.routeNum === 0 || this.routeNum === 2) {
         //今いるページが南海のとき
         this.$router.push({ path: 'timetable2' });
