@@ -2,23 +2,13 @@
 
   <div class="acr-inner l-bottom020">
     <transition name="fade">
-      <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'timetable0' }" >大学 → 南海大学前</router-link>
+      <div v-show="acr" v-on:click="wakeRoute" class="acordion l-justify-center l-100">
+        大学から帰る
       </div>
     </transition>
     <transition name="fade">
-      <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'timetable1' }" >大学 → JR和歌山</router-link>
-      </div>
-    </transition>
-    <transition name="fade">
-      <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'timetable2' }" >南海大学前 → 大学</router-link>
-      </div>
-    </transition>
-    <transition name="fade">
-      <div v-show="acr" class="acordion l-justify-center l-100">
-        <router-link :to="{ name: 'timetable3' }" >JR和歌山 → 大学</router-link>
+      <div v-show="acr" v-on:click="wakeRoute2" class="acordion l-justify-center l-100">
+        大学へ行く
       </div>
     </transition>
     <!--切り替えボタン-->
@@ -27,7 +17,7 @@
       閉じる
     </div>
     <div v-else v-on:click="toggle" class="acordion-main l-justify-center l-100">
-      <p>{{route}}</p>
+      <p>{{getGoOrBack}}</p>
       <div class="triangle"></div>
     </div>
     </transition>
@@ -45,7 +35,8 @@ export default {
     }
   },
   props: {
-    route: String
+    route: String,
+    routeNum: Number
   },
   methods: {
     toggle: function() {
@@ -57,6 +48,33 @@ export default {
     },
     close: function() {
       //this.acr = true;
+    },
+    wakeRoute: function() {
+      //帰るボタン
+      if(this.routeNum === 0 || this.routeNum === 2) {
+        //今いるページが南海のとき
+        this.$router.push({ path: 'timetable0' });
+      } else {
+        this.$router.push({ path: 'timetable1' });
+      }
+    },
+    wakeRoute2: function() {
+      //行くボタン
+      if(this.routeNum === 0 || this.routeNum === 2) {
+        //今いるページが南海のとき
+        this.$router.push({ path: 'timetable2' });
+      } else {
+        this.$router.push({ path: 'timetable3' });
+      }
+    }
+  },
+  computed: {
+    getGoOrBack: function() {
+      if(this.routeNum === 0 || this.routeNum === 1) {
+        return "大学から帰る";
+      } else {
+        return "大学へ行く";
+      }
     }
   }
 };

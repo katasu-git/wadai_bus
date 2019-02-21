@@ -6,8 +6,9 @@
     <div class="l-position-t90">
       <MainCircle :tTable="timeTable"></maincircle>
     </div>
-    <Selector :route="route"></Selector>
-    
+    <Selector :route="route" :routeNum="routeNum"></Selector>
+    <FAB :routeNum="routeNum"></FAB>
+
   </div>
 
 </template>
@@ -16,12 +17,14 @@
 import HeadParts from "../components/HeadParts.vue";
 import MainCircle from "../components/MainCircle.vue";
 import Selector from "../components/Selector.vue";
+import FAB from "../components/FAB.vue";
 
 export default {
   name: "timetable3",
   data() {
     return {
-      route: "JR和歌山 → 大学"
+      route: "JR和歌山 → 大学",
+      routeNum: 3
     }
   },
   computed: {
@@ -90,7 +93,8 @@ export default {
   components: {
     HeadParts: HeadParts,
     MainCircle: MainCircle,
-    Selector: Selector
+    Selector: Selector,
+    FAB: FAB
   }
 };
 
