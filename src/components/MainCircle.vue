@@ -11,7 +11,7 @@
               stroke-miterlimit="10" stroke-width="20" data-name="レイヤー 1"/>
           <text class="d-054 u-fs080" x="100" y="110">バスが来るまで</text>
           <text v-if="leftTime" class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
-          <text v-else class="d-087 u-fs200" x="75" y="160">1時間 以上</text>
+          <text v-else class="d-087 u-fs200" x="68" y="160">{{lefHour}} : {{ lefMin }} : {{ lefSec }}</text>
         </svg>
 
     <div class="l-justify-center">
