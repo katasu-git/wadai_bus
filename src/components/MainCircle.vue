@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     human: function() {
-      if(this.lefMin > 2 || this.lefHour > 0) {
+      if(this.lefMin >= 5 || this.lefHour > 0) {
         //まだ余裕
         this.strColor = "#16B2B2"
         return true;

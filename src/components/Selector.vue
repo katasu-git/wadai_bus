@@ -28,6 +28,7 @@
     </div>
     <div v-else v-on:click="toggle" class="acordion-main l-justify-center l-100">
       <p>{{route}}</p>
+      <div class="triangle"></div>
     </div>
     </transition>
 
@@ -62,6 +63,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.triangle {
+  border-top: 7px solid #FFF;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  position: absolute;
+  top: 46%;
+  right: 11%;
+}
 
 .acordion {
   border: solid .5px rgba(0,0,0,0.26);

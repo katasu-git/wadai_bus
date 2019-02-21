@@ -69,7 +69,7 @@ export default {
   data() {
     return {
       nHour: this.getDouble(this.getNextMin(this.tTable)[0]),
-      nMin: this.getDouble(this.getNextMin(this.tTable)[0]),
+      nMin: this.getDouble(this.getNextMin(this.tTable)[1]),
       pHour: this.getDouble(this.getPre(this.tTable)[0]),
       pMin: this.getDouble(this.getPre(this.tTable)[1]),
       nnHour: this.getDouble(this.getNextNext(this.tTable)[0]),
