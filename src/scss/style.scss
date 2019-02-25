@@ -9,6 +9,10 @@
   user-select: none;
 }
 
+html {
+  background-color: #FAFAFA;
+}
+
 .l-justify-center {
   display: flex;
   justify-content: center;
@@ -42,7 +46,7 @@
 
 .l-bottom020 {
   position: absolute;
-  left: 20%;
+  right: 10%;
   bottom: 5%;
 }
 

@@ -2,7 +2,6 @@
   <div id="fab">
     <div class="l-fab">
 
-
       <svg v-if="changer" v-on:click="wakeRoute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 48.52">
         <path d="M24.61 10.88v11.44c0 5.24-2.91 11.68-6.61 15.32L7.94 27.56" fill="#f30"/>
         <path d="M25.39 10.88v11.44c0 5.24 2.91 11.68 6.61 15.32l10.06-10.08" fill="#f90"/>
@@ -55,10 +54,11 @@ export default {
 
 .l-fab {
   position: absolute;
-  right: 5%;
-  bottom: 15%;
-  border-radius: 50px;
+  left: 10%;
+  bottom: 5%;
+  border-radius: 200px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 2px 2px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .l-fab:hover {
@@ -66,7 +66,7 @@ export default {
 }
 
 svg {
-  width: 15vw;
+  height: 7.5vh;
 }
 
 </style>

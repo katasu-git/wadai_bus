@@ -15,7 +15,7 @@
         </svg>
 
     <div class="l-justify-center">
-      <div class="u-w040 u-mt-5">
+      <div class="u-w040 u-mt-7">
         <svg v-if="human" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
           <path class="walk" d="M129.71 51.34a18.67 18.67 0 1 0 19.45-17.85 18.68 18.68 0 0 0-19.45 17.85zM121.87 121c-.01 0-.05.09 0 0z"/>
           <path class="walk" d="M90.45 148l15.16-34.28a9.83 9.83 0 0 1 .68-1.12 8.83 8.83 0 0 1 1.43-2.5s9-18.16 16.46-25.44c5.06-5.26 10.81-8.56
@@ -54,6 +54,7 @@ export default {
       lefMin: this.getDouble(this.getLeftTime(this.tTable)[1]),
       lefSec: this.getDouble(this.getLeftTime(this.tTable)[2]),
       pathLength: 0,
+      //myPath: "",
       strColor: "#16B2B2", //#E84379
     }
   },
@@ -65,8 +66,10 @@ export default {
     }, 1000);
   },
   mounted: function() {
+    //DOMの描画後に処理しないとバグります
+    //this.myPath = document.getElementById("mypath");
     this.pathLength = document.getElementById("mypath").getTotalLength();
-  },
+   },
   computed: {
     human: function() {
       if(this.lefMin >= 5 || this.lefHour > 0) {
@@ -105,7 +108,7 @@ export default {
       } else {
         return true;
       }
-    }
+    },
   },
   methods: {
     getNow: function() {
@@ -232,8 +235,8 @@ export default {
         lefMin = lefMin - 1
       }
       return [lefHour, lefMin, lefSec];
-    }
-  },
+    },
+  }
 };
 
 </script>
@@ -245,9 +248,6 @@ svg .logo{
   stroke-dasharray: var(--pathLength) var(--pathLength);
   stroke-dashoffset: var(--pathPosition);
   stroke-width: 20;
-  /*-webkit-animation: var(--prog);*/
-  animation: var(--prog);
-  /*animation: hello 5s linear infinite;*/
 }
 
 svg .walk {
@@ -257,4 +257,5 @@ svg .walk {
 svg .dash {
   fill: #E84379;
 }
+
 </style>

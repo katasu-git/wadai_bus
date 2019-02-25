@@ -53,8 +53,7 @@ export default {
       //帰るボタン
       if(this.routeNum === 0 || this.routeNum === 1){
         this.toggle();
-      }
-      if(this.routeNum === 0 || this.routeNum === 2) {
+      } else if(this.routeNum === 0 || this.routeNum === 2) {
         //今いるページが南海のとき
         this.$router.push({ path: 'timetable0' });
       } else {
@@ -65,8 +64,7 @@ export default {
       //行くボタン
       if(this.routeNum === 2 || this.routeNum === 3){
         this.toggle();
-      }
-      if(this.routeNum === 0 || this.routeNum === 2) {
+      } else if(this.routeNum === 0 || this.routeNum === 2) {
         //今いるページが南海のとき
         this.$router.push({ path: 'timetable2' });
       } else {
@@ -109,7 +107,7 @@ export default {
 }
 
 .acordion-main {
-  border-radius: 30px;
+  border-radius: 50px;
   background: #16B2B2;
   width: 60vw;
   height: 7vh;
@@ -131,12 +129,10 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  /*表示されているときのcss*/
-  transition: opacity .5s ease;
+  transition: opacity .1s;
 }
 
 .fade-enter, .fade-leave-to {
-  /*非表示のcss*/
-  opacity: 0;
+  opacity: .5;
 }
 </style>

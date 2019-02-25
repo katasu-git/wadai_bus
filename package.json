@@ -10,8 +10,10 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "izitoast": "^1.4.0",
     "shitajicss": "^5.0.0",
     "vue": "^2.5.11",
+    "vue-izitoast": "^1.1.2",
     "vue-router": "^3.0.2"
   },
   "browserslist": [
