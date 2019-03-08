@@ -12,8 +12,8 @@
       <div class="l-012 u-tx-al-c">
         {{ pHour }} : {{ pMin }}
       </div>
-      <div class="u-fs060 u-tx-al-c l-000 u-mt1">
-        さらに次のバス
+      <div class="u-fs060 u-tx-al-c l-012 u-mt1">
+        前のバス
       </div>
     </div>
 
