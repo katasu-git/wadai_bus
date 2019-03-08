@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
-import Top from "./views/Top";
+//import Top from "./views/Top";
 import TimeTable0 from "./views/TimeTable0";
 import TimeTable1 from "./views/TimeTable1";
 import TimeTable2 from "./views/TimeTable2";
@@ -8,13 +8,13 @@ import TimeTable3 from "./views/TimeTable3";
 
 Vue.use(VueRouter);
 const routes = [
-  {
+  /* {
     path: '/',
     name: "top",
     component: Top
-  },
+  }, */
   {
-    path: "/timetable0",
+    path: "/",
     name: "timetable0",
     component: TimeTable0
   },
