@@ -34,7 +34,7 @@ export default {
       if(this.changer) {
         this.$router.push({ path: 'timetable1' });
       } else {
-        this.$router.push({ path: 'timetable0' });
+        this.$router.push({ path: '/' });
       }
     }
   },
