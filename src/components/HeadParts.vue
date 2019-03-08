@@ -13,7 +13,7 @@
         {{ pHour }} : {{ pMin }}
       </div>
       <div class="u-fs060 u-tx-al-c l-012 u-mt1">
-        前のバス
+        ひとつ前のバス
       </div>
     </div>
 
