@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import HeadParts from "../s_components/HeadParts.vue";
-import Department from "../s_components/Department.vue";
+import HeadParts from "../components/HeadParts.vue";
+import Department from "../components/Department.vue";
 
 export default {
   name: 's_top',

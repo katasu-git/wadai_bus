@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
 //import Top from "./views/Top";
-import TimeTable0 from "./views/TimeTable0";
-import TimeTable1 from "./views/TimeTable1";
-import TimeTable2 from "./views/TimeTable2";
-import TimeTable3 from "./views/TimeTable3";
-import Top from "./s_views/Top.vue";
-import Result from "./s_views/Result.vue";
+import TimeTable0 from "./bus/views/TimeTable0";
+import TimeTable1 from "./bus/views/TimeTable1";
+import TimeTable2 from "./bus/views/TimeTable2";
+import TimeTable3 from "./bus/views/TimeTable3";
+import Top from "./syllabus/views/Top.vue";
+import Result from "./syllabus/views/Result.vue";
 
 Vue.use(VueRouter);
 const routes = [
