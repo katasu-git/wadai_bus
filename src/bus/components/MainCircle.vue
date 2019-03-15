@@ -242,6 +242,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+#maincircle {
+  position: absolute;
+  top: 30%;
+  left: 0%;
+  right: 0%;
+  margin: auto;
+  width: 35vh;
+}
+
 svg .logo{
   fill: none;
   stroke: var(--strColor);

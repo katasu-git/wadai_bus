@@ -3,9 +3,7 @@
   <div id="timetable2">
 
     <HeadParts :tTable="timeTable"></Headparts>
-    <div class="l-position-t90">
       <MainCircle :tTable="timeTable"></maincircle>
-    </div>
     <Selector :route="route" :routeNum="routeNum"></Selector>
     <FAB :routeNum="routeNum"></FAB>
 
