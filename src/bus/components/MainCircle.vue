@@ -245,7 +245,7 @@ export default {
 
 #maincircle {
   position: absolute;
-  top: 30%;
+  top: 28%;
   left: 0%;
   right: 0%;
   margin: auto;
