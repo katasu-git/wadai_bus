@@ -34,30 +34,6 @@ export default {
         search:'',
     }
   },
-  created: function() {
-    // Initialize Cloud Firestore through Firebase
-    var db = firebase.firestore();
-    //test code
-    /*db.collection("users").get()
-      .then(
-        (querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
-            });
-        }
-      );*/
-      //const docRef = db.collection("info").get();
-      db.collection("syllabus")
-        //.where("target", "==", "1年")
-        //テンプレートリテラルも埋め込み可能
-        //.where(`${this.test}`, "==", "後期")
-        .get()
-        .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          console.log(doc.id, " => ", doc.data());
-        });
-      });
-  },
   methods: {
     wakeRouter: function() {
       this.$router.push({ path: 'result' });
