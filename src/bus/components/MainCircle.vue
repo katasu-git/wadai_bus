@@ -272,4 +272,10 @@ svg .dash {
   font-weight: 600;
 }
 
+text {
+  position: absolute;
+  right: 0%;
+  left: 0%;
+}
+
 </style>

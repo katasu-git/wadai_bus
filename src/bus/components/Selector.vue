@@ -1,5 +1,5 @@
 <template>
-  <div id="selector" class="l-bottom020">
+  <div id="selector">
     <div class="btn_wrapper">
       <div v-if="acr" v-on:click="wakeRoute" class="btn_text l-justify-center l-1">
         {{getGoOrBack}}
@@ -77,10 +77,17 @@ export default {
   border-radius: 50px;
   background: #16B2B2;
   width: 60vw;
-  height: 7vh;
+  height: 8vh;
   opacity: .9;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   margin: 3px 0;
+  position: absolute;
+  right: 10%;
+  bottom: 5%;
+}
+
+.btn_wrapper:active {
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 
 .btn_text {

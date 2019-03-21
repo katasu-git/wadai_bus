@@ -1,13 +1,22 @@
 <template>
   <div id="fab">
+
+    <transition name="fade">
+    <div v-show="showSelector" class="balloon1 d-1">
+      <div v-on:click="wakeRoute" class="routeName l-justify-center">南海</div>
+      <div class="border"></div>
+      <div v-on:click="wakeRoute2" class="routeName l-justify-center">JR</div>
+    </div>
+    </transition>
+
     <div class="l-fab">
 
-      <svg v-if="changer" v-on:click="wakeRoute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 48.52">
+      <svg v-if="changer" v-on:click="openSelector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 48.52">
         <path d="M24.61 10.88v11.44c0 5.24-2.91 11.68-6.61 15.32L7.94 27.56" fill="#f30"/>
         <path d="M25.39 10.88v11.44c0 5.24 2.91 11.68 6.61 15.32l10.06-10.08" fill="#f90"/>
       </svg>
 
-      <svg v-else v-on:click="wakeRoute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 48.52">
+      <svg v-else v-on:click="openSelector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 48.52">
         <ellipse cx="25" cy="24.26" rx="25" ry="24.26" fill="#fff"/>
         <path d="M9.07 22.53h4.34v5.28C13.41 29 16.36 29 17 29s4.42 0
             4.42-1.54V15.63h16.11c2.88 0 3.39 4.1 3.39 5.16s-.47 5.52-3.15
@@ -24,25 +33,38 @@
 export default {
   name: "fab",
   data() {
-    return {}
+    return {
+      showSelector: false,
+    }
   },
   props: {
     routeNum: Number
   },
   methods: {
     wakeRoute: function() {
-      if(this.changer) {
-        this.$router.push({ path: 'timetable1' });
+      this.showSelector = false;
+      this.$router.push({ path: '/' });
+    },
+    wakeRoute2: function() {
+      this.showSelector = false;
+      this.$router.push({ path: '/timetable1' });
+    },
+    openSelector: function() {
+      if(this.showSelector) {
+        this.showSelector = false;
       } else {
-        this.$router.push({ path: '/' });
+        this.showSelector = true;
       }
-    }
+      //console.log("hello");
+    },
   },
   computed: {
     changer: function() {
       if(this.routeNum === 0 || this.routeNum === 2) {
+        //南海
         return true;
       } else {
+        //JR
         return false;
       }
     }
@@ -55,7 +77,7 @@ export default {
 .l-fab {
   position: absolute;
   left: 10%;
-  bottom: 5%;
+  bottom: 5.2%;
   border-radius: 200px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 2px 2px 0 rgba(0,0,0,0.24);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
@@ -66,7 +88,47 @@ export default {
 }
 
 svg {
-  height: 7.5vh;
+  height: 8vh;
+}
+
+.balloon1 {
+  position: absolute;
+  bottom: 14%;
+  left: 12.4%;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 160px;
+  max-width: 100%;
+  height: 20vh;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.routeName {
+  font-size: 1.6em;
+  font-weight: 600;
+}
+
+.routeName:active {
+  color: rgba(0,0,0,0.26);
+}
+
+.border {
+  margin: 1em 0;
+  width: 100%;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 </style>
