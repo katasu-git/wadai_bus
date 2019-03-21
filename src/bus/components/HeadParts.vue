@@ -2,10 +2,53 @@
   <div id="headparts">
 
     <div class="header l-justify-center l-100">
-      <div class="text">WADAI BUS</div>
+      <div class="title">WADAI BUS</div>
     </div>
 
-  <div class="nav l-justify-center">
+    <div class="nav">
+      <div class="l-justify-space-around">
+        <div class="time_container">
+          <div class="time1 l-justify-center l-3">
+            {{ pHour }} : {{ pMin }}
+          </div>
+          <div class="text l-justify-center l-3">
+          前のバス
+          </div>
+        </div>
+        <div class="triangle l-3">
+          <div class="time4 l-justify-center">
+            ▶
+          </div>
+          <div class="text l-justify-center">
+          </div>
+        </div>
+        <div class="time_container">
+          <div class="time2 l-justify-center d-1">
+            {{ nHour }} : {{ nMin }}
+          </div>
+          <div class="text l-justify-center l-1">
+          次のバス
+          </div>
+        </div>
+        <div class="triangle l-2">
+          <div class="time4 l-justify-center">
+            ▶
+          </div>
+          <div class="text l-justify-center">
+          </div>
+        </div>
+        <div class="time_container">
+          <div class="time3 l-justify-center l-2">
+            {{ nnHour }} : {{ nnMin }}
+          </div>
+          <div class="text l-justify-center l-2">
+          次の次のバス
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--<div class="nav l-justify-center">
     <div class="l-justify-space-around">
 
     <div class="">
@@ -19,7 +62,7 @@
 
     <div class="u-fs060 u-ph1">
       <div class="l-012">
-        ・・・
+        ▶
       </div>
       <div class="u-fs060 u-tx-al-c l-000 u-mt1">
         透明化
@@ -37,7 +80,7 @@
 
     <div class="u-fs060 u-ph1">
         <div class="l-070">
-          ・・・
+          ▶
         </div>
         <div class="u-fs060 u-tx-al-c l-000 u-mt1">
           透明化
@@ -56,8 +99,8 @@
     </div>
 
     </div>
+    </div>-->
   </div>
-</div>
 </template>
 
 <script>
@@ -213,9 +256,39 @@ export default {
   height: 10vh;
 }
 
-.whitebox {
+.time_container {
+  width: 12vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.time2 {
   background: white;
-  border-radius: 30px;
+}
+
+.time1, .time2, .time3 {
+  width: 12vh;
+  height: 4vh;
+  border-radius: 50px;
+  font-size: 2.4vh;
+}
+
+.text {
+  width: 12vh;
+  height: 4vh;
+  font-size: 1.2vh;
+}
+
+.triangle {
+  width: 2vh;
+  height: 10vh;
+  font-size: 1.2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header {
@@ -224,7 +297,7 @@ export default {
   height: 8vh;
 }
 
-.text {
+.title {
   font-size: 3vh;
 }
 
