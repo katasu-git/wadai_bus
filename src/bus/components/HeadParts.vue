@@ -5,8 +5,8 @@
       <div class="title">WADAI BUS</div>
     </div>
 
-    <div class="nav">
-      <div class="l-justify-space-around">
+    <div class="nav l-justify-center">
+      <div class="time_wrapper l-justify-space-around">
         <div class="time_container">
           <div class="time1 l-justify-center l-3">
             {{ pHour }} : {{ pMin }}
@@ -202,6 +202,10 @@ export default {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   background: #1D1D27;
   height: 10vh;
+}
+
+.time_wrapper {
+  max-width: 400px;
 }
 
 .time_container {
