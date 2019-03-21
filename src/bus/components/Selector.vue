@@ -1,29 +1,15 @@
 <template>
-
-  <div class="acr-inner l-bottom020">
-    <transition name="fade">
-      <div v-show="acr" v-on:click="wakeRoute" class="acordion l-justify-center l-100">
-        大学から帰る
+  <div id="selector" class="l-bottom020">
+    <div class="btn_wrapper">
+      <div v-if="acr" v-on:click="wakeRoute" class="btn_text l-justify-center l-1">
+        {{getGoOrBack}}
       </div>
-    </transition>
-    <transition name="fade">
-      <div v-show="acr" v-on:click="wakeRoute2" class="acordion l-justify-center l-100">
-        大学へ行く
+      <div v-else v-on:click="wakeRoute2" class="btn_text l-justify-center l-1">
+        {{getGoOrBack}}
       </div>
-    </transition>
-    <!--切り替えボタン-->
-    <transition name="fade">
-    <div v-if="acr" v-on:click="toggle" class="acordion-active l-justify-center d-087">
-      閉じる
-    </div>
-    <div v-else v-on:click="toggle" class="acordion-main l-justify-center l-100">
-      <p>{{getGoOrBack}}</p>
       <div class="triangle"></div>
     </div>
-    </transition>
-
   </div>
-
 </template>
 
 <script>
@@ -86,18 +72,9 @@ export default {
 
 <style lang="scss" scoped>
 
-.triangle {
-  border-top: 7px solid #FFF;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  position: absolute;
-  top: 46%;
-  right: 11%;
-}
-
-.acordion {
+.btn_wrapper {
   border: solid .5px rgba(0,0,0,0.26);
-  border-radius: 5px;
+  border-radius: 50px;
   background: #16B2B2;
   width: 60vw;
   height: 7vh;
@@ -106,33 +83,19 @@ export default {
   margin: 3px 0;
 }
 
-.acordion-main {
-  border-radius: 50px;
-  background: #16B2B2;
-  width: 60vw;
-  height: 7vh;
-  opacity: .9;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+.btn_text {
+  position: absolute;
+  top: 30%;
+  right: 0%;
+  left: 0%;
 }
 
-.acordion-active {
-  color: white;
-  border-radius: 5px;
-  background: #E271A0; //main-20%
-  width: 60vw;
-  height: 7vh;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-.acordion:hover {
-  opacity: .5;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .1s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: .5;
+.triangle {
+  border-top: 7px solid #FFF;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  position: absolute;
+  top: 46%;
+  right: 11%;
 }
 </style>

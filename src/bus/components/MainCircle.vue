@@ -10,7 +10,7 @@
           <path v-show="progress" class="logo" id="mypath" v-bind:style="prog" d="M48.1 239a135 135 0 1 1 193.8 0" fill="none" stroke="#16b2b2" stroke-linecap="round"
               stroke-miterlimit="10" stroke-width="20" data-name="レイヤー 1"/>
           <text class="d-054 u-fs080" x="100" y="110">バスが来るまで</text>
-          <text v-if="leftTime" class="d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
+          <text v-if="leftTime" class="leftTime d-087 u-fs250" x="86" y="160">{{ lefMin }} : {{ lefSec }}</text>
           <text v-else class="d-087 u-fs200" x="68" y="160">{{lefHour}} : {{ lefMin }} : {{ lefSec }}</text>
         </svg>
 
@@ -266,6 +266,10 @@ svg .walk {
 
 svg .dash {
   fill: #E84379;
+}
+
+.leftTime {
+  font-weight: 600;
 }
 
 </style>
