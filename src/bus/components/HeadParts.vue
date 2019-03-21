@@ -48,58 +48,6 @@
       </div>
     </div>
 
-  <!--<div class="nav l-justify-center">
-    <div class="l-justify-space-around">
-
-    <div class="">
-      <div class="l-012 u-tx-al-c">
-        {{ pHour }} : {{ pMin }}
-      </div>
-      <div class="u-fs060 u-tx-al-c l-012 u-mt1">
-        ひとつ前のバス
-      </div>
-    </div>
-
-    <div class="u-fs060 u-ph1">
-      <div class="l-012">
-        ▶
-      </div>
-      <div class="u-fs060 u-tx-al-c l-000 u-mt1">
-        透明化
-      </div>
-    </div>
-
-    <div class="">
-      <div class="whitebox d-087 u-ph3">
-        {{ nHour }} : {{ nMin }}
-      </div>
-      <div class="u-fs060 u-tx-al-c l-100 u-mt1">
-        次のバス
-      </div>
-    </div>
-
-    <div class="u-fs060 u-ph1">
-        <div class="l-070">
-          ▶
-        </div>
-        <div class="u-fs060 u-tx-al-c l-000 u-mt1">
-          透明化
-        </div>
-    </div>
-
-    <div class="">
-      <div class="u-tx-al-c">
-        <div class="l-070">
-          {{ nnHour }} : {{ nnMin }}
-        </div>
-        <div class="u-fs060 l-070 u-mt1">
-          さらに次のバス
-        </div>
-      </div>
-    </div>
-
-    </div>
-    </div>-->
   </div>
 </template>
 
@@ -259,6 +207,7 @@ export default {
 .time_container {
   width: 12vh;
   height: 10vh;
+  margin: 0 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -279,11 +228,11 @@ export default {
 .text {
   width: 12vh;
   height: 4vh;
-  font-size: 1.2vh;
+  font-size: 1.6vh;
 }
 
 .triangle {
-  width: 2vh;
+  width: 1vh;
   height: 10vh;
   font-size: 1.2vh;
   display: flex;
