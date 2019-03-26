@@ -43,11 +43,19 @@ export default {
   methods: {
     wakeRoute: function() {
       this.showSelector = false;
-      this.$router.push({ path: '/' });
+      if(this.routeNum === 0 || this.routeNum === 1) {
+        this.$router.push({ path: '/' });
+      } else {
+        this.$router.push({ path: '/timetable2' });
+      }
     },
     wakeRoute2: function() {
       this.showSelector = false;
-      this.$router.push({ path: '/timetable1' });
+      if(this.routeNum === 0 || this.routeNum === 1) {
+        this.$router.push({ path: '/timetable1' });
+      } else {
+        this.$router.push({ path: '/timetable3' });
+      }
     },
     openSelector: function() {
       if(this.showSelector) {
