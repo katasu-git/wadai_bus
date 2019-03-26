@@ -205,7 +205,7 @@ export default {
 }
 
 .time_wrapper {
-  max-width: 400px;
+  max-width: 100px;
 }
 
 .time_container {
