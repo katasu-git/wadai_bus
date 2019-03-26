@@ -108,7 +108,7 @@ svg {
   padding: 7px 10px;
   min-width: 160px;
   max-width: 100%;
-  height: 20vh;
+  height: 10em;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   background: white;
