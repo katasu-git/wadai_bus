@@ -55,72 +55,29 @@
             </div>
           </div>
         </div>
-        <div class="triangle_wrapper">
-          <div class="triangle_container">
-            <div class="time1 l-justify-center l-2">
-              ▶
-            </div>
-            <div class="text l-justify-center l-3">
+        <div class="loop" v-for="hour in HourArray">
+          <div class="triangle_wrapper">
+            <div class="triangle_container">
+              <div class="time1 l-justify-center l-2">
+                ▶
+              </div>
+              <div class="text l-justify-center l-3">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="time_wrapper">
-          <div class="time_container">
-            <div class="time3 l-justify-center l-2">
-              {{ nnHour }} : {{ nnMin }}
-            </div>
-            <div class="text l-justify-center l-2">
-              次の次のバス
+          <div class="time_wrapper">
+            <div class="time_container">
+              <div class="time3 l-justify-center l-2">
+                {{ hour }}
+              </div>
+              <div class="text l-justify-center l-2">
+                さらに...
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!--
-    <div class="nav l-justify-center">
-      <div class="time_wrapper l-justify-space-around">
-        <div class="time_container">
-          <div class="time1 l-justify-center l-3">
-            {{ pHour }} : {{ pMin }}
-          </div>
-          <div class="text l-justify-center l-3">
-          前のバス
-          </div>
-        </div>
-        <div class="triangle l-3">
-          <div class="time4 l-justify-center">
-            ▶
-          </div>
-          <div class="text l-justify-center">
-          </div>
-        </div>
-        <div class="time_container">
-          <div class="time2 l-justify-center d-1">
-            {{ nHour }} : {{ nMin }}
-          </div>
-          <div class="text l-justify-center l-1">
-          次のバス
-          </div>
-        </div>
-        <div class="triangle l-2">
-          <div class="time4 l-justify-center">
-            ▶
-          </div>
-          <div class="text l-justify-center">
-          </div>
-        </div>
-        <div class="time_container">
-          <div class="time3 l-justify-center l-2">
-            {{ nnHour }} : {{ nnMin }}
-          </div>
-          <div class="text l-justify-center l-2">
-          次の次のバス
-          </div>
-        </div>
-      </div>
-    </div>
-    -->
 
   </div>
 </template>
@@ -138,7 +95,8 @@ export default {
       pHour: this.getDouble(this.getPre(this.tTable)[0]),
       pMin: this.getDouble(this.getPre(this.tTable)[1]),
       nnHour: this.getDouble(this.getNextNext(this.tTable)[0]),
-      nnMin: this.getDouble(this.getNextNext(this.tTable)[1])
+      nnMin: this.getDouble(this.getNextNext(this.tTable)[1]),
+      HourArray: [],
     }
   },
   beforeCreate: function(){
@@ -150,8 +108,11 @@ export default {
       this.pMin = this.getDouble(this.getPre(this.tTable)[1]);
       this.nnHour = this.getDouble(this.getNextNext(this.tTable)[0]);
       this.nnMin = this.getDouble(this.getNextNext(this.tTable)[1]);
-      //this.getMoreNext(this.tTable);
+      this.getMoreNext(this.tTable);
     }, 1000);
+  },
+  created: function() {
+    this.getMoreNext(this.tTable);
   },
   methods: {
     getNow: function() {
@@ -228,15 +189,15 @@ export default {
         }
       }
 
-      let HourArray = [];
-      let MinArray = [];
-
-      for(let i=0;i<10;i++) {
+      for(let i=0;i<10;i=i+1) {
       nowNum++;
         for(;;){
           if(timeTable[Math.floor(nowNum / 6)][nowNum % 6] != null){
-            HourArray.push(Math.floor(nowNum / 6));
-            MinArray.push(timeTable[Math.floor(nowNum / 6)][nowNum % 6]);
+            if(this.HourArray != null) {
+              this.HourArray[i] = this.getDouble(Math.floor(nowNum / 6)) + ":" + this.getDouble(timeTable[Math.floor(nowNum / 6)][nowNum % 6]);
+            } else {
+              this.HourArray.push( this.getDouble(Math.floor(nowNum / 6)) + ":" + this.getDouble(timeTable[Math.floor(nowNum / 6)][nowNum % 6]));
+            }
             break;
           } else {
             nowNum++;
@@ -246,7 +207,7 @@ export default {
           }
         }
       }
-      console.log(HourArray + ":" + MinArray);
+      //console.log(this.HourArray);
     },
     getPre: function(timeTable) {
       var nowNum;
@@ -320,8 +281,9 @@ export default {
   display: flex;
   justify-content: flex-start;
   max-width: 320px;
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
   overflow-y: hidden;
 }
 
@@ -349,8 +311,12 @@ export default {
   align-items: center;
 }
 
+.loop {
+  display: flex;
+}
+
 .time2 {
-  padding: 1em;
+  padding: 0.8em;
   background: white;
 }
 
@@ -358,6 +324,7 @@ export default {
   height: 4vh;
   border-radius: 50px;
   font-size: 0.8em;
+  font-weight: 600;
 }
 
 .text {
