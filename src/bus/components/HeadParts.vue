@@ -5,6 +5,79 @@
       <div class="title">WADAI BUS</div>
     </div>
 
+    <div class="nav_wrapper l-justify-center">
+      <div class="nav">
+        <div class="time_wrapper">
+          <div class="time_container">
+            <div class="time1 l-justify-center l-3">
+              {{ pHour }} : {{ pMin }}
+            </div>
+            <div class="text l-justify-center l-3">
+              前のバス
+            </div>
+          </div>
+        </div>
+        <div class="triangle_wrapper">
+          <div class="triangle_container">
+            <div class="time1 l-justify-center l-3">
+              ▶
+            </div>
+            <div class="text l-justify-center l-3">
+            </div>
+          </div>
+        </div>
+        <div class="time_wrapper">
+          <div class="time_container">
+            <div class="time2 l-justify-center d-1">
+              {{ nHour }} : {{ nMin }}
+            </div>
+            <div class="text l-justify-center l-1">
+              次のバス
+            </div>
+          </div>
+        </div>
+        <div class="triangle_wrapper">
+          <div class="triangle_container">
+            <div class="time1 l-justify-center l-2">
+              ▶
+            </div>
+            <div class="text l-justify-center l-3">
+            </div>
+          </div>
+        </div>
+        <div class="time_wrapper">
+          <div class="time_container">
+            <div class="time3 l-justify-center l-2">
+              {{ nnHour }} : {{ nnMin }}
+            </div>
+            <div class="text l-justify-center l-2">
+              次の次のバス
+            </div>
+          </div>
+        </div>
+        <div class="triangle_wrapper">
+          <div class="triangle_container">
+            <div class="time1 l-justify-center l-2">
+              ▶
+            </div>
+            <div class="text l-justify-center l-3">
+            </div>
+          </div>
+        </div>
+        <div class="time_wrapper">
+          <div class="time_container">
+            <div class="time3 l-justify-center l-2">
+              {{ nnHour }} : {{ nnMin }}
+            </div>
+            <div class="text l-justify-center l-2">
+              次の次のバス
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
     <div class="nav l-justify-center">
       <div class="time_wrapper l-justify-space-around">
         <div class="time_container">
@@ -47,6 +120,7 @@
         </div>
       </div>
     </div>
+    -->
 
   </div>
 </template>
@@ -76,6 +150,7 @@ export default {
       this.pMin = this.getDouble(this.getPre(this.tTable)[1]);
       this.nnHour = this.getDouble(this.getNextNext(this.tTable)[0]);
       this.nnMin = this.getDouble(this.getNextNext(this.tTable)[1]);
+      //this.getMoreNext(this.tTable);
     }, 1000);
   },
   methods: {
@@ -136,6 +211,42 @@ export default {
       }
       //処理終了
       return [nextNextHour, nextNextMin];
+    },
+    getMoreNext: function(timeTable) {
+      const nnnNum = this.getNextNext(timeTable);
+      let nowHour = nnnNum[0];
+      let nowMin = nnnNum[1];
+      let nowNum = 0;
+
+      for(let i=0;;i++) {
+        if(timeTable[nowHour][i] > nowMin) {
+          nowHour++;
+        }
+        if(timeTable[nowHour][i] == nowMin) {
+          nowNum = nowHour*6 + i;
+          break;
+        }
+      }
+
+      let HourArray = [];
+      let MinArray = [];
+
+      for(let i=0;i<10;i++) {
+      nowNum++;
+        for(;;){
+          if(timeTable[Math.floor(nowNum / 6)][nowNum % 6] != null){
+            HourArray.push(Math.floor(nowNum / 6));
+            MinArray.push(timeTable[Math.floor(nowNum / 6)][nowNum % 6]);
+            break;
+          } else {
+            nowNum++;
+            if(nowNum > 143) {
+              nowNum = 0;
+            }
+          }
+        }
+      }
+      console.log(HourArray + ":" + MinArray);
     },
     getPre: function(timeTable) {
       var nowNum;
@@ -198,50 +309,60 @@ export default {
   width: 100%;
 }
 
-.nav {
+.nav_wrapper {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   background: #1D1D27;
   height: 10vh;
 }
 
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 320px;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+}
+
 .time_wrapper {
-  max-width: 100px;
+  min-width: 83.2px;
+  max-width: 97.5px;
+  width: 26%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time_container {
-  width: 12vh;
-  height: 10vh;
-  margin: 0 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 0.5em;
 }
 
+.triangle_wrapper {
+  min-width: 35.2px;
+  max-width: 41.25px;
+  width: 11%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .time2 {
+  padding: 1em;
   background: white;
 }
 
 .time1, .time2, .time3 {
-  width: 12vh;
   height: 4vh;
   border-radius: 50px;
-  font-size: 2.4vh;
+  font-size: 0.8em;
 }
 
 .text {
-  width: 12vh;
   height: 4vh;
-  font-size: 1.6vh;
-}
-
-.triangle {
-  width: 1vh;
-  height: 10vh;
-  font-size: 1.2vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  font-size: 0.7em;
 }
 
 .header {
