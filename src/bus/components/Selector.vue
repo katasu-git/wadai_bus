@@ -1,6 +1,6 @@
 <template>
   <div id="selector">
-    <div class="btn_wrapper">
+    <div class="btn_wrapper l-justify-center">
       <div v-if="acr" v-on:click="wakeRoute" class="btn_text l-justify-center l-1">
         {{getGoOrBack}}
       </div>
@@ -75,14 +75,12 @@ export default {
   border: solid .5px rgba(0,0,0,0.26);
   border-radius: 50px;
   background: #16B2B2;
-  width: 60vw;
-  height: 8vh;
-  opacity: .9;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   margin: 3px 0;
-  position: absolute;
-  right: 10%;
-  bottom: 5%;
+  width: 30vh;
+  height: 8vh;
+  max-width: 220px;
+  max-height: 70px;
 }
 
 .btn_wrapper:active {
@@ -90,11 +88,6 @@ export default {
 }
 
 .btn_text {
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  right: 0%;
-  left: 0%;
   font-weight: 600;
   font-size: 1.2em;
 }

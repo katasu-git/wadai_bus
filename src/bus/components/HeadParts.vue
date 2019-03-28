@@ -298,13 +298,15 @@ export default {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   background: #1D1D27;
   height: 10vh;
+  width: 100%;
 }
 
 .nav {
   width: 100%;
+  max-width: 375px;
+  min-width: 320px;
   display: flex;
   justify-content: flex-start;
-  max-width: 320px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
@@ -312,9 +314,9 @@ export default {
 }
 
 .time_wrapper {
-  /*min-width: 60px;
-  max-width: 70px;*/
-  width: 55px;
+  width: 20%;
+  min-width: 62.2px;
+  max-width: 75px;
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -322,10 +324,9 @@ export default {
 }
 
 .triangle_wrapper {
-  /*min-width: 5px;
-  max-width: 6.25px;*/
-  width: 6.75px;
-  margin: 2.5px;
+  width: 5%;
+  min-width: 16px;
+  max-width: 18.75px;
   height: 10vh;
   font-size: 0.5em;
   display: flex;
@@ -335,6 +336,9 @@ export default {
 
 .mask_inner {
   position: relative;
+  width: 100%;
+  max-width: 375px;
+  min-width: 320px;
 }
 
 .mask {
@@ -342,7 +346,7 @@ export default {
   top: 5%;
   right: 0%;
   height: 9vh;
-  width: 8%;
+  width: 3%;
   background: #1D1D27;
 }
 

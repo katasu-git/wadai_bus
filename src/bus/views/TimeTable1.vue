@@ -4,9 +4,10 @@
 
     <HeadParts :tTable="timeTable"></Headparts>
     <MainCircle :tTable="timeTable"></maincircle>
-    <Selector :route="route" :routeNum="routeNum"></Selector>
-    <FAB :routeNum="routeNum"></FAB>
-
+    <div class="double_btn_wrapper l-justify-space-around">
+      <FAB :routeNum="routeNum"></FAB>
+      <Selector :route="route" :routeNum="routeNum"></Selector>
+    </div>
   </div>
 
 </template>

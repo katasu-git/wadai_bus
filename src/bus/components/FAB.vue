@@ -9,7 +9,7 @@
     </div>
     </transition>
 
-    <div class="l-fab">
+    <div class="l-fab l-justify-center">
 
       <svg v-if="changer" v-on:click="openSelector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 48.52">
         <path d="M24.61 10.88v11.44c0 5.24-2.91 11.68-6.61 15.32L7.94 27.56" fill="#f30"/>
@@ -83,12 +83,13 @@ export default {
 <style lang="scss" scoped>
 
 .l-fab {
-  position: absolute;
-  left: 10%;
-  bottom: 5.4%;
   border-radius: 200px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 2px 2px 0 rgba(0,0,0,0.24);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  width: 8vh;
+  height: 8vh;
+  max-width: 80px;
+  max-height: 80px;
 }
 
 .l-fab:hover {
@@ -101,8 +102,8 @@ svg {
 
 .balloon1 {
   position: absolute;
-  bottom: 14%;
-  left: 12.4%;
+  bottom: 100%;
+  left: 10%;
   display: inline-block;
   margin: 1.5em 0;
   padding: 7px 10px;

@@ -10,8 +10,19 @@
   user-select: none; //選択禁止
 }
 
-html {
+html, body {
   background-color: #FAFAFA;
+}
+
+.double_btn_wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 414px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  bottom: 5%;
 }
 
 .l-justify-center {
