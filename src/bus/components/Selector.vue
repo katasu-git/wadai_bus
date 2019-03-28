@@ -60,9 +60,9 @@ export default {
   computed: {
     getGoOrBack: function() {
       if(this.routeNum === 0 || this.routeNum === 1) {
-        return "大学から帰る";
+        return "下校";
       } else {
-        return "大学へ行く";
+        return "登校";
       }
     }
   }

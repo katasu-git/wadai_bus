@@ -6,56 +6,39 @@
     </div>
 
     <div class="nav_wrapper l-justify-center">
-      <div class="nav">
-        <div class="time_wrapper">
-          <div class="time_container">
-            <div class="time1 l-justify-center l-3">
-              {{ pHour }} : {{ pMin }}
+      <div class="mask_inner">
+        <div class="mask"></div>
+        <div class="nav">
+          <div class="loop">
+            <div class="time_wrapper">
+              <div class="time_container">
+                <div class="time1 l-justify-center l-0">
+                  00:00
+                </div>
+                <div class="text l-justify-center l-0">
+                  消す
+                </div>
+              </div>
             </div>
-            <div class="text l-justify-center l-3">
-              前のバス
-            </div>
-          </div>
-        </div>
-        <div class="triangle_wrapper">
-          <div class="triangle_container">
-            <div class="time1 l-justify-center l-3">
-              ▶
-            </div>
-            <div class="text l-justify-center l-3">
-            </div>
-          </div>
-        </div>
-        <div class="time_wrapper">
-          <div class="time_container">
-            <div class="time2 l-justify-center d-1">
-              {{ nHour }} : {{ nMin }}
-            </div>
-            <div class="text l-justify-center l-1">
-              次のバス
+          <div class="triangle_wrapper">
+            <div class="triangle_container">
+              <div class="time1 l-justify-center l-0">
+                ▶
+              </div>
+              <div class="text l-justify-center l-0">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="triangle_wrapper">
-          <div class="triangle_container">
-            <div class="time1 l-justify-center l-2">
-              ▶
-            </div>
-            <div class="text l-justify-center l-3">
-            </div>
-          </div>
-        </div>
-        <div class="time_wrapper">
-          <div class="time_container">
-            <div class="time3 l-justify-center l-2">
-              {{ nnHour }} : {{ nnMin }}
-            </div>
-            <div class="text l-justify-center l-2">
-              次の次のバス
+          <div class="time_wrapper">
+            <div class="time_container">
+              <div class="time1 l-justify-center l-3">
+                {{ pHour }} : {{ pMin }}
+              </div>
+              <div class="text l-justify-center l-3">
+                前のバス
+              </div>
             </div>
           </div>
-        </div>
-        <div class="loop" v-for="hour in HourArray">
           <div class="triangle_wrapper">
             <div class="triangle_container">
               <div class="time1 l-justify-center l-3">
@@ -67,11 +50,52 @@
           </div>
           <div class="time_wrapper">
             <div class="time_container">
-              <div class="time3 l-justify-center l-3">
-                {{ hour }}
+              <div class="time2 l-justify-center d-1">
+                {{ nHour }} : {{ nMin }}
+              </div>
+              <div class="text l-justify-center l-1">
+                次のバス
+              </div>
+            </div>
+          </div>
+          <div class="triangle_wrapper">
+            <div class="triangle_container">
+              <div class="time1 l-justify-center l-2">
+                ▶
               </div>
               <div class="text l-justify-center l-3">
-                さらに...
+              </div>
+            </div>
+          </div>
+          <div class="time_wrapper">
+            <div class="time_container">
+              <div class="time3 l-justify-center l-2">
+                {{ nnHour }} : {{ nnMin }}
+              </div>
+              <div class="text l-justify-center l-2">
+                次の次のバス
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="loop" v-for="hour in HourArray">
+            <div class="triangle_wrapper">
+              <div class="triangle_container">
+                <div class="time1 l-justify-center l-3">
+                  ▶
+                </div>
+                <div class="text l-justify-center l-3">
+                </div>
+              </div>
+            </div>
+            <div class="time_wrapper">
+              <div class="time_container">
+                <div class="time3 l-justify-center l-3">
+                  {{ hour }}
+                </div>
+                <div class="text l-justify-center l-3">
+                  さらに...
+                </div>
               </div>
             </div>
           </div>
@@ -288,27 +312,38 @@ export default {
 }
 
 .time_wrapper {
-  min-width: 83.2px;
-  max-width: 97.5px;
-  width: 26%;
+  /*min-width: 60px;
+  max-width: 70px;*/
+  width: 55px;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.time_container {
-  margin: 0.5em;
 }
 
 .triangle_wrapper {
-  min-width: 35.2px;
-  max-width: 41.25px;
-  width: 11%;
+  /*min-width: 5px;
+  max-width: 6.25px;*/
+  width: 6.75px;
+  margin: 2.5px;
   height: 10vh;
+  font-size: 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mask_inner {
+  position: relative;
+}
+
+.mask {
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  height: 9vh;
+  width: 8%;
+  background: #1D1D27;
 }
 
 .loop {
@@ -318,18 +353,22 @@ export default {
 .time2 {
   padding: 0.8em;
   background: white;
+  max-height: 30px;
 }
 
 .time1, .time2, .time3 {
   height: 4vh;
   border-radius: 50px;
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-weight: 600;
+  white-space: nowrap;
+  max-height: 30px;
 }
 
 .text {
   height: 4vh;
-  font-size: 0.7em;
+  font-size: 0.5em;
+  white-space: nowrap;
 }
 
 .header {
