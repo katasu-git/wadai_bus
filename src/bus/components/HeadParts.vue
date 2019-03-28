@@ -315,7 +315,7 @@ export default {
 
 .time_wrapper {
   width: 20%;
-  min-width: 62.2px;
+  min-width: 62px;
   max-width: 75px;
   height: 10vh;
   display: flex;
@@ -346,7 +346,7 @@ export default {
   top: 5%;
   right: 0%;
   height: 9vh;
-  width: 3%;
+  width: 7%;
   background: #1D1D27;
 }
 

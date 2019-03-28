@@ -77,7 +77,7 @@ export default {
   background: #16B2B2;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   margin: 3px 0;
-  width: 30vh;
+  width: 70vw;
   height: 8vh;
   max-width: 220px;
   max-height: 70px;
