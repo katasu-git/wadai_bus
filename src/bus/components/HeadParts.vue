@@ -58,7 +58,7 @@
         <div class="loop" v-for="hour in HourArray">
           <div class="triangle_wrapper">
             <div class="triangle_container">
-              <div class="time1 l-justify-center l-2">
+              <div class="time1 l-justify-center l-3">
                 ▶
               </div>
               <div class="text l-justify-center l-3">
@@ -67,10 +67,10 @@
           </div>
           <div class="time_wrapper">
             <div class="time_container">
-              <div class="time3 l-justify-center l-2">
+              <div class="time3 l-justify-center l-3">
                 {{ hour }}
               </div>
-              <div class="text l-justify-center l-2">
+              <div class="text l-justify-center l-3">
                 さらに...
               </div>
             </div>

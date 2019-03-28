@@ -85,7 +85,7 @@ export default {
 .l-fab {
   position: absolute;
   left: 10%;
-  bottom: 5.2%;
+  bottom: 5.4%;
   border-radius: 200px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 2px 2px 0 rgba(0,0,0,0.24);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);

@@ -7,7 +7,6 @@
       <div v-else v-on:click="wakeRoute2" class="btn_text l-justify-center l-1">
         {{getGoOrBack}}
       </div>
-      <div class="triangle"></div>
     </div>
   </div>
 </template>
@@ -100,12 +99,4 @@ export default {
   font-size: 1.2em;
 }
 
-.triangle {
-  border-top: 7px solid #FFF;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  position: absolute;
-  top: 46%;
-  right: 11%;
-}
 </style>
