@@ -294,6 +294,14 @@ export default {
   width: 100%;
 }
 
+.header {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  background: #1D1D27;
+  height: 8vh;
+  min-height: 40px;
+  min-width: 320px;
+}
+
 .nav_wrapper {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   background: #1D1D27;
@@ -373,12 +381,6 @@ export default {
   height: 4vh;
   font-size: 0.5em;
   white-space: nowrap;
-}
-
-.header {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-  background: #1D1D27;
-  height: 8vh;
 }
 
 .title {

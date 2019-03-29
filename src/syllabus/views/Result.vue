@@ -2,9 +2,9 @@
 <div id="s_result">
   <HeadParts></HeadParts>
   <div class="res_body u-mt8 l-justify-center">
-    <div class="res_contents u-mt3 " v-for="data in sData" >
+    <div class="res_contents u-mt3 " v-for="data in sData" :key="data.id">
       <div class="major_circle_wrapper l-justify-center">
-        <div class="major_circle l-justify-center">
+        <div v-bind:style="{ border : activeColor(data) }" class="major_circle l-justify-center">
           <div class="major_text d-1"> {{ data.major[0] }} </div>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default {
   name: 's_result',
   data () {
     return {
-      sData: []
+      sData: [],
     }
   },
   created: function() {
@@ -45,9 +45,20 @@ export default {
       this.sData = array
     })
   },
+  methods: {
+    activeColor: function(data) {
+      if(data.major[0] === "経") {
+        return 'solid 2px orange';
+      } else if(data.major[0] === "シ") {
+        return 'solid 2px yellowgreen';
+      } else if(data.major[0] === "観") {
+        return 'solid 2px pink';
+      }
+    }
+  },
   components: {
     HeadParts: HeadParts,
-  }
+  },
 };
 </script>
 
@@ -111,6 +122,7 @@ export default {
   right: 0;
   top: 0;
   margin: 2px 10px 0 0;
+  font-weight: 600;
 }
 
 .detail_text_wrapper {
