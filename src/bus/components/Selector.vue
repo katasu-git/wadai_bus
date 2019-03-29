@@ -1,10 +1,10 @@
 <template>
   <div id="selector">
-    <div class="btn_wrapper l-justify-center">
-      <div v-if="acr" v-on:click="wakeRoute" class="btn_text l-justify-center l-1">
+    <div class="btn_wrapper l-justify-center" v-on:click="wakeRoute">
+      <div v-if="acr" class="btn_text l-justify-center l-1">
         {{getGoOrBack}}
       </div>
-      <div v-else v-on:click="wakeRoute2" class="btn_text l-justify-center l-1">
+      <div v-else class="btn_text l-justify-center l-1">
         {{getGoOrBack}}
       </div>
     </div>
@@ -16,7 +16,8 @@ export default {
   name: "selector",
   data() {
     return {
-      acr: false
+      acr: false,
+      flag: false, //true=帰る　false=行く
     }
   },
   props: {
@@ -31,38 +32,38 @@ export default {
         this.acr = true;
       }
     },
-    close: function() {
-      //this.acr = true;
-    },
     wakeRoute: function() {
-      //帰るボタン
-      if(this.routeNum === 0 || this.routeNum === 1){
-        this.toggle();
-      } else if(this.routeNum === 0 || this.routeNum === 2) {
-        //今いるページが南海のとき
-        this.$router.push({ path: '/' });
+      if(this.flag == false) {
+        //帰るボタン
+        if(this.routeNum === 0 || this.routeNum === 1){
+          this.toggle();
+        } else if(this.routeNum === 0 || this.routeNum === 2) {
+          //今いるページが南海のとき
+          this.$router.push({ path: '/' });
+        } else {
+          this.$router.push({ path: 'timetable1' });
+        }
       } else {
-        this.$router.push({ path: 'timetable1' });
+        //行くボタン
+        if(this.routeNum === 2 || this.routeNum === 3){
+          this.toggle();
+        } else if(this.routeNum === 0 || this.routeNum === 2) {
+          //今いるページが南海のとき
+          this.$router.push({ path: 'timetable2' });
+        } else {
+          this.$router.push({ path: 'timetable3' });
+        }
       }
     },
-    wakeRoute2: function() {
-      //行くボタン
-      if(this.routeNum === 2 || this.routeNum === 3){
-        this.toggle();
-      } else if(this.routeNum === 0 || this.routeNum === 2) {
-        //今いるページが南海のとき
-        this.$router.push({ path: 'timetable2' });
-      } else {
-        this.$router.push({ path: 'timetable3' });
-      }
-    }
   },
   computed: {
     getGoOrBack: function() {
       if(this.routeNum === 0 || this.routeNum === 1) {
-        return "下校";
+        this.flag = true;
+        return "大学から帰る";
       } else {
-        return "登校";
+        this.flag = false;
+        return "大学に行く";
       }
     }
   }

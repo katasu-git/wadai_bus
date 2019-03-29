@@ -12,6 +12,7 @@
 
 html, body {
   background-color: #FAFAFA;
+  min-width: 320px;
 }
 
 .double_btn_wrapper {
@@ -23,6 +24,12 @@ html, body {
   left: 0;
   margin: auto;
   bottom: 5%;
+}
+
+.border {
+  height: 1px;
+  width: 100%;
+  background: rgba(0,0,0,0.12);
 }
 
 .l-justify-center {
