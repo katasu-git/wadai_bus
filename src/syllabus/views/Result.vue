@@ -4,27 +4,30 @@
   <div class="res_body u-mt8 l-justify-center">
     <div class="res_contents u-mt3 " v-for="data in sData" :key="data.id">
       <div class="major_circle_wrapper l-justify-center">
-        <div v-bind:style="{ border : activeColor(data) }" class="major_circle l-justify-center">
+        <div :style="{ border : activeColor(data) }" class="major_circle l-justify-center">
           <div class="major_text d-1"> {{ data.major[0] }} </div>
         </div>
       </div>
       <div class="res_text_body">
-        <span class="title d-1"> {{ data.title }} </span>
+        <span class="title d-1" v-on:click="test(data)"> {{ data.title }} </span>
         <span class="time d-1"> {{ data.time }} </span>
         <div class="detail_text_wrapper d-2">
           <div class="detail_text"> {{ data.term }} </div>
           <div class="detail_text"> {{ data.target }} </div>
           <div class="detail_text"> {{ data.teacher }} </div>
         </div>
+        <!--<img :src="link(data)" />-->
         <div class="border u-mt2"></div>
       </div>
     </div>
+    <div class="detail_text"> {{ getMessage }} </div>
   </div>
 </div>
 </template>
 
 <script>
 import HeadParts from "../components/HeadParts.vue";
+//import EventBus from "../components/EventBus.js";
 export default {
   name: 's_result',
   data () {
@@ -54,6 +57,26 @@ export default {
       } else if(data.major[0] === "観") {
         return 'solid 2px pink';
       }
+    },
+    changeMethod: function(message) {
+      this.message = message;
+    },
+    test: function(data) {
+      console.log(data.title);
+    },
+    /*link: function(data) {
+      if(data.major[0] === "経") {
+        return require("../../assets/mikan.png");
+      } else if(data.major[0] === "シ") {
+        return require("../../assets/logo.png");
+      } else if(data.major[0] === "観") {
+        return require("../../assets/mikan.png");
+      }
+    }*/
+  },
+  computed: {
+    getMessage: function() {
+      return this.$route.params.message
     }
   },
   components: {

@@ -12,6 +12,9 @@
     </el-input>-->
   </div>
   <div> {{ btnData }} </div>
+  <input type="text" v-model="text">
+  {{ text }}
+  <button v-on:click="click">押してね</button>
 
 </div>
 </template>
@@ -19,6 +22,7 @@
 <script>
 import HeadParts from "../components/HeadParts.vue";
 import Department from "../components/Department.vue";
+//import EventBus from "../components/EventBus.js";
 
 export default {
   name: 's_top',
@@ -32,11 +36,19 @@ export default {
           touOn: 0,
         },
         search:'',
+        text:"初期テキスト"
     }
   },
   methods: {
-    wakeRouter: function() {
-      this.$router.push({ path: 'result' });
+    click: function() {
+      //EventBus.$emit('bus-event', this.text);
+      //this.$router.push({ path: 'result' });
+      this.$router.push({
+        name: 's_result',
+        params: {
+          message: this.text
+        }
+      })
     }
   },
   components: {

@@ -36,12 +36,12 @@ const routes = [
     component: TimeTable3
   },
   {
-    path: "/s_top",
+    path: "/syllabus/top",
     name: "s_top",
     component: Top
   },
   {
-    path: "/s_result",
+    path: "/syllabus/result",
     name: "s_result",
     component: Result
   },
