@@ -18,6 +18,7 @@
         </div>
         <!--<img :src="link(data)" />-->
         <div class="border u-mt2"></div>
+        <div class="detail_text"> {{ showErorr }} </div>
       </div>
     </div>
   </div>
@@ -36,7 +37,9 @@ export default {
     }
   },
   created: function() {
-    this.testMessage = this.$route.params.message; //データ受け取り
+    if(this.$route.params.message != null) {
+      this.testMessage = this.$route.params.message; //データ受け取り
+    }
     //console.log(this.testMessage);
     firebase.firestore()
     .collection("syllabus")
@@ -52,7 +55,6 @@ export default {
       });
       this.sData = array
     });
-
   },
   methods: {
     activeColor: function(data) {
@@ -79,6 +81,19 @@ export default {
         return require("../../assets/mikan.png");
       }
     }*/
+  },
+  computed: {
+    showErorr: function() {
+      if(this.sData["title"] == undefined) {
+        console.log(this.sData.title);
+        console.log("空だよ");
+        return "Erorr";
+      } else {
+        console.log(this.sData.title);
+        console.log("データあるよ");
+        return "OK!!";
+      }
+    }
   },
   components: {
     HeadParts: HeadParts,
