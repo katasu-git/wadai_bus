@@ -41,8 +41,6 @@ export default {
   },
   methods: {
     click: function() {
-      //EventBus.$emit('bus-event', this.text);
-      //this.$router.push({ path: 'result' });
       this.$router.push({
         name: 's_result',
         params: {

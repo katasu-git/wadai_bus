@@ -20,7 +20,6 @@
         <div class="border u-mt2"></div>
       </div>
     </div>
-    <div class="detail_text"> {{ getMessage }} </div>
   </div>
 </div>
 </template>
@@ -33,12 +32,18 @@ export default {
   data () {
     return {
       sData: [],
+      testMessage: ""
     }
   },
   created: function() {
+    this.testMessage = this.$route.params.message; //データ受け取り
+    //console.log(this.testMessage);
     firebase.firestore()
     .collection("syllabus")
-    //.where("target", "==", "")
+    //.where("title", "==", "マクロ経済学")
+    .orderBy("title")
+    .startAt(this.testMessage)
+    .endAt(this.testMessage + '\uf8ff')
     .get()
     .then(snap => {
       const array = [];
@@ -46,7 +51,8 @@ export default {
         array.push(doc.data());
       });
       this.sData = array
-    })
+    });
+
   },
   methods: {
     activeColor: function(data) {
@@ -73,11 +79,6 @@ export default {
         return require("../../assets/mikan.png");
       }
     }*/
-  },
-  computed: {
-    getMessage: function() {
-      return this.$route.params.message
-    }
   },
   components: {
     HeadParts: HeadParts,
