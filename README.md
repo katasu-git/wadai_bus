@@ -1,7 +1,8 @@
-# wadai_bus
+# wadai_bus & syllabus
 
 和歌山大学に通う学生向けのバス時刻アプリ。 <br>
 南海、JR両線からの行き帰りに対応。 <br>
+現在シラバスも統合して作成中 <br>
 https://www.wadai-apps.com
 
 ## Build Setup
