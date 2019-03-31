@@ -213,7 +213,7 @@ export default {
         }
       }
 
-      for(let i=0;i<10;i=i+1) {
+      for(let i=0;i<15;i=i+1) {
       nowNum++;
         for(;;){
           if(timeTable[Math.floor(nowNum / 6)][nowNum % 6] != null){

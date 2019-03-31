@@ -18,7 +18,6 @@
         </div>
         <!--<img :src="link(data)" />-->
         <div class="border u-mt2"></div>
-        <div class="detail_text"> {{ showErorr }} </div>
       </div>
     </div>
   </div>
