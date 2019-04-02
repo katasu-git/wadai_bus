@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="res_text_body">
-        <span class="title d-1" v-on:click="test(data)"> {{ data.title }} </span>
+        <span class="title d-1" v-on:click="routeToDetail(data)"> {{ data.title }} </span>
         <span class="time d-1"> {{ data.time }} </span>
         <div class="detail_text_wrapper d-2">
           <div class="detail_text"> {{ data.term }} </div>
@@ -26,21 +26,23 @@
 
 <script>
 import HeadParts from "../components/HeadParts.vue";
-//import EventBus from "../components/EventBus.js";
 export default {
   name: 's_result',
   data () {
     return {
       sData: [],
-      testMessage: ""
+      testMessage: "",
+      avoid: ""
     }
   },
   created: function() {
+    console.log( JSON.stringify(this.$route.params.message) );
     if(this.$route.params.message != null) {
       this.testMessage = this.$route.params.message; //データ受け取り
     }
     //console.log(this.testMessage);
-    firebase.firestore()
+    //firebase.firestore()
+    fb
     .collection("syllabus")
     //.where("title", "==", "マクロ経済学")
     .orderBy("title")
@@ -65,11 +67,16 @@ export default {
         return 'solid 2px pink';
       }
     },
-    changeMethod: function(message) {
-      this.message = message;
-    },
-    test: function(data) {
-      console.log(data.title);
+    routeToDetail: function(data) {
+      this. avoid = JSON.stringify(data.title);
+      this. avoid = data.title;
+      //console.log("this.avoid = " + this.avoid);
+      this.$router.push({
+        name: 's_detail',
+        params: {
+          title: this.avoid
+        }
+      })
     },
     /*link: function(data) {
       if(data.major[0] === "経") {
@@ -80,19 +87,6 @@ export default {
         return require("../../assets/mikan.png");
       }
     }*/
-  },
-  computed: {
-    showErorr: function() {
-      if(this.sData["title"] == undefined) {
-        console.log(this.sData.title);
-        console.log("空だよ");
-        return "Erorr";
-      } else {
-        console.log(this.sData.title);
-        console.log("データあるよ");
-        return "OK!!";
-      }
-    }
   },
   components: {
     HeadParts: HeadParts,
