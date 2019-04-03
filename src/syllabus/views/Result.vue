@@ -1,53 +1,58 @@
 <template>
 <div id="s_result">
-  <HeadParts></HeadParts>
-  <div class="res_body u-mt8 l-justify-center">
-    <div class="res_contents u-mt3 " v-for="data in sData" :key="data.id">
+  <div class="orange_wrapper">
+    <div class="orange_container">
+      <div class="header l-1">
+        <p>WADAI</p>
+        <p>SYLLABUS</p>
+      </div>
+    </div>
+  </div>
+  <div class="res_body l-justify-center">
+    <div class="res_contents u-mt3" v-for="data in sData" :key="data.id">
       <div class="major_circle_wrapper l-justify-center">
-        <div :style="{ border : activeColor(data) }" class="major_circle l-justify-center">
-          <div class="major_text d-1"> {{ data.major[0] }} </div>
+        <div class="major_circle l-justify-center">
+          <div :style="{ color : activeColor(data) }" class="major_text l-1"> {{ data.major[0] }} </div>
         </div>
       </div>
       <div class="res_text_body">
-        <span class="title d-1" v-on:click="routeToDetail(data)"> {{ data.title }} </span>
-        <span class="time d-1"> {{ data.time }} </span>
-        <div class="detail_text_wrapper d-2">
+        <div class="title l-1" v-on:click="routeToDetail(data)"> {{ data.title }} </div>
+        <div class="detail_text_wrapper l-2">
+          <div class="detail_text"> {{ data.time }} </div>
           <div class="detail_text"> {{ data.term }} </div>
           <div class="detail_text"> {{ data.target }} </div>
           <div class="detail_text"> {{ data.teacher }} </div>
         </div>
         <!--<img :src="link(data)" />-->
-        <div class="border u-mt2"></div>
+        <div class="border_white"></div>
       </div>
     </div>
   </div>
+  <RetTopBtn></RetTopBtn>
 </div>
 </template>
 
 <script>
-import HeadParts from "../components/HeadParts.vue";
+import RetTopBtn from "../components/RetTopBtn.vue";
 export default {
   name: 's_result',
   data () {
     return {
       sData: [],
-      testMessage: "",
+      receiveMessage: "",
       avoid: ""
     }
   },
   created: function() {
     console.log( JSON.stringify(this.$route.params.message) );
     if(this.$route.params.message != null) {
-      this.testMessage = this.$route.params.message; //データ受け取り
+      this.receiveMessage = this.$route.params.message; //データ受け取り
     }
-    //console.log(this.testMessage);
-    //firebase.firestore()
     fb
     .collection("syllabus")
-    //.where("title", "==", "マクロ経済学")
     .orderBy("title")
-    .startAt(this.testMessage)
-    .endAt(this.testMessage + '\uf8ff')
+    .startAt(this.receiveMessage)
+    .endAt(this.receiveMessage + '\uf8ff')
     .get()
     .then(snap => {
       const array = [];
@@ -60,17 +65,15 @@ export default {
   methods: {
     activeColor: function(data) {
       if(data.major[0] === "経") {
-        return 'solid 2px orange';
+        return 'orange';
       } else if(data.major[0] === "シ") {
-        return 'solid 2px yellowgreen';
+        return 'yellowgreen';
       } else if(data.major[0] === "観") {
-        return 'solid 2px pink';
+        return 'pink';
       }
     },
     routeToDetail: function(data) {
-      this. avoid = JSON.stringify(data.title);
       this. avoid = data.title;
-      //console.log("this.avoid = " + this.avoid);
       this.$router.push({
         name: 's_detail',
         params: {
@@ -89,15 +92,27 @@ export default {
     }*/
   },
   components: {
-    HeadParts: HeadParts,
+    RetTopBtn: RetTopBtn,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 
+#s_result {
+  background-color: #EF8732;
+  height: 100%;
+}
+
 .res_body {
+  background-color: #EF8732;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
   flex-direction: column;
+  overflow: scroll;
 }
 
 .res_contents {
@@ -118,14 +133,15 @@ export default {
 .major_circle {
   position: absolute;
   top: 0;
-  margin: 5px 0 0 0;
+  margin: 10px 0 0 0;
   width: 7vh;
   height: 7vh;
   max-width: 80px;
   max-height: 80px;
   min-width: 60px;
   min-height: 60px;
-  border: solid 2px rgba(0,0,0,0.87);
+  background: white;
+  border: solid 0 rgba(0,0,0,0.87);
   border-radius: 100px;
 }
 
@@ -145,25 +161,42 @@ export default {
 }
 
 .title {
-  font-size: 1.3em;
-  font-weight: 600;
-}
-
-.time {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 2px 10px 0 0;
+  font-size: 2em;
   font-weight: 600;
 }
 
 .detail_text_wrapper {
   display: flex;
+  font-size: 0.9em;
+  font-weight: 600;
 }
 
 .detail_text {
   margin: 0 10px 0 0;
 }
 
+.orange_wrapper {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: #EF8732;
+}
+
+.orange_container {
+  position: relative;
+  height: 50vh;
+  width: 100vw;
+  background-color: #EF8732;
+}
+
+.header {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80vw;
+  font-size: 6vh;
+  font-weight: 600;
+}
 
 </style>

@@ -12,6 +12,8 @@
 
 html, body {
   background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
   min-width: 320px;
 }
 
@@ -30,6 +32,12 @@ html, body {
   height: 1px;
   width: 100%;
   background: rgba(0,0,0,0.12);
+}
+
+.border_white {
+  height: 2px;
+  width: 95%;
+  background-color: rgba(255,255,255,0.30);
 }
 
 .l-justify-center {
@@ -54,11 +62,6 @@ html, body {
   position: absolute;
   left: 0%;
   bottom: 0%;
-}
-
-.border {
-  background: rgba(0,0,0,0.12);
-  height: 1px;
 }
 
 .u-w020 {
