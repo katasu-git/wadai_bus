@@ -101,6 +101,7 @@ export default {
   width: 80vw;
   font-size: 6vh;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .searh_warpper {
@@ -114,7 +115,6 @@ export default {
   position: absolute;
   bottom: 42%;
   left: 11.5%;
-  /*text-align: center;*/
   width: 80vw;
 }
 

@@ -62,7 +62,9 @@ export default {
   bottom: 0;
   margin: auto;
   width: 15vw;
+  min-width: 80px;
   height: 5vh;
+  min-height: 50px;
   fill: white;
 }
 

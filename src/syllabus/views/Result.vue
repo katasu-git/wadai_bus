@@ -102,21 +102,20 @@ export default {
 
 #s_result {
   background-color: #EF8732;
-  height: 100%;
 }
 
 .res_body {
   background-color: #EF8732;
   position: absolute;
-  top: 25%;
+  bottom: 0%;
   left: 0;
   right: 0;
   margin: auto;
-  height: 75vh;
+  height: 70%;
   min-width: 320px;
   flex-direction: column;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
 }
@@ -134,7 +133,7 @@ export default {
   height: 12vh; 
   min-height: 80px;
   max-height: 120px;
-  margin: 3vw;
+  margin-bottom: 5vw;
   position: relative;
 }
 
@@ -175,7 +174,7 @@ export default {
 }
 
 .title {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 600;
 }
 
@@ -192,14 +191,13 @@ export default {
 .orange_wrapper {
   position: absolute;
   top: 0;
-  height: 100%;
   width: 100vw;
   background-color: #EF8732;
   min-width: 320px;
 }
 
 .orange_container {
-  position: relative;
+  position: absolute;
   height: 50vh;
   width: 100vw;
   background-color: #EF8732;
