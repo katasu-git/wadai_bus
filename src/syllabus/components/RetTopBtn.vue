@@ -39,7 +39,10 @@ export default {
   bottom: 0;
   right: 0;
   width: 30vw;
+  min-width: 130px;
+  max-width: 180px;
   height: 10vh;
+  min-height: 80px;
   margin: 0;
   padding: 0;
   border: solid 0 wihte;

@@ -101,7 +101,6 @@ export default {
   width: 80vw;
   font-size: 6vh;
   font-weight: 600;
-  /*background: black;*/
 }
 
 .searh_warpper {

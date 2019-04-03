@@ -8,23 +8,24 @@
       </div>
     </div>
   </div>
-  <div class="res_body l-justify-center">
-    <div class="res_contents u-mt3" v-for="data in sData" :key="data.id">
-      <div class="major_circle_wrapper l-justify-center">
-        <div class="major_circle l-justify-center">
-          <div :style="{ color : activeColor(data) }" class="major_text l-1"> {{ data.major[0] }} </div>
+  <div class="res_body">
+    <div class="res_contents_wrapper">
+      <div class="res_contents" v-for="data in sData" :key="data.id">
+        <div class="major_circle_wrapper l-justify-center">
+          <div class="major_circle l-justify-center">
+            <div :style="{ color : activeColor(data) }" class="major_text l-1"> {{ data.major[0] }} </div>
+          </div>
         </div>
-      </div>
-      <div class="res_text_body">
-        <div class="title l-1" v-on:click="routeToDetail(data)"> {{ data.title }} </div>
-        <div class="detail_text_wrapper l-2">
-          <div class="detail_text"> {{ data.time }} </div>
-          <div class="detail_text"> {{ data.term }} </div>
-          <div class="detail_text"> {{ data.target }} </div>
-          <div class="detail_text"> {{ data.teacher }} </div>
+        <div class="res_text_body">
+          <div class="title l-1" v-on:click="routeToDetail(data)"> {{ data.title }} </div>
+          <div class="detail_text_wrapper l-2">
+            <div class="detail_text"> {{ data.time }} </div>
+            <div class="detail_text"> {{ data.term }} </div>
+            <div class="detail_text"> {{ data.target }} </div>
+            <div class="detail_text"> {{ data.teacher }} </div>
+          </div>
+          <!--<img :src="link(data)" />-->
         </div>
-        <!--<img :src="link(data)" />-->
-        <div class="border_white"></div>
       </div>
     </div>
   </div>
@@ -111,8 +112,19 @@ export default {
   left: 0;
   right: 0;
   margin: auto;
+  height: 75vh;
+  min-width: 320px;
   flex-direction: column;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
+.res_contents_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .res_contents {
@@ -122,6 +134,7 @@ export default {
   height: 12vh; 
   min-height: 80px;
   max-height: 120px;
+  margin: 3vw;
   position: relative;
 }
 
@@ -158,6 +171,7 @@ export default {
   width: 75%;
   min-width: 160px;
   padding: 0 0 0 1em;
+  border-bottom: solid 2px rgba(255,255,255,0.30);
 }
 
 .title {
@@ -172,7 +186,7 @@ export default {
 }
 
 .detail_text {
-  margin: 0 10px 0 0;
+  margin: 0 6px 0 4px;
 }
 
 .orange_wrapper {
@@ -181,6 +195,7 @@ export default {
   height: 100%;
   width: 100vw;
   background-color: #EF8732;
+  min-width: 320px;
 }
 
 .orange_container {
