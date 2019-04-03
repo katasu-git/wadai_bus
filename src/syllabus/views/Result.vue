@@ -67,11 +67,15 @@ export default {
   methods: {
     activeColor: function(data) {
       if(data.major[0] === "経") {
-        return 'orange';
+        return 'skyblue';
       } else if(data.major[0] === "シ") {
         return 'yellowgreen';
       } else if(data.major[0] === "観") {
         return 'pink';
+      } else if(data.major[0] === "教") {
+        return 'brown';
+      } else {
+        return 'darkgray';
       }
     },
     routeToDetail: function(data) {
