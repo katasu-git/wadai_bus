@@ -100,7 +100,7 @@ export default {
   left: 10%;
   width: 80vw;
   font-size: 6vh;
-  font-weight: 600;
+  font-weight: 900;
   white-space: nowrap;
 }
 

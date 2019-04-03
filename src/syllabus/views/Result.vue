@@ -25,6 +25,7 @@
             <div class="detail_text"> {{ data.teacher }} </div>
           </div>
           <!--<img :src="link(data)" />-->
+          <div class="border_white u-mt3"></div>
         </div>
       </div>
     </div>
@@ -170,7 +171,6 @@ export default {
   width: 75%;
   min-width: 160px;
   padding: 0 0 0 1em;
-  border-bottom: solid 2px rgba(255,255,255,0.30);
 }
 
 .title {
@@ -181,11 +181,11 @@ export default {
 .detail_text_wrapper {
   display: flex;
   font-size: 0.9em;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .detail_text {
-  margin: 0 6px 0 4px;
+  margin: 0 9px 0 3px;
 }
 
 .orange_wrapper {
