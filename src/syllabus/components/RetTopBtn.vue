@@ -46,7 +46,7 @@ export default {
   margin: 0;
   padding: 0;
   border: solid 0 wihte;
-  border-radius: 100px 0 0 0;
+  border-radius: 60px 0 0 0;
   background: #A3B800;
 }
 
