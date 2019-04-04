@@ -27,10 +27,8 @@
           </svg>
         </div>
       </div>
-      <div v-show="showError" class="errorMessage l-1">
-        科目名が空っぽですよ
-      </div>
     </div>
+    <div v-show="judgeError" class="errorMessage l-1">科目名を入力してください!!</div>
     <div class="link l-3">
       空きコマ検索（COMING SOON）
     </div>
@@ -45,16 +43,14 @@ export default {
   name: 's_top',
   data () {
     return {
-      search:'',
-      showError: false,
+      search: "",
+      enterKeyFlag: false,
     }
   },
   methods: {
     click: function() {
-      if(this.judgeError) {
-        this.showError = true;
-      } else {
-        this.showError = false;
+      this.enterKeyFlag = true;
+      if(this.judgeError == false) {
         this.$router.push({
           name: 's_result',
           params: {
@@ -66,11 +62,9 @@ export default {
   },
   computed: {
     judgeError: function() {
-      if(this.search === "") {
-        //空の時エラーを表示
+      if(this.search == "" && this.enterKeyFlag) {
         return true;
       } else {
-        //空でなければエラー非表示
         return false;
       }
     }
@@ -126,8 +120,11 @@ img {
 
 .errorMessage {
   position: absolute;
-  bottom: 42%;
-  left: 11.5%;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
   width: 80vw;
 }
 

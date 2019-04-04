@@ -247,15 +247,15 @@ export default {
 }
 
 .errorMessage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: -5%;
   left: 0;
   right: 0;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .tuna {
