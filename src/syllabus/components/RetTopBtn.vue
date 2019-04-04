@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     returnToTop: function() {
-      console.log("hellow");
       this.$router.push({ path: 'top' });
   },
   }

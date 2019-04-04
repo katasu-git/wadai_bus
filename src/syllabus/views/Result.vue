@@ -11,10 +11,11 @@
   <div class="res_body">
     <!-- 検索結果がない場合 -->
     <div v-if="tunaFlag" class="errorMessage" v-cloak>
-      <img class="tuna" src="../../assets/tuna.svg" />
-      <div class="errorText l-1">
-        <p1>検索結果がありません</p1>
-        <p2 class="u-mt1">代わりにマグロをお楽しみください</p2>
+      <img v-on:click="wakeTuna" alt="マグロ" class="tuna" src="../../assets/tuna.svg" />
+      <div class="tunaSerif l-2" v-show="tunaSerifFlag">I'm Tuna !!</div>
+      <div class="errorText">
+        <div class="notFond l-1">検索結果がありません</div>
+        <div class="u-mt1 l-2">代わりにマグロをお楽しみください</div>
       </div>
     </div>
     <div v-else class="res_contents_wrapper">
@@ -52,6 +53,8 @@ export default {
       receiveMessage: "dmaskdalk",
       avoid: "",
       tunaFlag: false,
+      tunaSerif: '',
+      tunaSerifFlag: false,
     }
   },
   created: function() {
@@ -98,6 +101,13 @@ export default {
       });
       window.open(routeData.href, '_blank');
     },
+    wakeTuna: function() {
+      if(this.tunaSerifFlag) {
+        this.tunaSerifFlag = false;
+      } else {
+        this.tunaSerifFlag = true;
+      }
+    },
     /*link: function(data) {
       if(data.major[0] === "経") {
         return require("../../assets/mikan.png");
@@ -109,12 +119,13 @@ export default {
     }*/
   },
   updated: function() {
+    this.$nextTick(() => {
       if(this.sData == "") {
         this.tunaFlag = true;
       } else {
         this.tunaFlag = false;
       }
-      //console.log(JSON.stringify(this.sData));
+    })
   },
   components: {
     RetTopBtn: RetTopBtn,
@@ -131,7 +142,7 @@ export default {
 .res_body {
   background-color: #EF8732;
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
@@ -232,7 +243,7 @@ export default {
   left: 10%;
   width: 80vw;
   font-size: 6vh;
-  font-weight: 600;
+  font-weight: 900;
 }
 
 .errorMessage {
@@ -240,11 +251,17 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: -5%;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .tuna {
-  width: 70%;
-  max-width: 500px;
+  width: 40vh;
+  max-width: 450px;
+  min-width: 150px;
 }
 
 .errorText {
@@ -253,17 +270,15 @@ export default {
   flex-direction: column;
 }
 
-p1 {
-  font-size: 2em;
+.notFond {
+  font-size: 1.9em;
   font-weight: 600;
 }
 
-p2 {
-  font-size: 0.8em;
-}
-
-[v-cloak] {
-  display: none;
+.tunaSerif {
+  position: absolute;
+  top: 5%;
+  right: 20%;
 }
 
 </style>
