@@ -80,12 +80,19 @@ export default {
     },
     routeToDetail: function(data) {
       this. avoid = data.title;
-      this.$router.push({
+      /*this.$router.push({
         name: 's_detail',
         params: {
           title: this.avoid
         }
-      })
+      })*/
+      let routeData = this.$router.resolve({
+        name: 's_detail',
+        query: {
+          data: this.avoid
+        }
+      });
+      window.open(routeData.href, '_blank');
     },
     /*link: function(data) {
       if(data.major[0] === "経") {

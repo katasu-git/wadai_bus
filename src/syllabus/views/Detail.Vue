@@ -79,8 +79,11 @@ export default {
     }
   },
   created: function() {
-    if(this.$route.params.title != null) {
+    /*if(this.$route.params.title != null) {
       this.message = this.$route.params.title; //データ受け取り
+    }*/
+    if(this.$route.query.data != null) {
+      this.message = this.$route.query.data; //データ受け取り
     }
     console.log(this.message);
     fb
