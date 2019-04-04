@@ -9,7 +9,15 @@
     </div>
   </div>
   <div class="res_body">
-    <div class="res_contents_wrapper">
+    <!-- 検索結果がない場合 -->
+    <div v-if="tunaFlag" class="errorMessage" v-cloak>
+      <img class="tuna" src="../../assets/tuna.svg" />
+      <div class="errorText l-1">
+        <p1>検索結果がありません</p1>
+        <p2 class="u-mt1">代わりにマグロをお楽しみください</p2>
+      </div>
+    </div>
+    <div v-else class="res_contents_wrapper">
       <div class="res_contents" v-for="data in sData" :key="data.id">
         <div class="major_circle_wrapper l-justify-center">
           <div class="major_circle l-justify-center">
@@ -41,12 +49,13 @@ export default {
   data () {
     return {
       sData: [],
-      receiveMessage: "",
-      avoid: ""
+      receiveMessage: "dmaskdalk",
+      avoid: "",
+      tunaFlag: false,
     }
   },
   created: function() {
-    console.log( JSON.stringify(this.$route.params.message) );
+    //console.log( JSON.stringify(this.$route.params.message) );
     if(this.$route.params.message != null) {
       this.receiveMessage = this.$route.params.message; //データ受け取り
     }
@@ -60,6 +69,7 @@ export default {
       const array = [];
       snap.forEach(doc => {
         array.push(doc.data());
+        console.log(array);
       });
       this.sData = array
     });
@@ -80,12 +90,6 @@ export default {
     },
     routeToDetail: function(data) {
       this. avoid = data.title;
-      /*this.$router.push({
-        name: 's_detail',
-        params: {
-          title: this.avoid
-        }
-      })*/
       let routeData = this.$router.resolve({
         name: 's_detail',
         query: {
@@ -103,6 +107,14 @@ export default {
         return require("../../assets/mikan.png");
       }
     }*/
+  },
+  updated: function() {
+      if(this.sData == "") {
+        this.tunaFlag = true;
+      } else {
+        this.tunaFlag = false;
+      }
+      //console.log(JSON.stringify(this.sData));
   },
   components: {
     RetTopBtn: RetTopBtn,
@@ -221,6 +233,37 @@ export default {
   width: 80vw;
   font-size: 6vh;
   font-weight: 600;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tuna {
+  width: 70%;
+  max-width: 500px;
+}
+
+.errorText {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+p1 {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+p2 {
+  font-size: 0.8em;
+}
+
+[v-cloak] {
+  display: none;
 }
 
 </style>

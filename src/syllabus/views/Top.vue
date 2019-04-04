@@ -17,7 +17,7 @@
         科目名が空っぽですよ
       </div>
     </div>
-    <div class="link l-1">
+    <div class="link l-3">
       空きコマ検索（COMING SOON）
     </div>
   </div>
@@ -33,13 +33,6 @@ export default {
     return {
       search:'',
       showError: false,
-        /*btnData: {
-          libOn: 0,
-          ecoOn: 0,
-          sysOn: 0,
-          eduOn: 0,
-          touOn: 0,
-        },*/
     }
   },
   methods: {
@@ -68,10 +61,6 @@ export default {
       }
     }
   },
-  /*components: {
-    HeadParts: HeadParts,
-    Department: Department,
-  }*/
 };
 </script>
 

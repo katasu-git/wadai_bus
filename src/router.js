@@ -44,6 +44,9 @@ const routes = [
   {
     path: "/syllabus/result",
     name: "s_result",
+    /*redirect: {
+      name: "s_top"
+    },*/
     component: Result
   },
   {
