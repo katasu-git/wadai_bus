@@ -62,7 +62,8 @@ export default {
     if(this.$route.params.message != null) {
       this.receiveMessage = this.$route.params.message; //データ受け取り
     }
-    fb
+    if(this.$route.params.judge == "top") {
+      fb
     .collection("syllabus")
     .orderBy("title")
     .startAt(this.receiveMessage)
@@ -76,6 +77,22 @@ export default {
       });
       this.sData = array
     });
+    } else {
+      fb
+    .collection("syllabus")
+    .orderBy("time")
+    .startAt(this.receiveMessage)
+    .endAt(this.receiveMessage + '\uf8ff')
+    .get()
+    .then(snap => {
+      const array = [];
+      snap.forEach(doc => {
+        array.push(doc.data());
+        console.log(array);
+      });
+      this.sData = array
+    });
+    }
   },
   methods: {
     activeColor: function(data) {

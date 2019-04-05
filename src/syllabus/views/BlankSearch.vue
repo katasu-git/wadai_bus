@@ -12,7 +12,7 @@
     </div>
     <div class="calender_wrapper">
         <div class="grid_wrapper">
-            <div class="grid" :style="{ color : activeColor() }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)">
+            <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)">
                 {{ calendarNum }}
             </div>
         </div>
@@ -77,7 +77,7 @@ export default {
           name: 's_result',
           params: {
             message: this.search,
-            judge: 'blank'
+            judge: 'blank',
           }
         })
     },
@@ -102,7 +102,7 @@ export default {
             dayOfWeekStr = "金";
         }
         this.keyWord = dayOfWeekStr + time;
-        console.log(dayOfWeekNum);
+        console.log(this.keyWord);
 
         if(dayOfWeekStr != "" && time != 0) {
             this.$router.push({
@@ -114,8 +114,14 @@ export default {
             })
         }
     },
-    activeColor: function() {
-        return 'white';
+    activeColor: function(num) {
+        if(num < 6) {
+            return 'white';
+        } else if(num == "月" || num == "火" || num == "水" || num == "木" || num == "金") {
+        　  return 'white';
+        } else {
+            return 'rgba(0,0,0,0)';
+        }
     },
   },
 };
@@ -183,6 +189,16 @@ img {
 
 .grid {
   border: solid 1px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.grid:active {
+    background: white;
+    opacity: .5;
 }
 
 </style>

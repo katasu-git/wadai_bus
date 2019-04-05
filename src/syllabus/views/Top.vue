@@ -55,7 +55,7 @@ export default {
           name: 's_result',
           params: {
             message: this.search,
-            judge: 'top'
+            judge: 'top',
           }
         })
       }
