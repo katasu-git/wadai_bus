@@ -22,13 +22,13 @@
       <div class="res_contents" v-for="data in sData" :key="data.id">
         <div class="major_circle_wrapper l-justify-center">
           <div class="major_circle l-justify-center">
-            <div :style="{ color : activeColor(data) }" class="major_text l-1"> {{ data.major[0] }} </div>
+            <div :style="{ color : activeColor(data) }" class="major_text l-1"></div>
           </div>
         </div>
         <div class="res_text_body">
-          <div class="title l-1" v-on:click="routeToDetail(data)"> {{ data.title }} </div>
-          <div class="detail_text_wrapper l-2">
-            <div class="detail_text"> {{ data.time }} </div>
+          <div class="title l-1" :style="{ 'font-size' : activeFontSize(data.title.length) }" v-on:click="routeToDetail(data)"> {{ data.title }} </div>
+          <div class="detail_text_wrapper l-2 u-mt2">
+            <div class="detail_text"> {{ data.day }} </div>
             <div class="detail_text"> {{ data.term }} </div>
             <div class="detail_text"> {{ data.target }} </div>
             <div class="detail_text"> {{ data.teacher }} </div>
@@ -59,44 +59,46 @@ export default {
   },
   created: function() {
     //console.log( JSON.stringify(this.$route.params.message) );
-    if(this.$route.params.message != null) {
-      this.receiveMessage = this.$route.params.message; //データ受け取り
-    }
-    if(this.$route.params.judge == "top") {
-      fb
-    .collection("syllabus")
-    .orderBy("title")
-    .startAt(this.receiveMessage)
-    .endAt(this.receiveMessage + '\uf8ff')
-    .get()
-    .then(snap => {
-      const array = [];
-      snap.forEach(doc => {
-        array.push(doc.data());
-        console.log(array);
-      });
-      this.sData = array
-    });
-    } else {
-      fb
-    .collection("syllabus")
-    .orderBy("time")
-    .startAt(this.receiveMessage)
-    .endAt(this.receiveMessage + '\uf8ff')
-    .get()
-    .then(snap => {
-      const array = [];
-      snap.forEach(doc => {
-        array.push(doc.data());
-        console.log(array);
-      });
-      this.sData = array
-    });
-    }
+    this.$nextTick(() => {
+      if(this.$route.params.message != null) {
+        this.receiveMessage = this.$route.params.message; //データ受け取り
+      }
+      if(this.$route.params.judge == "top") {
+        fb
+        .collection("syllabussyoudai")
+        .orderBy("title")
+        .startAt(this.receiveMessage)
+        .endAt(this.receiveMessage + '\uf8ff')
+        .get()
+        .then(snap => {
+          const array = [];
+          snap.forEach(doc => {
+            array.push(doc.data());
+            //console.log(array);
+          });
+          this.sData = array
+        });
+      } else {
+          fb
+          .collection("syllabussyoudai")
+          .orderBy("day")
+          .startAt(this.receiveMessage)
+          .endAt(this.receiveMessage + '\uf8ff')
+          .get()
+          .then(snap => {
+            const array = [];
+            snap.forEach(doc => {
+              array.push(doc.data());
+              //console.log(array);
+            });
+            this.sData = array
+          });
+      }
+    })
   },
   methods: {
     activeColor: function(data) {
-      if(data.major[0] === "経") {
+      /*if(data.major[0] === "経") {
         return 'skyblue';
       } else if(data.major[0] === "シ") {
         return 'yellowgreen';
@@ -106,6 +108,16 @@ export default {
         return 'brown';
       } else {
         return 'darkgray';
+      }*/
+      return "darkgray";
+    },
+    activeFontSize: function(length) {
+      if(length < 8) {
+        return "2em";
+      } else if (length < 14) {
+        return "1.5em";
+      } else {
+        return "1.2em";
       }
     },
     routeToDetail: function(data) {
@@ -137,6 +149,7 @@ export default {
   },
   updated: function() {
     this.$nextTick(() => {
+      //console.log(JSON.stringify(this.sData));
       if(this.sData == "") {
         this.tunaFlag = true;
       } else {
@@ -185,7 +198,7 @@ export default {
   height: 12vh; 
   min-height: 80px;
   max-height: 120px;
-  margin-bottom: 5vw;
+  margin-bottom: 4em;
   position: relative;
 }
 
@@ -210,7 +223,7 @@ export default {
 }
 
 .major_text {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: 600;
 }
 
