@@ -29,8 +29,8 @@
       </div>
     </div>
     <div v-show="judgeError" class="errorMessage l-1">科目名を入力してください!!</div>
-    <div v-on:click="goToLink" class="link l-3">
-      空きコマ検索（COMING SOON）
+    <div v-on:click="goToLink" class="link l-1">
+      空きコマ検索はこちら
     </div>
   </div>
 

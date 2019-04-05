@@ -12,13 +12,11 @@
     </div>
     <div class="calender_wrapper">
         <div class="grid_wrapper">
-            <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)">
-                {{ calendarNum }}
-            </div>
+            <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)">{{ calendarNum }}</div>
         </div>
     </div>
   </div>
-  <div v-on:click="goToLink" class="link l-2">名前で検索 にもどる</div>
+  <div class="link l-1">コマを選んでください</div>
 </div>
 </template>
 
@@ -136,6 +134,10 @@ export default {
   height: 100%;
   background-color: #EF8732;
   min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 
 .orange_container {
@@ -176,9 +178,9 @@ img {
 .calender_wrapper {
     position: absolute;
     top: 30%;
-    left: 5%;
-    width: 90%;
-    height: 50%;
+    left: 10%;
+    width: 80vw;
+    height: 50vh;
 }
 
 .grid_wrapper {
@@ -188,7 +190,7 @@ img {
 }
 
 .grid {
-  border: solid 1px white;
+  border: solid 1px rgba(255,255,255,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
