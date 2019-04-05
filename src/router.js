@@ -8,6 +8,7 @@ import TimeTable3 from "./bus/views/TimeTable3";
 import Top from "./syllabus/views/Top.vue";
 import Result from "./syllabus/views/Result.vue";
 import Detail from "./syllabus/views/Detail.vue";
+import BlankSearch from "./syllabus/views/BlankSearch.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -53,6 +54,11 @@ const routes = [
     path: "/syllabus/detail",
     name: "s_detail",
     component: Detail
+  },
+  {
+    path: "/syllabus/blankSearch",
+    name: "s_blanksearch",
+    component: BlankSearch
   },
 ];
 

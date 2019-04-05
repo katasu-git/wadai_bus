@@ -29,7 +29,7 @@
       </div>
     </div>
     <div v-show="judgeError" class="errorMessage l-1">科目名を入力してください!!</div>
-    <div class="link l-3">
+    <div v-on:click="goToLink" class="link l-3">
       空きコマ検索（COMING SOON）
     </div>
   </div>
@@ -54,11 +54,17 @@ export default {
         this.$router.push({
           name: 's_result',
           params: {
-            message: this.search
+            message: this.search,
+            judge: 'top'
           }
         })
       }
-    }
+    },
+    goToLink: function() {
+      this.$router.push({
+          name: 's_blanksearch',
+      })
+    },
   },
   computed: {
     judgeError: function() {
