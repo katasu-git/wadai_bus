@@ -65,8 +65,8 @@ export default {
       if(this.$route.params.judge == "top") {
         if(this.$route.params.message != null) {
           this.receiveMessage = this.$route.params.message; //データ受け取り
-        }
-        fb
+
+          fb
         .collection("syllabus")
         .orderBy("title")
         .startAt(this.receiveMessage)
@@ -80,12 +80,12 @@ export default {
           });
           this.sData = array
         });
+        }
       } else {
           if(this.$route.params.day != null) {
             this.receiveMessage = this.$route.params.day; //データ受け取り
-          }
-          console.log(this.$route.params.period);
-          let dayFire = fb
+
+            fb
           .collection("syllabus")
           .orderBy("day")
           .startAt(this.receiveMessage)
@@ -100,6 +100,7 @@ export default {
             });
             this.sData = array
           });
+          }
       }
     })
   },

@@ -71,9 +71,8 @@ export default {
     this.$nextTick(() => {
       if(this.$route.query.data != null) {
         this.message = this.$route.query.data; //データ受け取り
-      }
-      console.log(this.message);
-      fb
+
+        fb
       .collection("syllabus-detail-fix")
       .orderBy("title")
       .startAt(this.message)
@@ -82,11 +81,11 @@ export default {
       .then(snap => {
         const array = [];
         snap.forEach(doc => {
-        console.log(doc.data());
         array.push(doc.data());
         });
         this.details = array
       });
+      }
     })
   },
   methods: {
