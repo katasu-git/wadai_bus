@@ -65,25 +65,21 @@ export default {
     }
   },
   created: function() {
-    /*if(this.$route.params.title != null) {
-      this.message = this.$route.params.title; //データ受け取り
-    }*/
     this.$nextTick(() => {
       if(this.$route.query.data != null) {
         this.message = this.$route.query.data; //データ受け取り
 
         fb
       .collection("syllabus-detail-fix")
-      .orderBy("title")
-      .startAt(this.message)
-      .endAt(this.message + '\uf8ff')
+      //.orderBy("title")
+      //.startAt(this.message)
+      //.endAt(this.message + '\uf8ff')
+      .where("title", "==", this.message)
       .get()
       .then(snap => {
-        const array = [];
         snap.forEach(doc => {
-        array.push(doc.data());
+        this.details.push(doc.data());
         });
-        this.details = array
       });
       }
     })

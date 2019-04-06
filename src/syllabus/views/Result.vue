@@ -60,45 +60,41 @@ export default {
     }
   },
   created: function() {
-    //console.log( JSON.stringify(this.$route.params.message) );
     this.$nextTick(() => {
       if(this.$route.params.judge == "top") {
         if(this.$route.params.message != null) {
           this.receiveMessage = this.$route.params.message; //データ受け取り
 
-          fb
+        fb
         .collection("syllabus")
         .orderBy("title")
         .startAt(this.receiveMessage)
         .endAt(this.receiveMessage + '\uf8ff')
         .get()
         .then(snap => {
-          const array = [];
           snap.forEach(doc => {
-            array.push(doc.data());
-            //console.log(array);
+            this.sData.push(doc.data());
           });
-          this.sData = array
         });
         }
       } else {
           if(this.$route.params.day != null) {
             this.receiveMessage = this.$route.params.day; //データ受け取り
 
-            fb
+          fb
           .collection("syllabus")
-          .orderBy("day")
-          .startAt(this.receiveMessage)
-          .endAt(this.receiveMessage)
+          //.orderBy("day")
+          //.startAt(this.receiveMessage)
+          //.endAt(this.receiveMessage)
+          .where("day", "==", this.receiveMessage)
+          .where("period", "==", this.$route.params.period)
           .get()
           .then(snap => {
-            const array = [];
             snap.forEach(doc => {
-              if(doc.data().period == this.$route.params.period) {
-                array.push(doc.data());
-              }
+              //if(doc.data().period == this.$route.params.period) {
+                this.sData.push(doc.data());
+              //}
             });
-            this.sData = array
           });
           }
       }
@@ -129,7 +125,7 @@ export default {
       } else if(data.education) {
         return '教';
       } else {
-        return '般';
+        return '他';
       }
     },
     activeFontSize: function(length) {
@@ -170,7 +166,6 @@ export default {
   },
   updated: function() {
     this.$nextTick(() => {
-      //console.log(JSON.stringify(this.sData));
       if(this.sData == "") {
         this.tunaFlag = true;
       } else {
