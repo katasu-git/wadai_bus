@@ -1,48 +1,48 @@
 <template>
 <div id="s_detail">
 
-  <div class="orange_wrapper">
+  <div class="orange_wrapper" v-for="detail in details">
     <div class="orange_container">
       <div class="header l-1">WADAI SYLLABUS</div>
-      <div :style="{ 'font-size' : activeFontSize(details[0].title.length) }" class="title u-mt10 l-1">{{ details[0].title }}</div>
+      <div class="title u-mt10 l-1">{{ detail.title }}</div>
     </div>
     <div class="wrapper">
       <div class="grid_wrapper">
         <div class="grid">
           <div class="content_title l-2">開講時期</div>
-          <div class="content l-1"> {{ details[0].term }} </div>
+          <div class="content l-1"> {{ detail.term }} </div>
         </div>
         <div class="grid">
           <div class="content_title l-2">曜日</div>
-          <div class="content l-1"> {{ details[0].day }} </div>
+          <div class="content l-1"> {{ detail.day }} </div>
         </div>
         <div class="grid">
           <div class="content_title l-2">学年</div>
-          <div class="content l-1"> {{ details[0].target }} </div>
+          <div class="content l-1"> {{ detail.target }} </div>
         </div>
         <div class="grid">
           <div class="content_title l-2">形式</div>
-          <div class="content l-1"> 講義 </div>
+          <div class="content l-1"></div>
         </div>
         <div class="grid">
           <div class="content_title l-2">取得単位</div>
-          <div class="content l-1"> 2 </div>
+          <div class="content l-1"> {{ detail.kazu }} </div>
         </div>
         <div class="grid">
           <div class="content_title l-2">教員</div>
-          <div class="content l-1"> {{ details[0].teacher }} </div>
+          <div class="content l-1"> {{ detail.teacher }} </div>
         </div>
       </div>
       <div class="content_wrapper u-mt6">
         <div class="content_title l-2">成績評価</div>
         <div class="Description u-mt2 l-1">
-          {{ details[0].evaluation }}
+          {{ detail.evaluation }}
         </div>
       </div>
       <div class="content_wrapper u-mt6">
         <div class="content_title l-2">概要</div>
         <div class="Description u-mt2 l-1">
-          {{ details[0].overview }}
+          {{ detail.overview }}
         </div>
       </div>
     </div>
@@ -61,6 +61,7 @@ export default {
     return {
         message: "マクロ経済学",
         details: [],
+        activeFontSize: "2em"
     }
   },
   created: function() {
@@ -71,9 +72,9 @@ export default {
       if(this.$route.query.data != null) {
         this.message = this.$route.query.data; //データ受け取り
       }
-      //console.log(this.message);
+      console.log(this.message);
       fb
-      .collection("syllabussyoudai")
+      .collection("syllabus-detail-fix")
       .orderBy("title")
       .startAt(this.message)
       .endAt(this.message + '\uf8ff')
@@ -81,6 +82,7 @@ export default {
       .then(snap => {
         const array = [];
         snap.forEach(doc => {
+        console.log(doc.data());
         array.push(doc.data());
         });
         this.details = array
@@ -88,15 +90,6 @@ export default {
     })
   },
   methods: {
-    activeFontSize: function(length) {
-      if(length < 8) {
-        return "2.5em";
-      } else if (length < 14) {
-        return "2.3em";
-      } else {
-        return "2em";
-      }
-    }
   },
   components: {
     RetTopBtn: RetTopBtn,
@@ -152,7 +145,7 @@ export default {
 }
 
 .grid_wrapper {
-  width: 90%;
+  width: 82%;
   height: 50%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -22,13 +22,14 @@
       <div class="res_contents" v-for="data in sData" :key="data.id">
         <div class="major_circle_wrapper l-justify-center">
           <div class="major_circle l-justify-center">
-            <div :style="{ color : activeColor(data) }" class="major_text l-1"></div>
+            <div :style="{ color : activeColor(data) }" class="major_text l-1">{{ getMajorName(data) }}</div>
           </div>
         </div>
         <div class="res_text_body">
           <div class="title l-1" :style="{ 'font-size' : activeFontSize(data.title.length) }" v-on:click="routeToDetail(data)"> {{ data.title }} </div>
           <div class="detail_text_wrapper l-2 u-mt2">
             <div class="detail_text"> {{ data.day }} </div>
+            <div class="detail_text"> {{ data.period }} </div>
             <div class="detail_text"> {{ data.term }} </div>
             <div class="detail_text"> {{ data.target }} </div>
             <div class="detail_text"> {{ data.teacher }} </div>
@@ -51,6 +52,7 @@ export default {
     return {
       sData: [],
       receiveMessage: "dmaskdalk",
+      receiveMessage2: "dmaskldl",
       avoid: "",
       tunaFlag: false,
       tunaSerif: '',
@@ -60,12 +62,12 @@ export default {
   created: function() {
     //console.log( JSON.stringify(this.$route.params.message) );
     this.$nextTick(() => {
-      if(this.$route.params.message != null) {
-        this.receiveMessage = this.$route.params.message; //データ受け取り
-      }
       if(this.$route.params.judge == "top") {
+        if(this.$route.params.message != null) {
+          this.receiveMessage = this.$route.params.message; //データ受け取り
+        }
         fb
-        .collection("syllabussyoudai")
+        .collection("syllabus")
         .orderBy("title")
         .startAt(this.receiveMessage)
         .endAt(this.receiveMessage + '\uf8ff')
@@ -79,17 +81,22 @@ export default {
           this.sData = array
         });
       } else {
-          fb
-          .collection("syllabussyoudai")
+          if(this.$route.params.day != null) {
+            this.receiveMessage = this.$route.params.day; //データ受け取り
+          }
+          console.log(this.$route.params.period);
+          let dayFire = fb
+          .collection("syllabus")
           .orderBy("day")
           .startAt(this.receiveMessage)
-          .endAt(this.receiveMessage + '\uf8ff')
+          .endAt(this.receiveMessage)
           .get()
           .then(snap => {
             const array = [];
             snap.forEach(doc => {
-              array.push(doc.data());
-              //console.log(array);
+              if(doc.data().period == this.$route.params.period) {
+                array.push(doc.data());
+              }
             });
             this.sData = array
           });
@@ -98,24 +105,37 @@ export default {
   },
   methods: {
     activeColor: function(data) {
-      /*if(data.major[0] === "経") {
+      if(data.economics) {
         return 'skyblue';
-      } else if(data.major[0] === "シ") {
+      } else if(data.engineering) {
         return 'yellowgreen';
-      } else if(data.major[0] === "観") {
+      } else if(data.tourisum) {
         return 'pink';
-      } else if(data.major[0] === "教") {
+      } else if(data.education) {
         return 'brown';
       } else {
         return 'darkgray';
-      }*/
+      }
       return "darkgray";
+    },
+    getMajorName: function(data) {
+      if(data.economics) {
+        return '経';
+      } else if(data.engineering) {
+        return '工';
+      } else if(data.tourisum) {
+        return '観';
+      } else if(data.education) {
+        return '教';
+      } else {
+        return '般';
+      }
     },
     activeFontSize: function(length) {
       if(length < 8) {
         return "2em";
       } else if (length < 14) {
-        return "1.5em";
+        return "1.3em";
       } else {
         return "1.2em";
       }

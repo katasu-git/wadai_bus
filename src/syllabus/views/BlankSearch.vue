@@ -27,6 +27,8 @@ export default {
     return {
         calendarNums: [35],
         keyWord: "",
+        day: "",
+        period: "",
     }
   },
   created: function() {
@@ -81,32 +83,35 @@ export default {
     },
     judgeNum: function(num) {
         let jumpFlag = false;
+        if(num != "月" && num != "火" && num != "水" && num != "木" && num != "金") {
+          jumpFlag = true;
+        }
         let time = Math.floor(num/6);
-        if(num == Number) {
-
-        }
         let dayOfWeekNum = num%6;
-        let dayOfWeekStr = "";
+        //let dayOfWeekStr = dayOfWeekNum.toString();
         
-        if(dayOfWeekNum === 1) {
-            dayOfWeekStr = "月";
+        /*if(dayOfWeekNum === 1) {
+            //dayOfWeekStr = "月";
         } else if(dayOfWeekNum === 2) {
-            dayOfWeekStr = "火";
+            //dayOfWeekStr = "火";
         } else if (dayOfWeekNum === 3) {
-            dayOfWeekStr = "水";
+            //dayOfWeekStr = "水";
         } else if (dayOfWeekNum === 4) {
-            dayOfWeekStr = "木";
+            //dayOfWeekStr = "木";
         } else if (dayOfWeekNum === 5) {
-            dayOfWeekStr = "金";
-        }
-        this.keyWord = dayOfWeekStr + time;
-        console.log(this.keyWord);
+            //dayOfWeekStr = "金";
+        }*/
+        //this.keyWord = dayOfWeekStr + time;
+        //console.log("heeeey" + this.keyWord);
+        this.day = dayOfWeekNum;
+        this.period = time;
 
-        if(dayOfWeekStr != "" && time != 0) {
+        if(jumpFlag && time != 0) {
             this.$router.push({
                 name: 's_result',
                 params: {
-                    message: this.keyWord,
+                    day: this.day,
+                    period: this.period,
                     judge: 'blank'
                 }
             })
