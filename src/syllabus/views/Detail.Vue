@@ -4,7 +4,7 @@
   <div class="orange_wrapper" v-for="detail in details">
     <div class="orange_container">
       <div class="header l-1">WADAI SYLLABUS</div>
-      <div class="title u-mt10 l-1">{{ detail.title }}</div>
+      <div :style="{ 'font-size' : activeFontSize(detail.title.length) }" class="title u-mt10 l-1">{{ detail.title }}</div>
     </div>
     <div class="wrapper">
       <div class="grid_wrapper">
@@ -61,7 +61,6 @@ export default {
     return {
         message: "マクロ経済学",
         details: [],
-        activeFontSize: "2em"
     }
   },
   created: function() {
@@ -85,6 +84,15 @@ export default {
     })
   },
   methods: {
+    activeFontSize: function(length) {
+      if(length < 8) {
+        return "3em";
+      } else if (length < 14) {
+        return "2.5em";
+      } else {
+        return "2em";
+      }
+    },
   },
   components: {
     RetTopBtn: RetTopBtn,
