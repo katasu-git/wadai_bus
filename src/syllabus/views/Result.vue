@@ -32,7 +32,7 @@
             <div class="detail_text"> {{ data.period }} </div>
             <div class="detail_text"> {{ data.term }} </div>
             <div class="detail_text"> {{ data.target }} </div>
-            <div class="detail_text"> {{ data.teacher }} </div>
+            <div class="detail_text"> {{ shoetenName(data.teacher) }} </div>
           </div>
           <!--<img :src="link(data)" />-->
           <div class="border_white u-mt3"></div>
@@ -156,6 +156,16 @@ export default {
       } else {
         this.tunaSerifFlag = true;
       }
+    },
+    shoetenName: function(name) {
+      let retName = name;
+      for(let i=0;;i++) {
+        if(name[i] == ",") {
+          retName = name.slice(0, i);
+          break;
+        }
+      }
+      return retName + ' ' + "ほか";
     },
     /*link: function(data) {
       if(data.major[0] === "経") {

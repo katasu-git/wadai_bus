@@ -26,7 +26,7 @@
         </div>
         <div class="grid">
           <div class="content_title l-2">教員</div>
-          <div class="content l-1"> {{ detail.teacher }} </div>
+          <div class="content l-1"> {{ shoetenName(detail.teacher) }} </div>
         </div>
       </div>
       <div class="content_wrapper u-mt6">
@@ -100,6 +100,16 @@ export default {
       } else {
         return "2em";
       }
+    },
+    shoetenName: function(name) {
+      let retName = name;
+      for(let i=0;;i++) {
+        if(name[i] == ",") {
+          retName = name.slice(0, i);
+          break;
+        }
+      }
+      return retName + ' ' + "ほか";
     },
   },
   components: {
