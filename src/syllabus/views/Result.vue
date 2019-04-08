@@ -160,12 +160,16 @@ export default {
     shoetenName: function(name) {
       let retName = name;
       for(let i=0;;i++) {
+        if(name.length < i) {
+          return retName;
+          break;
+        }
         if(name[i] == ",") {
           retName = name.slice(0, i);
+          return retName + ' ' + "ほか";
           break;
         }
       }
-      return retName + ' ' + "ほか";
     },
     /*link: function(data) {
       if(data.major[0] === "経") {
