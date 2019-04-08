@@ -69,7 +69,7 @@ export default {
         this.message = this.$route.query.data; //データ受け取り
 
         fb
-      .collection("syllabus-detail-fix")
+      .collection("syllabus-done")
       //.orderBy("title")
       //.startAt(this.message)
       //.endAt(this.message + '\uf8ff')

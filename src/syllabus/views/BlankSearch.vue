@@ -88,30 +88,31 @@ export default {
         }
         let time = Math.floor(num/6);
         let dayOfWeekNum = num%6;
-        //let dayOfWeekStr = dayOfWeekNum.toString();
+        let dayOfWeekStr = dayOfWeekNum.toString();
         
-        /*if(dayOfWeekNum === 1) {
-            //dayOfWeekStr = "月";
+        if(dayOfWeekNum === 1) {
+            dayOfWeekStr = "月";
         } else if(dayOfWeekNum === 2) {
-            //dayOfWeekStr = "火";
+            dayOfWeekStr = "火";
         } else if (dayOfWeekNum === 3) {
-            //dayOfWeekStr = "水";
+            dayOfWeekStr = "水";
         } else if (dayOfWeekNum === 4) {
-            //dayOfWeekStr = "木";
+            dayOfWeekStr = "木";
         } else if (dayOfWeekNum === 5) {
-            //dayOfWeekStr = "金";
-        }*/
-        //this.keyWord = dayOfWeekStr + time;
+            dayOfWeekStr = "金";
+        }
+        this.keyWord = dayOfWeekStr + time;
         //console.log("heeeey" + this.keyWord);
-        this.day = dayOfWeekNum;
-        this.period = time;
+        //this.day = dayOfWeekNum;
+        //this.period = time;
 
         if(jumpFlag && time != 0) {
             this.$router.push({
                 name: 's_result',
                 params: {
-                    day: this.day,
-                    period: this.period,
+                    //day: this.day,
+                    //period: this.period,
+                    keyWord: this.keyWord,
                     judge: 'blank'
                 }
             })

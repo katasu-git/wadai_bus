@@ -52,7 +52,6 @@ export default {
     return {
       sData: [],
       receiveMessage: "dmaskdalk",
-      receiveMessage2: "dmaskldl",
       avoid: "",
       tunaFlag: false,
       tunaSerif: '',
@@ -66,7 +65,7 @@ export default {
           this.receiveMessage = this.$route.params.message; //データ受け取り
 
         fb
-        .collection("syllabus")
+        .collection("syllabus-done")
         .orderBy("title")
         .startAt(this.receiveMessage)
         .endAt(this.receiveMessage + '\uf8ff')
@@ -78,16 +77,16 @@ export default {
         });
         }
       } else {
-          if(this.$route.params.day != null) {
-            this.receiveMessage = this.$route.params.day; //データ受け取り
-
+          if(this.$route.params.keyWord != null) {
+            this.receiveMessage = this.$route.params.keyWord; //データ受け取り
+            //console.log(this.receiveMessage);
           fb
-          .collection("syllabus")
+          .collection("syllabus-done")
           //.orderBy("day")
           //.startAt(this.receiveMessage)
           //.endAt(this.receiveMessage)
           .where("day", "==", this.receiveMessage)
-          .where("period", "==", this.$route.params.period)
+          //.where("period", "==", this.$route.params.period)
           .get()
           .then(snap => {
             snap.forEach(doc => {
