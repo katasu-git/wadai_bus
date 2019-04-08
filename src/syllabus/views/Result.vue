@@ -65,7 +65,7 @@ export default {
           this.receiveMessage = this.$route.params.message; //データ受け取り
 
         fb
-        .collection("syllabus-done")
+        .collection("syllabus-comp")
         .orderBy("title")
         .startAt(this.receiveMessage)
         .endAt(this.receiveMessage + '\uf8ff')
@@ -81,7 +81,7 @@ export default {
             this.receiveMessage = this.$route.params.keyWord; //データ受け取り
             //console.log(this.receiveMessage);
           fb
-          .collection("syllabus-done")
+          .collection("syllabus-comp")
           //.orderBy("day")
           //.startAt(this.receiveMessage)
           //.endAt(this.receiveMessage)
@@ -109,6 +109,8 @@ export default {
         return 'pink';
       } else if(data.education) {
         return 'brown';
+      } else if(data.culture) {
+        return 'orange';
       } else {
         return 'darkgray';
       }
@@ -123,6 +125,8 @@ export default {
         return '観';
       } else if(data.education) {
         return '教';
+      } else if(data.culture) {
+        return '般';
       } else {
         return '他';
       }

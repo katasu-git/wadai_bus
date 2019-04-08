@@ -21,10 +21,6 @@
           <div class="content l-1"> {{ detail.target }} </div>
         </div>
         <div class="grid">
-          <div class="content_title l-2">形式</div>
-          <div class="content l-1"></div>
-        </div>
-        <div class="grid">
           <div class="content_title l-2">取得単位</div>
           <div class="content l-1"> {{ detail.kazu }} </div>
         </div>
@@ -34,9 +30,21 @@
         </div>
       </div>
       <div class="content_wrapper u-mt6">
+        <div class="content_title l-2">教科書</div>
+        <div class="Description u-mt2 l-1">
+          {{ detail.text }}
+        </div>
+      </div>
+      <div class="content_wrapper u-mt6">
         <div class="content_title l-2">成績評価</div>
         <div class="Description u-mt2 l-1">
           {{ detail.evaluation }}
+        </div>
+      </div>
+      <div class="content_wrapper u-mt6">
+        <div class="content_title l-2">履修上の注意</div>
+        <div class="Description u-mt2 l-1">
+          {{ detail.message }}
         </div>
       </div>
       <div class="content_wrapper u-mt6">
@@ -69,7 +77,7 @@ export default {
         this.message = this.$route.query.data; //データ受け取り
 
         fb
-      .collection("syllabus-done")
+      .collection("syllabus-comp")
       //.orderBy("title")
       //.startAt(this.message)
       //.endAt(this.message + '\uf8ff')
