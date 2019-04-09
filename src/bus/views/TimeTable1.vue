@@ -3,7 +3,7 @@
   <div id="timetable1">
 
     <HeadParts :tTable="timeTable"></Headparts>
-    <MainCircle :tTable="timeTable"></maincircle>
+    <MainCircle :tTable="timeTable" :routeNum="routeNum"></maincircle>
     <div class="double_btn_wrapper l-justify-space-around">
       <FAB :routeNum="routeNum"></FAB>
       <Selector :route="route" :routeNum="routeNum"></Selector>

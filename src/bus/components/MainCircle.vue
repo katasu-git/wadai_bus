@@ -16,7 +16,7 @@
 
     <div class="l-justify-center">
       <div class="u-w040 u-mt-7">
-        <svg v-if="human" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <svg v-if="human" :style="{'transform' : revHuman(this.routeNum) }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
           <path class="walk" d="M129.71 51.34a18.67 18.67 0 1 0 19.45-17.85 18.68 18.68 0 0 0-19.45 17.85zM121.87 121c-.01 0-.05.09 0 0z"/>
           <path class="walk" d="M90.45 148l15.16-34.28a9.83 9.83 0 0 1 .68-1.12 8.83 8.83 0 0 1 1.43-2.5s9-18.16 16.46-25.44c5.06-5.26 10.81-8.56
               17.66-8.53 11.4.07 17.57 5.4 21 11l16.35 26.41 28 21.76a7.26 7.26 0 0 1-8.4 11.85L169.08 128c.29 7.82 9.89 127.82 9.89 127.82a9.47 9.47
@@ -25,7 +25,7 @@
           <path fill="none" d="M0 0h300v300H0z"/>
         </svg>
 
-        <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <svg v-else class="human" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
           <path fill="none" d="M0 0h300v300H0z"/>
           <path class="dash" d="M71.95 100.43l57.24 1.39v-2.78l-57.24 1.39zM38.52 141.44l87.61 2.12v-4.25l-87.61 2.13zM62.73 173.05l45.54 1.1v-2.21l-45.54 1.11zM255.93 77.15a18.79 18.79 0 1 1-19.83-17.67 18.8 18.8 0 0 1 19.83 17.67z"/>
           <path class="dash" d="M254.23 141.7l-30-2.94V113.4c0-7.49 1.61-25.53-31.82-25.53h-38.76c-3 0-7.06.74-9.93 3.59l-24.38 22.4a6.9 6.9 0 0 0 8.83 10.58l25.07-18.26 19.58 1.74c.08 0-94.85 118.26-94.85 118.26a8.46 8.46 0 0 0 .4 11.86 8.24 8.24 0 0 0 11.73.12l31.72-29s67-3.91 72.79-4.28c6.88-.44 12.57-8 9.11-16.72l-15-36.94 15.12-14.82s1 10.22 1.34 13.14 3.61 6.85 8.31 6.85l40.57.27a7 7 0 0 0 7.41-7.09 7.77 7.77 0 0 0-7.24-7.87zM169 185.56l-26 4.56 21.88-19.76 4.83 12.5c.66 1.72.37 2.44.71 2.7z"/>
@@ -46,7 +46,8 @@
 export default {
   name: "mainCiecle",
   props: {
-    tTable: Array
+    tTable: Array,
+    routeNum: Number,
   },
   data() {
     return {
@@ -236,6 +237,13 @@ export default {
       }
       return [lefHour, lefMin, lefSec];
     },
+    revHuman: function(num) {
+      if(num == "0" || num == "1") {
+        return 'scale(-1, 1)';
+      } else {
+        return 'scale(1, 1)';
+      }
+    },
   }
 };
 
@@ -271,6 +279,9 @@ svg .dash {
 
 .leftTime {
   font-weight: 600;
+}
+
+.human {
 }
 
 </style>
