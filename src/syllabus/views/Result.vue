@@ -71,29 +71,26 @@ export default {
         .endAt(this.receiveMessage + '\uf8ff')
         .get()
         .then(snap => {
+          const array = [];
           snap.forEach(doc => {
-            this.sData.push(doc.data());
+            array.push(doc.data());
           });
+          this.sData = array;
         });
         }
       } else {
           if(this.$route.params.keyWord != null) {
             this.receiveMessage = this.$route.params.keyWord; //データ受け取り
-            //console.log(this.receiveMessage);
           fb
           .collection("syllabus-comp")
-          //.orderBy("day")
-          //.startAt(this.receiveMessage)
-          //.endAt(this.receiveMessage)
           .where("day", "==", this.receiveMessage)
-          //.where("period", "==", this.$route.params.period)
           .get()
           .then(snap => {
+            const array = [];
             snap.forEach(doc => {
-              //if(doc.data().period == this.$route.params.period) {
-                this.sData.push(doc.data());
-              //}
+                array.push(doc.data());
             });
+            this.sData = array;
           });
           }
       }
@@ -183,7 +180,7 @@ export default {
   },
   updated: function() {
     this.$nextTick(() => {
-      if(this.sData == "") {
+      if(this.sData == '') {
         this.tunaFlag = true;
       } else {
         this.tunaFlag = false;
