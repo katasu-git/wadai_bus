@@ -18,6 +18,7 @@
         <div class="u-mt1 l-2">代わりにマグロをお楽しみください</div>
       </div>
     </div>
+    <!-- 検索結果がある -->
     <div v-else class="res_contents_wrapper">
       <div class="res_contents" v-for="data in sData" :key="data.id">
         <div class="major_circle_wrapper l-justify-center">

@@ -27,8 +27,6 @@ export default {
     return {
         calendarNums: [35],
         keyWord: "",
-        day: "",
-        period: "",
     }
   },
   created: function() {
@@ -60,8 +58,6 @@ export default {
               this.calendarNums[i] = "4";
           } else if(this.calendarNums[i] === 30) {
               this.calendarNums[i] = "5";
-          } else {
-
           }
       }
 
@@ -102,16 +98,11 @@ export default {
             dayOfWeekStr = "金";
         }
         this.keyWord = dayOfWeekStr + time;
-        //console.log("heeeey" + this.keyWord);
-        //this.day = dayOfWeekNum;
-        //this.period = time;
 
         if(jumpFlag && time != 0) {
             this.$router.push({
                 name: 's_result',
                 params: {
-                    //day: this.day,
-                    //period: this.period,
                     keyWord: this.keyWord,
                     judge: 'blank'
                 }

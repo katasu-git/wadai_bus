@@ -8,7 +8,7 @@
         <p>SYLLABUS</p>
       </div>
       <div class="neko_wrapper">
-        <img class="neko" alt="neko_img" src="../../assets/neko.png" />
+        <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus"/>
       </div>
       <div class="searh_warpper">
         <div class="searchForm">
@@ -65,6 +65,11 @@ export default {
           name: 's_blanksearch',
       })
     },
+    goToBus: function() {
+      this.$router.push({
+          name: 'timetable0',
+      })
+    },
   },
   computed: {
     judgeError: function() {
@@ -111,6 +116,10 @@ export default {
   position: absolute;
   top: 8%;
   right: 8%;
+}
+
+.neko_wrapper:active {
+  opacity: .5;
 }
 
 img {
