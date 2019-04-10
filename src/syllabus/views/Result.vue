@@ -11,10 +11,10 @@
   <div class="res_body">
     <!-- 検索結果がない場合 -->
     <div v-if="tunaFlag" class="errorMessage" v-cloak>
-      <img v-on:click="wakeTuna" alt="マグロ" class="tuna" src="../../assets/tuna.svg" />
+      <img v-on:click="wakeTuna" alt="マグロ" class="tuna" src="../../assets/tuna_ikeda.svg" />
       <div class="tunaSerif l-2" v-show="tunaSerifFlag">I'm Tuna !!</div>
       <div class="errorText">
-        <div class="notFond l-1">検索結果がありません</div>
+        <div class="notFond u-mt7 l-1">検索結果がありません</div>
         <div class="u-mt1 l-2">代わりにマグロをお楽しみください</div>
       </div>
     </div>
@@ -63,13 +63,12 @@ export default {
     this.$nextTick(() => {
       if(this.$route.params.judge == "top") {
         if(this.$route.params.message != null) {
-          this.receiveMessage = this.$route.params.message; //データ受け取り
 
         fb
         .collection("syllabus-comp")
         .orderBy("title")
-        .startAt(this.receiveMessage)
-        .endAt(this.receiveMessage + '\uf8ff')
+        .startAt(this.$route.params.message)
+        .endAt(this.$route.params.message + '\uf8ff')
         .get()
         .then(snap => {
           const array = [];
@@ -78,13 +77,15 @@ export default {
           });
           this.sData = array;
         });
+        } else {
+          const array = [];
+          this.sData = array;
         }
       } else {
           if(this.$route.params.keyWord != null) {
-            this.receiveMessage = this.$route.params.keyWord; //データ受け取り
           fb
           .collection("syllabus-comp")
-          .where("day", "==", this.receiveMessage)
+          .where("day", "==", this.$route.params.keyWord)
           .get()
           .then(snap => {
             const array = [];
@@ -93,6 +94,9 @@ export default {
             });
             this.sData = array;
           });
+          } else {
+            const array = [];
+            this.sData = array;
           }
       }
     })
@@ -309,7 +313,7 @@ export default {
 
 .errorMessage {
   position: absolute;
-  top: -5%;
+  top: 8%;
   left: 0;
   right: 0;
   margin: auto;
@@ -320,7 +324,7 @@ export default {
 }
 
 .tuna {
-  width: 40vh;
+  width: 75vw;
   max-width: 450px;
   min-width: 150px;
 }
@@ -332,14 +336,14 @@ export default {
 }
 
 .notFond {
-  font-size: 1.9em;
+  font-size: 1.8em;
   font-weight: 600;
 }
 
 .tunaSerif {
   position: absolute;
-  top: 5%;
-  right: 20%;
+  top: -5%;
+  right: 15%;
 }
 
 </style>
