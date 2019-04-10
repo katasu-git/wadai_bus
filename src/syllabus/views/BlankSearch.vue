@@ -12,7 +12,7 @@
     </div>
     <div class="calender_wrapper">
         <div class="grid_wrapper">
-            <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)">{{ calendarNum }}</div>
+            <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)" ontouchstart="">{{ calendarNum }}</div>
         </div>
     </div>
   </div>

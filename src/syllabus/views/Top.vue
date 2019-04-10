@@ -8,7 +8,7 @@
         <p>SYLLABUS</p>
       </div>
       <div class="neko_wrapper">
-        <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus"/>
+        <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
       </div>
       <div class="searh_warpper">
         <div class="searchForm">
