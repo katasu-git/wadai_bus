@@ -14,7 +14,7 @@
         <div class="searchForm">
           <input v-on:keyup.enter="click" v-model="search" placeholder="授業の名前でさがす" class="searchForm-input" type="text">
           <!--検索アイコン-->
-          <svg  class="search_icon" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+          <svg  class="search_icon" v-on:click="click" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
             <g>
 	          <path d="M495.272,423.558c0,0-68.542-59.952-84.937-76.328c-24.063-23.938-33.69-35.466-25.195-54.931
 		          c37.155-75.78,24.303-169.854-38.72-232.858c-79.235-79.254-207.739-79.254-286.984,0c-79.245,79.264-79.245,207.729,0,287.003
@@ -118,10 +118,6 @@ export default {
   right: 8%;
 }
 
-.neko_wrapper:active {
-  opacity: .5;
-}
-
 img {
   width: 48px;
 }
@@ -163,26 +159,30 @@ input {
   border: 1px solid #B0501F;
   border-radius: 100px;
   outline: none;
-  text-align: center;
+  //text-align: center;
 }
 
 ::-webkit-input-placeholder {
-  text-align:center;
+  //text-align:center;
+  padding-left: .8em;
   color: rgba(255,255,255,0.30);
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  text-align:center;
+  //text-align:center;
+  padding-left: .8em;
   color: rgba(255,255,255,0.30);
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   text-align:center;
+   //text-align:center;
+   padding-left: .8em;
    color: rgba(255,255,255,0.30);
 }
 
 :-ms-input-placeholder {
-  text-align:center;
+  //text-align:center;
+  padding-left: .8em;
   color: rgba(255,255,255,0.30);
 }
 
@@ -193,15 +193,25 @@ input {
 .search_icon {
   position: absolute;
   top: 0;
-  left: 12%;
+  right: 10%;
   bottom: 0;
   margin: auto;
-  width: 16px;
-  color: rgba(255,255,255,0.30);
+  width: 20px;
+  color: rgba(255,255,255,.7);
+}
+
+.search_icon:active{ 
+  opacity: .5;
+  transform:scale(.7, .7);
+}
+
+.link:active, .neko_wrapper:active {
+  opacity: .5;
+  transform:scale(.9, .9);
 }
 
 .searchForm-input {
-  color: rgba(255,255,255,1.00);
+  color: rgba(255,255,255,.7);
   width: 100%;
 }
 .searchForm-submit {

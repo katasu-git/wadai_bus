@@ -52,7 +52,6 @@ export default {
   data () {
     return {
       sData: [],
-      receiveMessage: "dmaskdalk",
       avoid: "",
       tunaFlag: false,
       tunaSerif: '',
@@ -337,7 +336,7 @@ export default {
 
 .notFond {
   font-size: 1.8em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .tunaSerif {
