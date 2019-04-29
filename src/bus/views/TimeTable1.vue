@@ -100,9 +100,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-  background: #1D1D27;
-  height: 5vh;
+
+#timetable1 {
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  background-color: #FAFAFA;
 }
+
 </style>

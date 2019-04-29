@@ -1,16 +1,14 @@
 <template>
 <div id="s_result">
-  <div class="orange_wrapper">
-    <div class="orange_container">
-      <div class="header l-1">
-        <p>WADAI</p>
-        <p>SYLLABUS</p>
+  <div class="orange_area">
+      <div class="header">
+            <p>WADAI</p>
+            <p>SYLLABUS</p>
       </div>
-    </div>
   </div>
   <div class="res_body">
     <!-- 検索結果がない場合 -->
-    <div v-if="tunaFlag" class="errorMessage" v-cloak>
+    <div v-if="tunaFlag" class="res_contents_wrapper" v-cloak>
       <img v-on:click="wakeTuna" alt="マグロ" class="tuna" src="../../assets/tuna_ikeda.svg" />
       <div class="tunaSerif l-2" v-show="tunaSerifFlag">I'm Tuna !!</div>
       <div class="errorText">
@@ -201,29 +199,47 @@ export default {
 <style lang="scss" scoped>
 
 #s_result {
+  position: relative;
+  height: 100%;
+}
+
+.orange_area {
+  position: absolute;
+  height: 30vh;
+  width: 100vw;
+  padding: 32px;
+  z-index: 1;
   background-color: #EF8732;
+}
+
+.header {
+  font-size: 5vh;
+  font-weight: 900;
+  white-space: nowrap;
+  color: white;
 }
 
 .res_body {
-  background-color: #EF8732;
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 70%;
+  height: 100vh;
+  width: 100vw;
   min-width: 320px;
   flex-direction: column;
-  overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
+  background-color: #EF8732;
 }
 
 .res_contents_wrapper {
+  position: absolute;
+  width: 100vw;
+  top: 30vh;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #EF8732;
 }
 
 .res_contents {
@@ -285,30 +301,6 @@ export default {
 
 .detail_text {
   margin: 0 9px 0 3px;
-}
-
-.orange_wrapper {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  background-color: #EF8732;
-  min-width: 320px;
-}
-
-.orange_container {
-  position: absolute;
-  height: 50vh;
-  width: 100vw;
-  background-color: #EF8732;
-}
-
-.header {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80vw;
-  font-size: 6vh;
-  font-weight: 900;
 }
 
 .errorMessage {

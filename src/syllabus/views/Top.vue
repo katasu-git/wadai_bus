@@ -11,6 +11,7 @@
               </div>
   </div>
   <div class="container">
+    <a id="top"></a>
       <div class="word_search">
           <div class="searh_warpper">
                   <div class="searchForm">
@@ -31,7 +32,7 @@
           <div class="linkToBrank"><p>スクロールして空きコマ検索</p><p>↓</p></div>
       </div>
       <div class="brank_search">
-          <div v-on:click="goToLink" class="linkToName"><p>↑</p><p>スクロールして授業名検索</p></div>
+          <a href="#top"><div class="linkToName"><p>↑</p><p>スクロールして授業名検索</p></div></a>
           <div class="calender_overflow">
               <div class="calender_wrapper">
                   <div class="grid_wrapper">
@@ -192,6 +193,7 @@ export default {
   background-color: #20526B;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
 
 .orange_area {

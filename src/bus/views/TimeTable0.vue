@@ -101,4 +101,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+#timetable0 {
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  background-color: #FAFAFA;
+}
+
 </style>
