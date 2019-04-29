@@ -1,19 +1,18 @@
 <template>
 <div id="s_top">
 
-  <div class="container">
-
-      <div class="area">
-          <div class="orange_area">
-              <div class="header">
+  <div class="orange_area">
+      <div class="header">
                   <p>WADAI</p>
                   <p>SYLLABUS</p>
               </div>
               <div class="neko_wrapper">
                   <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
               </div>
-
-              <div class="searh_warpper">
+  </div>
+  <div class="container">
+      <div class="word_search">
+          <div class="searh_warpper">
                   <div class="searchForm">
                         <input v-on:keyup.enter="click" v-model="search" placeholder="授業の名前でさがす" class="searchForm-input" type="text">
                             <svg  class="search_icon" v-on:click="click" ontouchstart="" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
@@ -29,21 +28,19 @@
                             </svg>
                   </div>
               </div>
-
-          </div>
-
+          <div class="linkToBrank"><p>スクロールして空きコマ検索</p><p>↓</p></div>
       </div>
-      <div v-on:click="goToLink" class="link"><p>スクロールして空きコマ検索</p><p>↓</p></div>
-
-      <div class="area orange">
-          <div class="header_akikoma">空きコマ検索</div>
-          <div class="calender_wrapper">
-              <div class="grid_wrapper">
-                  <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)" ontouchstart="">{{ calendarNum }}</div>
+      <div class="brank_search">
+          <div v-on:click="goToLink" class="linkToName"><p>↑</p><p>スクロールして授業名検索</p></div>
+          <div class="calender_overflow">
+              <div class="calender_wrapper">
+                  <div class="grid_wrapper">
+                      <div class="grid" :style='{ color : activeColor(calendarNum), background : activeBackground(calendarNum) }' v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)" ontouchstart="">{{ calendarNum }}</div>
+                  </div>
               </div>
           </div>
-          <div class="link_choicekoma">コマを選んでください</div>
       </div>
+      <div class="link_choicekoma">コマを選んでください</div>
   </div>
 
 </div>
@@ -166,6 +163,15 @@ export default {
             return 'rgba(0,0,0,0)';
         }
     },
+    activeBackground: function(num) {
+      if(num < 6) {
+            return 'rgba(0,0,0,0)';
+        } else if(num == "月" || num == "火" || num == "水" || num == "木" || num == "金") {
+        　  return 'rgba(0,0,0,0)';
+        } else {
+            return 'rgb(16, 42, 54)';
+        }
+    }
   },
   computed: {
     judgeError: function() {
@@ -182,30 +188,63 @@ export default {
 <style lang="scss" scoped>
 
 .container {
-  overflow: auto;
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-}
-.area {
-  position: relative;
-  scroll-snap-align: start;
-  height: 100vh;
+  height: 170vh;
   background-color: #20526B;
-}
-
-.orange {
-  background-color: #EF8732;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .orange_area {
-  position: relative;
-  height: 50vh;
+  position: fixed;
+  height: 30vh;
   width: 100vw;
   padding: 32px;
   border: solid 0 #EF8732;
   border-radius: 0 0 0 60px;
+  z-index: 1;
   background-color: #EF8732;
+}
+
+.word_search {
+  position: relative;
+  height: 100vh;
+}
+
+.brank_search {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+}
+
+.linkToBrank {
+  position: absolute;
+  right: 0;
+  bottom: 15%;
+  left: 0;
+  margin: auto;
+  width: 80vw;
+  text-align: center;
+  color: white;
+}
+
+.linkToName {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 80vw;
+  text-align: center;
+  color: white;
+}
+
+.link_choicekoma {
+  margin: 3vw 10vw 0 10vw;
+  width: 80vw;
+  text-align: center;
+  color: white;
 }
 
 .header {
@@ -227,51 +266,39 @@ img {
 
 .searh_warpper {
   position: absolute;
-  bottom: 20%;
+  top: 50%;
   left: 10%;
   width: 80vw;
 }
 
-.link {
-  position: absolute;
-  right: 0;
-  bottom: 5%;
-  left: 0;
-  margin: auto;
-  width: 80vw;
-  text-align: center;
-  color: white;
-}
-
-.header_akikoma {
-  font-size: 5vh;
-  font-weight: 900;
-  white-space: nowrap;
-  color: white;
-  margin: 10vw 0 0 10vw;
-}
-
-.link_choicekoma {
-  width: 80vw;
-  text-align: center;
-  color: white;
-  margin: 10vw;
+.calender_overflow {
+    margin-top: 12vh;
+    width: 80vw;
+    height: 80vw;
+    max-width: 600px;
+    padding: 16px;
+    display: flex;
 }
 
 .calender_wrapper {
-    width: 80vw;
-    height: 50vh;
-    margin: 10vw 0 0 10vw;
+    width: 70vw;
+    height: 60vw;
 }
 
 .grid_wrapper {
-  height: 100%;
+  width: 100%;
   display: grid;
+  align-content: center;
+  justify-content: center;
   grid-template-columns: repeat(6, 1fr);
 }
 
 .grid {
-  border: solid 1px rgba(255,255,255,0.5);
+  width: calc(5vw + 2vh);
+  height: calc(5vw + 2vh);
+  margin: 8px;
+  border: solid 0 #EF8732;
+  border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -290,10 +317,10 @@ input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #B0501F;
+  background: rgb(16, 42, 54);
   padding: 10px;
   margin: 5px 0;
-  border: 1px solid #B0501F;
+  border: 1px solid rgb(16, 42, 54);
   border-radius: 100px;
   outline: none;
   //text-align: center;
@@ -384,177 +411,5 @@ input {
   border-top: solid 2px #fff;
   transform: rotate(45deg);
 }
-
-/*.orange_wrapper {
-  position: absolute;
-  top: 0;
-  height: 200%;
-  width: 100vw;
-  scroll-snap-type: mandatory;
-  background-color: #20526B;
-}
-
-.orange_container {
-  position: relative;
-  height: 50vh;
-  width: 100vw;
-  border: solid 0 #EF8732;
-  border-radius: 0 0 0 60px;
-  scroll-snap-align: start;
-  background-color: #EF8732;
-}
-
-.header {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80vw;
-  font-size: 6vh;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.neko_wrapper {
-  position: absolute;
-  top: 8%;
-  right: 8%;
-}
-
-img {
-  width: 48px;
-}
-
-.searh_warpper {
-  position: absolute;
-  top: 60%;
-  left: 10%;
-  width: 80vw;
-}
-
-.errorMessage {
-  position: absolute;
-  bottom: 30%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  width: 80vw;
-}
-
-.link {
-  position: absolute;
-  bottom: -90%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 80vw;
-  text-align: center;
-}
-
-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #B0501F;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #B0501F;
-  border-radius: 100px;
-  outline: none;
-  //text-align: center;
-}
-
-::-webkit-input-placeholder {
-  //text-align:center;
-  padding-left: .8em;
-  color: rgba(255,255,255,0.30);
-}
-
-:-moz-placeholder {
-  //text-align:center;
-  padding-left: .8em;
-  color: rgba(255,255,255,0.30);
-}
-
-::-moz-placeholder {
-   //text-align:center;
-   padding-left: .8em;
-   color: rgba(255,255,255,0.30);
-}
-
-:-ms-input-placeholder {
-  //text-align:center;
-  padding-left: .8em;
-  color: rgba(255,255,255,0.30);
-}
-
-.searchForm {
-  position: relative;
-}
-
-.search_icon {
-  position: absolute;
-  top: 0;
-  right: 10%;
-  bottom: 0;
-  margin: auto;
-  width: 24px;
-  color: rgba(255,255,255,.7);
-}
-
-.search_icon:active {
-  opacity: .5;
-  transform:scale(.7, .7);
-}
-
-.neko_wrapper:active {
-  opacity: .5;
-  transform:scale(.9, .9);
-}
-
-.searchForm-input {
-  color: rgba(255,255,255,.7);
-  width: 100%;
-}
-.searchForm-submit {
-  position: absolute;
-  width: 39px;
-  height: 39px;
-  top: calc(50% - 19px);
-  right: 0;
-  border: solid 0 white;
-  border-left: solid 1px rgba(255,255,255,0.30);
-  border-radius: 0 100px 100px 0;
-  background: #B0501F;
-  outline: none;
-}
-.searchForm-submit::before {
-  position: absolute;
-  content: '';
-  width: 12px;
-  height: 12px;
-  top: calc(50% - 9px);
-  left: calc(50% - 9px);
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #fff;
-}
-.searchForm-submit::after {
-  position: absolute;
-  content: '';
-  width: 6px;
-  height: 5px;
-  top: calc(50% + 6px);
-  left: calc(50% + 2px);
-  border-top: solid 2px #fff;
-  transform: rotate(45deg);
-}
-
-.brank_wrapper {
-  position: absolute;
-  bottom: 0;
-  height: 50%;
-  width: 100vw;
-  background-color: aquamarine;
-} */
 
 </style>
