@@ -85,6 +85,7 @@ export default {
           fb
           .collection("syllabus-comp")
           .where("day", "==", this.$route.params.keyWord)
+          //.orderBy("day", "desc")
           .get()
           .then(snap => {
             const array = [];

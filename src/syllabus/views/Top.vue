@@ -1,37 +1,49 @@
 <template>
 <div id="s_top">
 
-  <div class="orange_wrapper">
-    <div class="orange_container">
-      <div class="header l-1">
-        <p>WADAI</p>
-        <p>SYLLABUS</p>
+  <div class="container">
+
+      <div class="area">
+          <div class="orange_area">
+              <div class="header">
+                  <p>WADAI</p>
+                  <p>SYLLABUS</p>
+              </div>
+              <div class="neko_wrapper">
+                  <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
+              </div>
+
+              <div class="searh_warpper">
+                  <div class="searchForm">
+                        <input v-on:keyup.enter="click" v-model="search" placeholder="授業の名前でさがす" class="searchForm-input" type="text">
+                            <svg  class="search_icon" v-on:click="click" ontouchstart="" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+                            <g>
+	                          <path d="M495.272,423.558c0,0-68.542-59.952-84.937-76.328c-24.063-23.938-33.69-35.466-25.195-54.931
+		                            c37.155-75.78,24.303-169.854-38.72-232.858c-79.235-79.254-207.739-79.254-286.984,0c-79.245,79.264-79.245,207.729,0,287.003
+		                            c62.985,62.985,157.088,75.837,232.839,38.691c19.466-8.485,31.022,1.142,54.951,25.215c16.384,16.385,76.308,84.937,76.308,84.937
+		                              c31.089,31.071,55.009,11.95,69.368-2.39C507.232,478.547,526.362,454.638,495.272,423.558z M286.017,286.012
+		                                c-45.9,45.871-120.288,45.871-166.169,0c-45.88-45.871-45.88-120.278,0-166.149c45.881-45.871,120.269-45.871,166.169,0
+	    	                            C331.898,165.734,331.898,240.141,286.017,286.012z">
+                            </path>
+                            </g>
+                            </svg>
+                  </div>
+              </div>
+
+          </div>
+
       </div>
-      <div class="neko_wrapper">
-        <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
+      <div v-on:click="goToLink" class="link"><p>スクロールして空きコマ検索</p><p>↓</p></div>
+
+      <div class="area orange">
+          <div class="header_akikoma">空きコマ検索</div>
+          <div class="calender_wrapper">
+              <div class="grid_wrapper">
+                  <div class="grid" :style="{ color : activeColor(calendarNum) }" v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)" ontouchstart="">{{ calendarNum }}</div>
+              </div>
+          </div>
+          <div class="link_choicekoma">コマを選んでください</div>
       </div>
-      <div class="searh_warpper">
-        <div class="searchForm">
-          <input v-on:keyup.enter="click" v-model="search" placeholder="授業の名前でさがす" class="searchForm-input" type="text">
-          <!--検索アイコン-->
-          <svg  class="search_icon" v-on:click="click" ontouchstart="" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
-            <g>
-	          <path d="M495.272,423.558c0,0-68.542-59.952-84.937-76.328c-24.063-23.938-33.69-35.466-25.195-54.931
-		          c37.155-75.78,24.303-169.854-38.72-232.858c-79.235-79.254-207.739-79.254-286.984,0c-79.245,79.264-79.245,207.729,0,287.003
-		          c62.985,62.985,157.088,75.837,232.839,38.691c19.466-8.485,31.022,1.142,54.951,25.215c16.384,16.385,76.308,84.937,76.308,84.937
-		          c31.089,31.071,55.009,11.95,69.368-2.39C507.232,478.547,526.362,454.638,495.272,423.558z M286.017,286.012
-		          c-45.9,45.871-120.288,45.871-166.169,0c-45.88-45.871-45.88-120.278,0-166.149c45.881-45.871,120.269-45.871,166.169,0
-	    	      C331.898,165.734,331.898,240.141,286.017,286.012z">
-            </path>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div v-show="judgeError" class="errorMessage l-1">科目名を入力してください!!</div>
-    <div v-on:click="goToLink" class="link l-1">
-      空きコマ検索はこちら
-    </div>
   </div>
 
 </div>
@@ -45,7 +57,41 @@ export default {
     return {
       search: "",
       enterKeyFlag: false,
+      calendarNums: [35],
     }
+  },
+  created: function() {
+      //calenderNumに0~24の数字を持たせる
+      for(let i=0; i < 36; i++) {
+          this.calendarNums[i] = i;
+      }
+      //外周を置き換える
+      for(let i=0; i < 36; i++) {
+          if(this.calendarNums[i] === 0) {
+              this.calendarNums[i] = "";
+          } else if(this.calendarNums[i] === 1) {
+              this.calendarNums[i] = "月";
+          } else if(this.calendarNums[i] === 2) {
+              this.calendarNums[i] = "火";
+          } else if(this.calendarNums[i] === 3) {
+              this.calendarNums[i] = "水";
+          } else if(this.calendarNums[i] === 4) {
+              this.calendarNums[i] = "木";
+          } else if(this.calendarNums[i] === 5) {
+              this.calendarNums[i] = "金";
+          } else if(this.calendarNums[i] === 6) {
+              this.calendarNums[i] = "1";
+          } else if(this.calendarNums[i] === 12) {
+              this.calendarNums[i] = "2";
+          } else if(this.calendarNums[i] === 18) {
+              this.calendarNums[i] = "3";
+          } else if(this.calendarNums[i] === 24) {
+              this.calendarNums[i] = "4";
+          } else if(this.calendarNums[i] === 30) {
+              this.calendarNums[i] = "5";
+          }
+      }
+
   },
   methods: {
     click: function() {
@@ -70,6 +116,56 @@ export default {
           name: 'timetable0',
       })
     },
+    goToResult: function() {
+        this.$router.push({
+          name: 's_result',
+          params: {
+            message: this.search,
+            judge: 'blank',
+          }
+        })
+    },
+    judgeNum: function(num) {
+        let jumpFlag = false;
+        if(num != "月" && num != "火" && num != "水" && num != "木" && num != "金") {
+          jumpFlag = true;
+        }
+        let time = Math.floor(num/6);
+        let dayOfWeekNum = num%6;
+        let dayOfWeekStr = dayOfWeekNum.toString();
+
+        if(dayOfWeekNum === 1) {
+            dayOfWeekStr = "月";
+        } else if(dayOfWeekNum === 2) {
+            dayOfWeekStr = "火";
+        } else if (dayOfWeekNum === 3) {
+            dayOfWeekStr = "水";
+        } else if (dayOfWeekNum === 4) {
+            dayOfWeekStr = "木";
+        } else if (dayOfWeekNum === 5) {
+            dayOfWeekStr = "金";
+        }
+        this.keyWord = dayOfWeekStr + time;
+
+        if(jumpFlag && time != 0) {
+            this.$router.push({
+                name: 's_result',
+                params: {
+                    keyWord: this.keyWord,
+                    judge: 'blank'
+                }
+            })
+        }
+    },
+    activeColor: function(num) {
+        if(num < 6) {
+            return 'white';
+        } else if(num == "月" || num == "火" || num == "水" || num == "木" || num == "金") {
+        　  return 'white';
+        } else {
+            return 'rgba(0,0,0,0)';
+        }
+    },
   },
   computed: {
     judgeError: function() {
@@ -85,11 +181,216 @@ export default {
 
 <style lang="scss" scoped>
 
-.orange_wrapper {
+.container {
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+}
+.area {
+  position: relative;
+  scroll-snap-align: start;
+  height: 100vh;
+  background-color: #20526B;
+}
+
+.orange {
+  background-color: #EF8732;
+  overflow: scroll;
+}
+
+.orange_area {
+  position: relative;
+  height: 50vh;
+  width: 100vw;
+  padding: 32px;
+  border: solid 0 #EF8732;
+  border-radius: 0 0 0 60px;
+  background-color: #EF8732;
+}
+
+.header {
+  font-size: 5vh;
+  font-weight: 900;
+  white-space: nowrap;
+  color: white;
+}
+
+.neko_wrapper {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+}
+
+img {
+  width: 48px;
+}
+
+.searh_warpper {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  width: 80vw;
+}
+
+.link {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  left: 0;
+  margin: auto;
+  width: 80vw;
+  text-align: center;
+  color: white;
+}
+
+.header_akikoma {
+  font-size: 5vh;
+  font-weight: 900;
+  white-space: nowrap;
+  color: white;
+  margin: 10vw 0 0 10vw;
+}
+
+.link_choicekoma {
+  width: 80vw;
+  text-align: center;
+  color: white;
+  margin: 10vw;
+}
+
+.calender_wrapper {
+    width: 80vw;
+    height: 50vh;
+    margin: 10vw 0 0 10vw;
+}
+
+.grid_wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.grid {
+  border: solid 1px rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.grid:active {
+    background: white;
+    opacity: .5;
+}
+
+
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #B0501F;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #B0501F;
+  border-radius: 100px;
+  outline: none;
+  //text-align: center;
+}
+
+::-webkit-input-placeholder {
+  //text-align:center;
+  padding-left: .8em;
+  color: rgba(255,255,255,0.30);
+}
+
+:-moz-placeholder {
+  //text-align:center;
+  padding-left: .8em;
+  color: rgba(255,255,255,0.30);
+}
+
+::-moz-placeholder {
+   //text-align:center;
+   padding-left: .8em;
+   color: rgba(255,255,255,0.30);
+}
+
+:-ms-input-placeholder {
+  //text-align:center;
+  padding-left: .8em;
+  color: rgba(255,255,255,0.30);
+}
+
+.searchForm {
+  position: relative;
+}
+
+.search_icon {
   position: absolute;
   top: 0;
-  height: 100%;
+  right: 10%;
+  bottom: 0;
+  margin: auto;
+  width: 24px;
+  color: rgba(255,255,255,.7);
+}
+
+.search_icon:active {
+  opacity: .5;
+  transform:scale(.7, .7);
+}
+
+.neko_wrapper:active {
+  opacity: .5;
+  transform:scale(.9, .9);
+}
+
+.searchForm-input {
+  color: rgba(255,255,255,.7);
+  width: 100%;
+}
+
+.searchForm-submit {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  top: calc(50% - 19px);
+  right: 0;
+  border: solid 0 white;
+  border-left: solid 1px rgba(255,255,255,0.30);
+  border-radius: 0 100px 100px 0;
+  background: #B0501F;
+  outline: none;
+}
+.searchForm-submit::before {
+  position: absolute;
+  content: '';
+  width: 12px;
+  height: 12px;
+  top: calc(50% - 9px);
+  left: calc(50% - 9px);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+}
+.searchForm-submit::after {
+  position: absolute;
+  content: '';
+  width: 6px;
+  height: 5px;
+  top: calc(50% + 6px);
+  left: calc(50% + 2px);
+  border-top: solid 2px #fff;
+  transform: rotate(45deg);
+}
+
+/*.orange_wrapper {
+  position: absolute;
+  top: 0;
+  height: 200%;
   width: 100vw;
+  scroll-snap-type: mandatory;
   background-color: #20526B;
 }
 
@@ -99,6 +400,7 @@ export default {
   width: 100vw;
   border: solid 0 #EF8732;
   border-radius: 0 0 0 60px;
+  scroll-snap-align: start;
   background-color: #EF8732;
 }
 
@@ -141,7 +443,7 @@ img {
 
 .link {
   position: absolute;
-  bottom: 10%;
+  bottom: -90%;
   left: 0;
   right: 0;
   margin: auto;
@@ -168,13 +470,13 @@ input {
   color: rgba(255,255,255,0.30);
 }
 
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder {
   //text-align:center;
   padding-left: .8em;
   color: rgba(255,255,255,0.30);
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+::-moz-placeholder {
    //text-align:center;
    padding-left: .8em;
    color: rgba(255,255,255,0.30);
@@ -200,7 +502,7 @@ input {
   color: rgba(255,255,255,.7);
 }
 
-.search_icon:active{ 
+.search_icon:active {
   opacity: .5;
   transform:scale(.7, .7);
 }
@@ -246,5 +548,13 @@ input {
   border-top: solid 2px #fff;
   transform: rotate(45deg);
 }
+
+.brank_wrapper {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  width: 100vw;
+  background-color: aquamarine;
+} */
 
 </style>
