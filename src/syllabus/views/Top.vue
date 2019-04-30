@@ -44,10 +44,50 @@
       <div class="link_choicekoma">コマを選んでください</div>
   </div> -->
 
+  <div class="orange_area">
+      <div class="header">
+                  <p>WADAI</p>
+                  <p>SYLLABUS</p>
+      </div>
+      <div class="neko_wrapper">
+          <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
+      </div>
+  </div>
   <div class="container">
       <div class="area1">
+          <div class="word_search">
+          <div class="searh_warpper">
+                  <div class="searchForm">
+                        <input v-on:keyup.enter="click" v-model="search" placeholder="授業の名前でさがす" class="searchForm-input" type="text">
+                            <svg  class="search_icon" v-on:click="click" ontouchstart="" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+                            <g>
+	                          <path d="M495.272,423.558c0,0-68.542-59.952-84.937-76.328c-24.063-23.938-33.69-35.466-25.195-54.931
+		                            c37.155-75.78,24.303-169.854-38.72-232.858c-79.235-79.254-207.739-79.254-286.984,0c-79.245,79.264-79.245,207.729,0,287.003
+		                            c62.985,62.985,157.088,75.837,232.839,38.691c19.466-8.485,31.022,1.142,54.951,25.215c16.384,16.385,76.308,84.937,76.308,84.937
+		                              c31.089,31.071,55.009,11.95,69.368-2.39C507.232,478.547,526.362,454.638,495.272,423.558z M286.017,286.012
+		                                c-45.9,45.871-120.288,45.871-166.169,0c-45.88-45.871-45.88-120.278,0-166.149c45.881-45.871,120.269-45.871,166.169,0
+	    	                            C331.898,165.734,331.898,240.141,286.017,286.012z">
+                            </path>
+                            </g>
+                            </svg>
+                  </div>
+              </div>
+          <div class="linkToBrank"><p>スクロールして空きコマ検索</p><p>↓</p></div>
       </div>
+      </div>
+
       <div class="area2">
+          <div class="brank_search">
+          <a href="#top"><div class="linkToName"><p>↑</p><p>スクロールして授業名検索</p></div></a>
+          <div class="calender_overflow">
+              <div class="calender_wrapper">
+                  <div class="grid_wrapper">
+                      <div class="grid" :style='{ color : activeColor(calendarNum), background : activeBackground(calendarNum) }' v-for="calendarNum in calendarNums" v-on:click="judgeNum(calendarNum)" ontouchstart="">{{ calendarNum }}</div>
+                  </div>
+              </div>
+          </div>
+          <div class="link_choicekoma">コマを選んでください</div>
+      </div>
       </div>
   </div>
 
@@ -195,78 +235,36 @@ export default {
 
 <style lang="scss" scoped>
 
-.container {
+#s_top {
   height: 100vh;
   background-color: #20526B;
-  overflow: auto;
+}
+
+.container {
+  position: absolute;
+  top: 30vh;
+  height: 70vh;
+  width: 100vw;
+  background-color: #20526B;
+  overflow-y: auto;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch; /* Needed to work on iOS Safari */
 }
 
 .area1 , .area2 {
   scroll-snap-align: start;
-  height: 100vh;
+  height: 70vh;
 }
 
-.area1 {
-  background-color: aquamarine;
-}
-
-.area2 {
-  background-color: chartreuse;
-}
-
-/*.orange_area {
+.orange_area {
   position: fixed;
   height: 30vh;
   width: 100vw;
   padding: 32px;
   border: solid 0 #EF8732;
   border-radius: 0 0 0 60px;
-  z-index: 1;
   background-color: #EF8732;
-}
-
-.word_search {
-  position: relative;
-  height: 100vh;
-}
-
-.brank_search {
-  position: relative;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  overflow: scroll;
-}
-
-.linkToBrank {
-  position: absolute;
-  right: 0;
-  bottom: 15%;
-  left: 0;
-  margin: auto;
-  width: 80vw;
-  text-align: center;
-  color: white;
-}
-
-.linkToName {
-  position: absolute;
-  top: 5%;
-  right: 0;
-  left: 0;
-  margin: auto;
-  width: 80vw;
-  text-align: center;
-  color: white;
-}
-
-.link_choicekoma {
-  margin: 3vw 10vw 0 10vw;
-  width: 80vw;
-  text-align: center;
-  color: white;
+  z-index: 1;
 }
 
 .header {
@@ -286,25 +284,52 @@ img {
   width: 48px;
 }
 
+.word_search {
+  position: relative;
+  height: 100%;
+  padding: 32px;
+}
+
+.linkToBrank, .link_choicekoma {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
 .searh_warpper {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 10%;
   width: 80vw;
 }
 
-.calender_overflow {
-    margin-top: 12vh;
-    width: 80vw;
-    height: 80vw;
-    max-width: 600px;
-    padding: 16px;
-    display: flex;
+.brank_search {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.calender_wrapper {
-    width: 70vw;
-    height: 60vw;
+.linkToName {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.calender_overflow {
+    position: absolute;
+    top: 25%;
+    height: 40vh;
+    width: 40vh;
 }
 
 .grid_wrapper {
@@ -316,15 +341,15 @@ img {
 }
 
 .grid {
-  width: calc(5vw + 2vh);
-  height: calc(5vw + 2vh);
-  margin: 8px;
+  width: 4vh;
+  height: 4vh;
+  margin: 1vh;
   border: solid 0 #EF8732;
   border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8em;
+  font-size: 4vh;
   font-weight: 600;
 }
 
@@ -332,7 +357,6 @@ img {
     background: white;
     opacity: .5;
 }
-
 
 
 input {
@@ -351,25 +375,25 @@ input {
 ::-webkit-input-placeholder {
   //text-align:center;
   padding-left: .8em;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.70);
 }
 
 :-moz-placeholder {
   //text-align:center;
   padding-left: .8em;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.70);
 }
 
 ::-moz-placeholder {
    //text-align:center;
    padding-left: .8em;
-   color: rgba(255,255,255,0.30);
+   color: rgba(255,255,255,0.70);
 }
 
 :-ms-input-placeholder {
   //text-align:center;
   padding-left: .8em;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.70);
 }
 
 .searchForm {
@@ -432,6 +456,6 @@ input {
   left: calc(50% + 2px);
   border-top: solid 2px #fff;
   transform: rotate(45deg);
-}*/
+}
 
 </style>
