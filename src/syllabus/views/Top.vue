@@ -5,14 +5,14 @@
       <div class="header">
                   <p>WADAI</p>
                   <p>SYLLABUS</p>
-              </div>
-              <div class="neko_wrapper">
-                  <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
-              </div>
+      </div>
+      <div class="neko_wrapper">
+          <img class="neko" alt="neko_img" src="../../assets/neko.png" v-on:click="goToBus" ontouchstart=""/>
+      </div>
   </div>
   <div class="container">
-    <a id="top"></a>
-      <div class="word_search">
+      <div class="area1">
+          <div class="word_search">
           <div class="searh_warpper">
                   <div class="searchForm">
                         <input v-on:keyup.enter="click" v-model="search" placeholder="授業の名前でさがす" class="searchForm-input" type="text">
@@ -31,7 +31,10 @@
               </div>
           <div class="linkToBrank"><p>スクロールして空きコマ検索</p><p>↓</p></div>
       </div>
-      <div class="brank_search">
+      </div>
+
+      <div class="area2">
+          <div class="brank_search">
           <a href="#top"><div class="linkToName"><p>↑</p><p>スクロールして授業名検索</p></div></a>
           <div class="calender_overflow">
               <div class="calender_wrapper">
@@ -40,8 +43,9 @@
                   </div>
               </div>
           </div>
+          <div class="link_choicekoma">コマを選んでください</div>
       </div>
-      <div class="link_choicekoma">コマを選んでください</div>
+      </div>
   </div>
 
 </div>
@@ -188,12 +192,25 @@ export default {
 
 <style lang="scss" scoped>
 
-.container {
-  height: 170vh;
+#s_top {
+  height: 100vh;
   background-color: #20526B;
-  display: flex;
-  flex-direction: column;
-  scroll-behavior: smooth;
+}
+
+.container {
+  position: absolute;
+  top: 30vh;
+  height: 70vh;
+  width: 100vw;
+  background-color: #20526B;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch; /* Needed to work on iOS Safari */
+}
+
+.area1 , .area2 {
+  scroll-snap-align: start;
+  height: 70vh;
 }
 
 .orange_area {
@@ -203,50 +220,8 @@ export default {
   padding: 32px;
   border: solid 0 #EF8732;
   border-radius: 0 0 0 60px;
-  z-index: 1;
   background-color: #EF8732;
-}
-
-.word_search {
-  position: relative;
-  height: 100vh;
-}
-
-.brank_search {
-  position: relative;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  overflow: scroll;
-}
-
-.linkToBrank {
-  position: absolute;
-  right: 0;
-  bottom: 15%;
-  left: 0;
-  margin: auto;
-  width: 80vw;
-  text-align: center;
-  color: white;
-}
-
-.linkToName {
-  position: absolute;
-  top: 5%;
-  right: 0;
-  left: 0;
-  margin: auto;
-  width: 80vw;
-  text-align: center;
-  color: white;
-}
-
-.link_choicekoma {
-  margin: 3vw 10vw 0 10vw;
-  width: 80vw;
-  text-align: center;
-  color: white;
+  z-index: 1;
 }
 
 .header {
@@ -266,25 +241,52 @@ img {
   width: 48px;
 }
 
+.word_search {
+  position: relative;
+  height: 100%;
+  padding: 32px;
+}
+
+.linkToBrank, .link_choicekoma {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
 .searh_warpper {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 10%;
   width: 80vw;
 }
 
-.calender_overflow {
-    margin-top: 12vh;
-    width: 80vw;
-    height: 80vw;
-    max-width: 600px;
-    padding: 16px;
-    display: flex;
+.brank_search {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.calender_wrapper {
-    width: 70vw;
-    height: 60vw;
+.linkToName {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.calender_overflow {
+    position: absolute;
+    top: 25%;
+    height: 40vh;
+    width: 40vh;
 }
 
 .grid_wrapper {
@@ -296,15 +298,15 @@ img {
 }
 
 .grid {
-  width: calc(5vw + 2vh);
-  height: calc(5vw + 2vh);
-  margin: 8px;
+  width: 4vh;
+  height: 4vh;
+  margin: 1vh;
   border: solid 0 #EF8732;
   border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8em;
+  font-size: 4vh;
   font-weight: 600;
 }
 
@@ -312,7 +314,6 @@ img {
     background: white;
     opacity: .5;
 }
-
 
 
 input {
@@ -331,25 +332,25 @@ input {
 ::-webkit-input-placeholder {
   //text-align:center;
   padding-left: .8em;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.70);
 }
 
 :-moz-placeholder {
   //text-align:center;
   padding-left: .8em;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.70);
 }
 
 ::-moz-placeholder {
    //text-align:center;
    padding-left: .8em;
-   color: rgba(255,255,255,0.30);
+   color: rgba(255,255,255,0.70);
 }
 
 :-ms-input-placeholder {
   //text-align:center;
   padding-left: .8em;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.70);
 }
 
 .searchForm {
