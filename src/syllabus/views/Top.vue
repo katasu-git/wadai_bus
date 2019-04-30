@@ -1,7 +1,7 @@
 <template>
 <div id="s_top">
 
-  <div class="orange_area">
+  <!-- <div class="orange_area">
       <div class="header">
                   <p>WADAI</p>
                   <p>SYLLABUS</p>
@@ -42,6 +42,13 @@
           </div>
       </div>
       <div class="link_choicekoma">コマを選んでください</div>
+  </div> -->
+
+  <div class="container">
+      <div class="area1">
+      </div>
+      <div class="area2">
+      </div>
   </div>
 
 </div>
@@ -189,14 +196,27 @@ export default {
 <style lang="scss" scoped>
 
 .container {
-  height: 170vh;
+  height: 100vh;
   background-color: #20526B;
-  display: flex;
-  flex-direction: column;
-  scroll-behavior: smooth;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch; /* Needed to work on iOS Safari */
 }
 
-.orange_area {
+.area1 , .area2 {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+.area1 {
+  background-color: aquamarine;
+}
+
+.area2 {
+  background-color: chartreuse;
+}
+
+/*.orange_area {
   position: fixed;
   height: 30vh;
   width: 100vw;
@@ -412,6 +432,6 @@ input {
   left: calc(50% + 2px);
   border-top: solid 2px #fff;
   transform: rotate(45deg);
-}
+}*/
 
 </style>
