@@ -193,14 +193,15 @@ export default {
 <style lang="scss" scoped>
 
 #s_top {
-  height: 100vh;
+  position: relative;
+  height: 100%;
   background-color: #20526B;
 }
 
 .container {
   position: absolute;
   top: 30vh;
-  height: 70vh;
+  height: 70%;
   width: 100vw;
   background-color: #20526B;
   overflow-y: auto;
@@ -210,7 +211,7 @@ export default {
 
 .area1 , .area2 {
   scroll-snap-align: start;
-  height: 70vh;
+  height: 100%;
 }
 
 .orange_area {
@@ -244,7 +245,6 @@ img {
 .word_search {
   position: relative;
   height: 100%;
-  padding: 32px;
 }
 
 .linkToBrank, .link_choicekoma {

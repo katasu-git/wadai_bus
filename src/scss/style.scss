@@ -65,9 +65,12 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; //選択禁止
+  height: 100%;
 }
 
 html, body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   min-width: 320px;

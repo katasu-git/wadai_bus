@@ -221,7 +221,7 @@ export default {
 
 .res_body {
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   min-width: 320px;
   flex-direction: column;
@@ -246,7 +246,7 @@ export default {
   display: flex;
   width: 90%;
   max-width: 375px;
-  height: 12vh; 
+  height: 12vh;
   min-height: 80px;
   max-height: 120px;
   margin-bottom: 4em;
