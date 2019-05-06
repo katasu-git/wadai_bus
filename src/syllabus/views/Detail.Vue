@@ -146,7 +146,7 @@ export default {
   left: 5%;
   width: 80vw;
   font-size: 3vh;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .title {
@@ -154,7 +154,7 @@ export default {
   top: 10%;
   left: 4.5%;
   width: 80vw;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .wrapper {
@@ -190,7 +190,7 @@ export default {
   height: 70%;
   white-space: nowrap;
   font-size: 1.3em;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .content_wrapper {
