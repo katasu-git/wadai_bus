@@ -1,6 +1,6 @@
 <template>
 <div id="s_blacksearch">
-  <div class="orange_wrapper">
+  <!-- <div class="orange_wrapper">
     <div class="orange_container">
       <div class="header l-1">
         <p>WADAI</p>
@@ -16,7 +16,7 @@
         </div>
     </div>
   </div>
-  <div class="link l-1">コマを選んでください</div>
+  <div class="link l-1">コマを選んでください</div> -->
 </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
         keyWord: "",
     }
   },
-  created: function() {
+  /*created: function() {
       //calenderNumに0~24の数字を持たせる
       for(let i=0; i < 36; i++) {
           this.calendarNums[i] = i;
@@ -118,13 +118,13 @@ export default {
             return 'rgba(0,0,0,0)';
         }
     },
-  },
+  },*/
 };
 </script>
 
 <style lang="scss" scoped>
 
-.orange_wrapper {
+/*.orange_wrapper {
   position: absolute;
   top: 0;
   width: 100vw;
@@ -198,6 +198,6 @@ img {
 .grid:active {
     background: white;
     opacity: .5;
-}
+}*/
 
 </style>

@@ -200,7 +200,7 @@ export default {
 
 .container {
   position: absolute;
-  top: 30vh;
+  top: 30%;
   height: 70%;
   width: 100vw;
   background-color: #20526B;
