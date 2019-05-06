@@ -37,13 +37,10 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 30vw;
-  min-width: 130px;
-  max-width: 180px;
-  height: 10vh;
+  width: calc(6vw + 8vh);
+  height: calc(6vw + 8vh);
+  min-width: 80px;
   min-height: 80px;
-  margin: 0;
-  padding: 0;
   border: solid 0 wihte;
   border-radius: 60px 0 0 0;
   background: #A3B800;
@@ -60,10 +57,8 @@ export default {
   left: 15%;
   bottom: 0;
   margin: auto;
-  width: 15vw;
-  min-width: 80px;
-  height: 5vh;
-  min-height: 50px;
+  width: calc(1vw + 3vh);
+  min-width: 30px;
   fill: white;
 }
 
