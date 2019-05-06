@@ -214,7 +214,7 @@ export default {
 
 .header {
   font-size: 5vh;
-  font-weight: 900;
+  font-weight: bold;
   white-space: nowrap;
   color: white;
 }
@@ -275,7 +275,7 @@ export default {
 
 .major_text {
   font-size: 2em;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .res_text_body {
@@ -290,13 +290,13 @@ export default {
 
 .title {
   font-size: 1.8em;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .detail_text_wrapper {
   display: flex;
   font-size: 0.9em;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .detail_text {
@@ -329,7 +329,7 @@ export default {
 
 .notFond {
   font-size: 1.8em;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .tunaSerif {
