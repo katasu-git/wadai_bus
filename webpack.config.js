@@ -1,7 +1,10 @@
+//vue-loader was used without the corresponding plugin
+const { VueLoaderPlugin } = require('vue-loader')
 var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+  mode: 'production', // 追加
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -84,7 +87,11 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  // 以下を追加
+  plugins: [
+    new VueLoaderPlugin()
+  ],
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -96,12 +103,12 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      compress: {
-        warnings: false
-      }
-    }),
+    //new webpack.optimize.UglifyJsPlugin({
+    //  sourceMap: false,
+    //  compress: {
+    //    warnings: false
+    //  }
+    //}),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
