@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "wadai_bus": "wadai-bus",
+    "staging": "wadai-bus-mikan",
+    "default": "wadai-bus-mikan"
+  }
+}

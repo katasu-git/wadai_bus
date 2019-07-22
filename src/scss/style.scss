@@ -1,0 +1,380 @@
+/*全体に適応されるscss*/
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 200;
+}
+
+
+html, #app {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+}
+@media all and (-ms-high-contrast: none)  {
+  html, #app {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+@media all and (-ms-high-contrast: active) {
+  html, #app {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; //選択禁止
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+}
+
+.double_btn_wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 414px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  bottom: 5%;
+}
+
+.border {
+  height: 1px;
+  width: 100%;
+  background: rgba(0,0,0,0.12);
+}
+
+.border_white {
+  height: 2px;
+  width: 95%;
+  background-color: rgba(255,255,255,0.30);
+}
+
+.l-justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.l-justify-space-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.l-position-b090 {
+  position: absolute;
+  left: 25%;
+  bottom: 5%;
+}
+
+.l-bottom {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+}
+
+.u-w020 {
+  width: 20%;
+}
+
+.u-w040 {
+  width: 40%;
+}
+
+.u-w060 {
+  width: 60%;
+}
+
+.u-w095 {
+  width: 95%;
+}
+
+.u-mt-7 {
+  margin-top: -7vh;
+}
+
+.u-mt-5 {
+  margin-top: -5vh;
+}
+
+.u-mt1 {
+ margin-top: 1vh;
+}
+
+.u-mt3 {
+ margin-top: 4vh;
+}
+
+.u-mt8 {
+  margin-top: 8vh;
+}
+
+.u-mt10 {
+  margin-top: 10vh;
+}
+
+.u-mt15 {
+  margin-top: 15vh;
+}
+
+.u-mt18 {
+  margin-top: 18vh;
+}
+
+.u-mh1 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.u-mh5 {
+  margin-right: 5rem;
+  margin-left: 5rem;
+}
+
+.u-ph1 {
+  padding: 0 1vh;
+}
+
+.u-ph3 {
+  padding: 0 3vh;
+}
+
+.u-pt1 {
+  padding-top: 1vh;
+}
+
+.u-tx-al-c {
+  text-align: center;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.u-fs060 {
+  font-size: 0.6rem;
+}
+
+.u-fs075 {
+  font-size: 0.75rem;
+}
+
+.u-fs080 {
+  font-size: 0.8rem;
+}
+
+.u-fs120 {
+  font-size: 1.2rem;
+}
+
+.u-fs150 {
+  font-size: 1.5rem;
+}
+
+.u-fs200 {
+  font-size: 2rem;
+}
+
+.u-fs250 {
+  font-size: 2.5rem;
+}
+
+.d-087 {
+  /*普通のテキスト*/
+  color: rgba(0,0,0,0.87);
+}
+
+.d-054 {
+  /*サブテキスト*/
+  color: rgba(0,0,0,0.54);
+}
+
+.d-026 {
+  /*使えない、押せない、存在感薄*/
+  color: rgba(0,0,0,0.26);
+}
+
+.d-012 {
+  /*この世のすべてのボーダー*/
+  color: rgba(0,0,0,0.12);
+}
+
+.l-100 {
+  color: rgba(255,255,255,1.00);
+}
+
+.l-070 {
+  color: rgba(255,255,255,0.70);
+}
+
+.l-030 {
+  color: rgba(255,255,255,0.30);
+}
+
+.l-012 {
+  color: rgba(255,255,255,0.12);
+}
+
+.l-000 {
+  color: rgba(255,255,255,0);
+}
+
+.d-1 {
+  /*普通のテキスト*/
+  color: rgba(0,0,0,0.87);
+}
+
+.d-2 {
+  /*サブテキスト*/
+  color: rgba(0,0,0,0.54);
+}
+
+.d-3 {
+  /*使えない、押せない、存在感薄*/
+  color: rgba(0,0,0,0.26);
+}
+
+.d-4 {
+  /*この世のすべてのボーダー*/
+  color: rgba(0,0,0,0.12);
+}
+
+.l-1 {
+  color: rgba(255,255,255,1.00);
+}
+
+.l-2 {
+  color: rgba(255,255,255,0.70);
+}
+
+.l-3 {
+  color: rgba(255,255,255,0.30);
+}
+
+.l-4 {
+  color: rgba(255,255,255,0.12);
+}
+
+.l-0 {
+  color: rgba(255,255,255,0);
+}
+
+.l-justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.l-text-center {
+text-align: center;
+}
+
+.u-width100 {
+  width: 100%;
+}
+
+.u-width090 {
+  width: 90%;
+}
+
+.u-width080 {
+  width: 80%;
+}
+
+.u-mt05 {
+  margin-top: .5vh;
+}
+
+.u-mt1 {
+  margin-top: 1vh;
+}
+
+.u-mt2 {
+  margin-top: 2vh;
+}
+
+.u-mt3 {
+  margin-top: 3vh;
+}
+
+.u-mt4 {
+  margin-top: 4vh;
+}
+
+.u-mt5 {
+  margin-top: 5vh;
+}
+
+.u-mt6 {
+  margin-top: 6vh;
+}
+
+.u-mt7 {
+  margin-top: 7vh;
+}
+
+.u-mt8 {
+  margin-top: 8vh;
+}
+
+.u-mt9 {
+  margin-top: 9vh;
+}
+
+.u-mt10 {
+  margin-top: 10vh;
+}
+
+.u-fs090 {
+font-size: 0.9rem;
+}
+
+.u-fs080 {
+font-size: 0.8rem;
+}
+
+.u-fs070 {
+font-size: 0.7rem;
+}
