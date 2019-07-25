@@ -10,11 +10,6 @@ import Detail from "./syllabus/views/Detail.vue";
 
 Vue.use(VueRouter);
 const routes = [
-  /* {
-    path: '/',
-    name: "top",
-    component: Top
-  }, */
   {
     path: "/",
     name: "timetable0",

@@ -12,10 +12,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FAFAFA;
+}
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .8s;
+  transition: opacity .5s;
 }
 
 .fade-enter, .fade-leave-to {

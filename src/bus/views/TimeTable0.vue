@@ -1,30 +1,53 @@
 <template>
-
   <div id="timetable0">
-
-    <HeadParts :tTable="timeTable"></Headparts>
-    <MainCircle :tTable="timeTable" :routeNum="routeNum"></maincircle>
-    <div class="double_btn_wrapper l-justify-space-around">
-      <FAB :routeNum="routeNum"></FAB>
-      <Selector :route="route" :routeNum="routeNum"></Selector>
+    <div class="largeContainer">
+      <header>
+        <div class="smallContainer posTopLeft">
+          <img src="../../assets/wadai.png" />
+          <span class="text mt4">WADAI BUS</span>
+        </div>
+        <div class="smallContainer posTopRight">
+          <img class="mt4" src="../../assets/jr.png" />
+          <img src="../../assets/nankai.png" />
+        </div>
+      </header>
+      <div class="subHeader">
+        <div class="text posTopLeft">次のバスが来るで</div>
+        <div class="text posTopRight">路線切替</div>
+      </div>
+      <div class="subHeader">
+        <div class="text posTopLeft">12m58s</div>
+      </div>
+      <img class="mainImg" src="../../assets/clip-waiting.png" />
+      <div class="progressBarBottom">
+        <div class="progressBarTop"></div>
+      </div>
+      <button>大学から帰る<div class="triangle">▼</div></button>
+      <div class="middleContainer">
+        <div class="smallContainer">
+          <div class="text">前のバス</div>
+          <div class="text bkNone mt4">9:32</div>
+        </div>
+        <div class="smallContainer">
+          <div class="text">次のバス</div>
+          <div class="text bkWhite mt4">9:52</div>
+        </div>
+        <div class="smallContainer" v-for="hour in hourArray">
+          <div class="text">さらに次</div>
+          <div class="text bkNone mt4">{{ hour }}</div>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </template>
 
 <script>
-import HeadParts from "../components/HeadParts.vue";
-import MainCircle from "../components/MainCircle.vue";
-import Selector from "../components/Selector.vue";
-import FAB from "../components/FAB.vue";
 
 export default {
   name: "timetable0",
   data() {
     return {
-      route: "大学 → 南海大学前",
-      routeNum: 0,
+      hourArray: ['10:12', '12:54', '13:23', '13:52', '14:56', '15:34'],
     }
   },
   computed: {
@@ -91,10 +114,6 @@ export default {
     }
   },
   components: {
-    HeadParts: HeadParts,
-    MainCircle: MainCircle,
-    Selector: Selector,
-    FAB: FAB
   }
 };
 
@@ -103,10 +122,145 @@ export default {
 <style lang="scss" scoped>
 
 #timetable0 {
-  position: absolute;
-  height: 100%;
-  width: 100vw;
-  background-color: #FAFAFA;
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.largeContainer {
+    width: calc(100% - 16px);
+    max-width: 500px;
+    height: calc(100% - 16px);
+    background-color: #FAFAFA;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smallContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 52px;
+    img {
+      width: 40px;
+    }
+}
+
+.subHeader {
+    position: relative;
+    width: 100%;
+    height: 26px;
+}
+
+.mainImg {
+  width: 100%;
+}
+
+.progressBarTop,  .progressBarBottom{
+    width: 80%;
+    height: 4px;
+    background-color: #45B5AA;
+    border-radius: 50px;
+}
+
+.progressBarBottom {
+    width: 80%;
+    background-color: #949494;
+}
+
+button {
+    position: relative;
+    width: 80%;
+    height: 52px;
+    border-radius: 43px;
+    background-color: #45B5AA;
+    color: #FAFAFA;
+    font-weight: 600;
+}
+
+.triangle {
+    position: absolute;
+    top: 35%;
+    right: 10%;
+    margin: auto;
+    color: #FAFAFA;
+}
+
+.middleContainer {
+    width: 100%;
+    height: 104px;
+    background-color: #374149;
+    border-radius: 43px 0 0 0;
+
+    display: flex;
+    overflow-x: scroll;
+
+    .smallContainer {
+        margin: 0 16px;
+        min-width: 20%;
+        color: #FAFAFA;
+        font-size: 12px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.bkWhite, .bkNone {
+    width: 100%;
+    height: 32px;
+    background-color: #FAFAFA;
+    color: #374149;
+    border-radius: 43px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bkNone {
+  background-color: rgba(0, 0, 0, 0);
+    color: #FAFAFA;
+}
+
+.mt-4 {
+    margin-top: -4px;
+}
+
+.mt4 {
+    margin-top: 4px;
+}
+
+.mt8 {
+    margin-top: 8px;
+}
+
+.mt16 {
+    margin-top: 16px;
+}
+
+.posTopLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.posTopRight {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 </style>
