@@ -11,19 +11,19 @@
           <img src="../../assets/nankai.png" />
         </div>
       </header>
-      <div class="subHeader">
-        <div class="text posTopLeft">次のバスが来るで</div>
-        <div class="text posTopRight">路線切替</div>
+      <div class="subHeader mt8">
+        <div class="text minText posTopLeft">次のバスが来るで</div>
+        <div class="text minText posTopRight">路線切替</div>
       </div>
       <div class="subHeader">
-        <div class="text posTopLeft">12m58s</div>
+        <div class="text timer posTopLeft">12m58s</div>
       </div>
-      <img class="mainImg" src="../../assets/clip-waiting.png" />
-      <div class="progressBarBottom">
+      <img class="mainImg mt16" src="../../assets/clip-waiting.png" />
+      <div class="progressBarBottom mt8">
         <div class="progressBarTop"></div>
       </div>
-      <button>大学から帰る<div class="triangle">▼</div></button>
-      <div class="middleContainer">
+      <button class="mt48">大学から帰る<div class="triangle">▼</div></button>
+      <div class="middleContainer mt48">
         <div class="smallContainer">
           <div class="text">前のバス</div>
           <div class="text bkNone mt4">9:32</div>
@@ -125,6 +125,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #FAFAFA;
+    color: #374149;
 
     display: flex;
     align-items: center;
@@ -160,6 +161,16 @@ header {
     position: relative;
     width: 100%;
     height: 26px;
+
+    .minText {
+        font-size: 12px;
+        opacity: .54;
+    }
+
+    .timer {
+        font-size: 36px;
+        font-weight: 600;
+    }
 }
 
 .mainImg {
@@ -186,6 +197,12 @@ button {
     background-color: #45B5AA;
     color: #FAFAFA;
     font-weight: 600;
+    outline: none;
+    transition: 200ms;
+}
+
+button:active {
+    transform: scale(1.05, 1.05);
 }
 
 .triangle {
@@ -249,6 +266,14 @@ button {
 
 .mt16 {
     margin-top: 16px;
+}
+
+.mt32 {
+    margin-top: 32px;
+}
+
+.mt48 {
+    margin-top: 48px;
 }
 
 .posTopLeft {
