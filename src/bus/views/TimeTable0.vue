@@ -16,7 +16,9 @@
         <div class="text minText posTopRight">路線切替</div>
       </div>
       <div class="subHeader">
-        <div class="text timer posTopLeft">12m58s</div>
+        <div class="text timer posTopLeft">
+          <CountDown :timeTable="timeTable"></CountDown>
+        </div>
       </div>
       <img class="mainImg mt16" src="../../assets/clip-waiting.png" />
       <div class="progressBarBottom mt8">
@@ -42,6 +44,7 @@
 </template>
 
 <script>
+import CountDown from "../components/CountDown"
 
 export default {
   name: "timetable0",
@@ -114,6 +117,7 @@ export default {
     }
   },
   components: {
+    CountDown: CountDown,
   }
 };
 
@@ -168,7 +172,7 @@ header {
     }
 
     .timer {
-        font-size: 36px;
+        font-size: 40px;
         font-weight: 600;
     }
 }
