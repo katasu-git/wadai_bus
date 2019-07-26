@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            leftTime: '10m15s'
+            leftTime: '10m15s',
         }
     },
     created: function () {
@@ -32,18 +32,35 @@ export default {
             let nextHour = new Date().getHours();
             let nextMin;
 
-            for(let i=0; i<100; i++) {
+            for(var i=0; ;i++){
                 if(timeTable[nextHour][i] == null) {
+                    //配列末尾が空の場合はnextHour++の最初を選ぶ
                     nextHour++;
-                    if(nextHour > 23) {
-                        nextHour = 0;
-                    }
+                    //nextHour++が空の場合の対策
+                    nextHour = this.skipNull(nextHour, timeTable);
+                    nextMin = timeTable[nextHour][0];
+                    break;
                 } else if(timeTable[nextHour][i] > nowMin) {
                     nextMin = timeTable[nextHour][i];
                     break;
                 }
             }
             return [nextHour, nextMin];
+        },
+        skipNull: function(nextHour, timeTable) {
+            for(;;){
+                //23時以降は0時に戻す
+                if(nextHour > 23) {
+                    nextHour = 0;
+                }
+                //配列が空でなければ抜ける
+                if(timeTable[nextHour] != "") {
+                    break;
+                }
+                //空の時は次の時間に移る
+                nextHour++;
+            }
+            return nextHour;
         },
         getLeftTime: function() {
             const nowHour = new Date().getHours();
