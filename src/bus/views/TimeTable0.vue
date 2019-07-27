@@ -16,14 +16,10 @@
         <div class="text minText posTopRight">路線切替</div>
       </div>
       <div class="subHeader">
-        <div class="text timer posTopLeft">
-          <CountDown :timeTable="timeTable"></CountDown>
-        </div>
+        <div class="text timer posTopLeft">{{ leftTime }}</div>
       </div>
       <img class="mainImg mt16" src="../../assets/clip-waiting.png" />
-      <div class="progressBarBottom mt8">
-        <div class="progressBarTop"></div>
-      </div>
+      <Progress :leftTimeToProg="leftTimeToProg"></Progress>
       <button class="mt48">大学から帰る<div class="triangle">▼</div></button>
       <div class="middleContainer mt48">
         <div class="smallContainer">
@@ -44,13 +40,91 @@
 </template>
 
 <script>
-import CountDown from "../components/CountDown"
+import Progress from "../components/Progress"
 
 export default {
   name: "timetable0",
   data() {
     return {
       hourArray: ['10:12', '12:54', '13:23', '13:52', '14:56', '15:34'],
+      leftTime: '10m15s',
+      leftTimeToProg: 0,
+    }
+  },
+  created: function () {
+    setInterval(()=> {
+      this.getLeftTime();
+    }, 1000);
+  },
+  methods: {
+    getDouble: function(number) {
+      return ("0" + number).slice(-2)
+    },
+    toSecond: function(hour, min, sec) {
+        return Number(hour)*3600 + Number(min)*60 + Number(sec);
+    },
+    getNextBus: function() {
+      const timeTable = this.timeTable;
+      const nowMin = new Date().getMinutes();
+      let nextHour = new Date().getHours();
+      let nextMin;
+
+      for(var i=0; ;i++){
+        if(timeTable[nextHour][i] == null) {
+          //配列末尾が空の場合はnextHour++の最初を選ぶ
+          nextHour++;
+          //nextHour++が空の場合の対策
+          nextHour = this.skipNull(nextHour, timeTable);
+          nextMin = timeTable[nextHour][0];
+          break;
+        } else if(timeTable[nextHour][i] > nowMin) {
+          nextMin = timeTable[nextHour][i];
+          break;
+        }
+      }
+      //console.log(nextHour + ":" + nextMin);
+      return [nextHour, nextMin];
+    },
+    skipNull: function(nextHour, timeTable) {
+      for(;;){
+        //23時以降は0時に戻す
+        if(nextHour > 23) {
+          nextHour = 0;
+        }
+        //配列が空でなければ抜ける
+        if(timeTable[nextHour] != "") {
+          break;
+        }
+        //空の時は次の時間に移る
+        nextHour++;
+      }
+      return nextHour;
+    },
+    getLeftTime: function() {
+      const nowHour = new Date().getHours();
+      const nowMin = new Date().getMinutes();
+      const nowSec = new Date().getSeconds();
+      const nextHour = this.getNextBus()[0];
+      const nextMin = this.getNextBus()[1];
+      var lefHour = nextHour - nowHour;
+      var lefSec = 59 - nowSec;
+      if(lefHour < 0 ){
+        lefHour = lefHour + 24;
+      }
+      var lefMin = nextMin - nowMin;
+      if(lefMin < 0) {
+        lefMin = lefMin + 59;
+        lefHour = lefHour - 1;
+      } else if(lefMin != 0) {
+        lefMin = lefMin - 1
+      }
+
+      this.leftTimeToProg = this.toSecond(lefHour, lefMin, lefSec);
+      if(lefHour != 0) {
+        this.leftTime = this.getDouble(lefHour) + "h" + this.getDouble(lefMin) + "m" + this.getDouble(lefSec) + "s";
+      } else {
+        this.leftTime = this.getDouble(lefMin) + "m" + this.getDouble(lefSec) + "s";
+      }
     }
   },
   computed: {
@@ -92,7 +166,7 @@ export default {
           [null],
           [null],
           [null],
-          [5, 53],
+          [5, 53],//9
           [13, 46],
           [13, 38, 58],
           [18, 38, 58],
@@ -117,7 +191,7 @@ export default {
     }
   },
   components: {
-    CountDown: CountDown,
+    Progress: Progress,
   }
 };
 
@@ -129,7 +203,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #FAFAFA;
-    color: #374149;
+    color: rgba(#374149, .87);
 
     display: flex;
     align-items: center;
@@ -181,22 +255,11 @@ header {
   width: 100%;
 }
 
-.progressBarTop,  .progressBarBottom{
-    width: 80%;
-    height: 4px;
-    background-color: #45B5AA;
-    border-radius: 50px;
-}
-
-.progressBarBottom {
-    width: 80%;
-    background-color: #949494;
-}
-
 button {
     position: relative;
     width: 80%;
     height: 52px;
+    border: none;
     border-radius: 43px;
     background-color: #45B5AA;
     color: #FAFAFA;

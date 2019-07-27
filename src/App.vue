@@ -20,6 +20,7 @@ html, body, #app {
   margin: 0;
   padding: 0;
   background-color: #FAFAFA;
+  color: rgba(#374149, .87);
 }
 
 .fade-enter-active, .fade-leave-active {
