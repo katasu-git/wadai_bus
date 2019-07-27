@@ -12,7 +12,10 @@
       <img class="mainImg mt16 width100-16" src="../../assets/clip-waiting.png" />
       <Progress :leftTimeToProg="leftTimeToProg"></Progress>
       <button class="mt48">大学から帰る<div class="triangle">▼</div></button>
-      <Footer></Footer>
+      <Footer
+        :timeTable="timeTable"
+        :leftTimeToProg="leftTimeToProg">
+      </Footer>
     </div>
   </div>
 </template>
@@ -27,7 +30,7 @@ export default {
   data() {
     return {
       hourArray: ['10:12', '12:54', '13:23', '13:52', '14:56', '15:34'],
-      leftTime: '10m15s',
+      leftTime: '',
       leftTimeToProg: 0,
     }
   },
@@ -43,10 +46,9 @@ export default {
     toSecond: function(hour, min, sec) {
         return Number(hour)*3600 + Number(min)*60 + Number(sec);
     },
-    getNextBus: function() {
+    getNextBus: function(nowHour, nowMin) {
       const timeTable = this.timeTable;
-      const nowMin = new Date().getMinutes();
-      let nextHour = new Date().getHours();
+      let nextHour = nowHour;
       let nextMin;
 
       for(var i=0; ;i++){
@@ -84,8 +86,10 @@ export default {
       const nowHour = new Date().getHours();
       const nowMin = new Date().getMinutes();
       const nowSec = new Date().getSeconds();
-      const nextHour = this.getNextBus()[0];
-      const nextMin = this.getNextBus()[1];
+      let next = [];
+      next = this.getNextBus(nowHour, nowMin);
+      const nextHour = next[0];
+      const nextMin = next[1];
       var lefHour = nextHour - nowHour;
       var lefSec = 59 - nowSec;
       if(lefHour < 0 ){
@@ -146,7 +150,7 @@ export default {
           [null],
           [null],
           [null],
-          [5, 53],//9
+          [5, 53], //8
           [13, 46],
           [13, 38, 58],
           [18, 38, 58],

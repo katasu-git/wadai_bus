@@ -3,11 +3,11 @@
       <div class="middleContainer mt48">
         <div class="smallContainer">
           <div class="text">前のバス</div>
-          <div class="text bkNone mt4">9:32</div>
+          <div class="text bkNone mt4">{{ preBus[0] }}:{{ preBus[1] }}</div>
         </div>
         <div class="smallContainer">
           <div class="text">次のバス</div>
-          <div class="text bkWhite mt4">9:52</div>
+          <div class="text bkWhite mt4">{{ nextBus[0] }}:{{ nextBus[1] }}</div>
         </div>
         <div class="smallContainer" v-for="hour in hourArray">
           <div class="text">さらに次</div>
@@ -22,13 +22,96 @@
 export default {
     name: "footer",
     props: {
-        leftTimeToProg: Number
+        leftTimeToProg: Number,
+        timeTable: Array,
     },
     data() {
         return {
+            nextBus: [], //[hour, min]
+            preBus: [], //[hour, min]
             hourArray: ['10:12', '12:54', '13:23', '13:52', '14:56', '15:34'],
         }
     },
+    created: function() {
+        let next = [];
+        let pre = [];
+
+        next = this.getNextBus();
+        this.nextBus[0] = this.getDouble(next[0]);
+        this.nextBus[1] = this.getDouble(next[1]);
+
+        pre = this.getPreBus(next[0], next[2]);
+        this.preBus[0] = this.getDouble(pre[0]);
+        this.preBus[1] = this.getDouble(pre[1]);
+    },
+    methods: {
+        getDouble: function(number) {
+            number = Number(number);
+            return ("0" + number).slice(-2)
+        },
+        getNextBus: function() {
+            const timeTable = this.timeTable;
+            const nowMin = new Date().getMinutes();
+            let nextHour = new Date().getHours();
+            let nextMin;
+            let minArrayNum;
+
+            for(var i=0; ;i++){
+                if(timeTable[nextHour][i] == null) {
+                    //配列末尾が空の場合はnextHour++の最初を選ぶ
+                    nextHour++;
+                    //nextHour++が空の場合の対策
+                    nextHour = this.skipNull(nextHour, timeTable);
+                    nextMin = timeTable[nextHour][0];
+                    minArrayNum = 0;
+                    break;
+                } else if(timeTable[nextHour][i] > nowMin) {
+                    nextMin = timeTable[nextHour][i];
+                    minArrayNum = i;
+                    break;
+                }
+            }
+            //console.log(nextHour + ":" + nextMin);
+            console.log(nextHour + ":" + timeTable[nextHour][minArrayNum]);
+            return [nextHour, nextMin, minArrayNum];
+        },
+        skipNull: function(nextHour, timeTable) {
+            for(;;){
+                //23時以降は0時に戻す
+                //ここに次が平日か祝日かの判定を入れる
+                if(nextHour > 23) {
+                    nextHour = 0;
+                }
+                //配列が空でなければ抜ける
+                if(timeTable[nextHour] != "") {
+                    break;
+                }
+                //空の時は次の時間に移る
+                nextHour++;
+            }
+            return nextHour;
+        },
+        getPreBus: function(preHour, minArrayNum) {
+            const timeTable = this.timeTable;
+            let preMin;
+            if(minArrayNum == 0) {
+                preHour--;
+            }
+            minArrayNum--;
+            for(;;) {
+                if(timeTable[preHour] == "") {
+                    preHour--;
+                    if(preHour < 0) {
+                        preHour = 23;
+                    }
+                } else {
+                    break;
+                }
+            }
+            preMin = timeTable[preHour].slice(-1)[0];
+            return [preHour, preMin]
+        }
+    }
 };
 
 </script>

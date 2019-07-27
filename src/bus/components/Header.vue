@@ -40,22 +40,6 @@ header {
     }
 }
 
-.subHeader {
-    position: relative;
-    width: 100%;
-    height: 26px;
-
-    .minText {
-        font-size: 12px;
-        opacity: .54;
-    }
-
-    .timer {
-        font-size: 40px;
-        font-weight: 600;
-    }
-}
-
 .smallContainer {
   display: flex;
   align-items: flex-start;

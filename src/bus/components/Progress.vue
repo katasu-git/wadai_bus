@@ -19,6 +19,10 @@ export default {
         return {
         }
     },
+    mounted: function() {
+        //初期値
+        this.leftTimeToProg = 800;
+    },
     methods: {
         getWidth: function() {
             let par;
@@ -63,14 +67,14 @@ export default {
 }
 
 .progressBarTop,  .progressBarBottom{
-    height: 6px;
+    height: 5px;
     border-radius: 50px;
-    transition: all 100ms linear;
+    transition: all 600ms ease;
 }
 
 .progressBarBottom {
     width: 80%;
-    background-color: #949494;
+    background-color: rgba(#949494, .27);
 }
 
 .mt-4 {
