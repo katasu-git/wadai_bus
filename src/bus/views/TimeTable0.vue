@@ -269,45 +269,6 @@ button:active {
     color: #FAFAFA;
 }
 
-.middleContainer {
-    width: 100%;
-    height: 104px;
-    background-color: #374149;
-    border-radius: 43px 0 0 0;
-
-    display: flex;
-    overflow-x: scroll;
-
-    .smallContainer {
-        margin: 0 16px;
-        min-width: 20%;
-        color: #FAFAFA;
-        font-size: 12px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-.bkWhite, .bkNone {
-    width: 100%;
-    height: 32px;
-    background-color: #FAFAFA;
-    color: #374149;
-    border-radius: 43px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bkNone {
-    background-color: rgba(0, 0, 0, 0);
-    color: #FAFAFA;
-}
-
 .width100-16 {
     width: calc(100% - 16px);
 }
