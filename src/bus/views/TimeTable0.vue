@@ -1,7 +1,7 @@
 <template>
   <div id="timetable0">
     <div class="largeContainer">
-      <header>
+      <header class="width100-16">
         <div class="smallContainer posTopLeft">
           <img src="../../assets/wadai.png" />
           <span class="text mt4">WADAI BUS</span>
@@ -11,36 +11,24 @@
           <img src="../../assets/nankai.png" />
         </div>
       </header>
-      <div class="subHeader mt8">
+      <div class="subHeader mt8 width100-16">
         <div class="text minText posTopLeft">次のバスが来るで</div>
         <div class="text minText posTopRight">路線切替</div>
       </div>
-      <div class="subHeader">
+      <div class="subHeader width100-16">
         <div class="text timer posTopLeft">{{ leftTime }}</div>
       </div>
-      <img class="mainImg mt16" src="../../assets/clip-waiting.png" />
+      <img class="mainImg mt16 width100-16" src="../../assets/clip-waiting.png" />
       <Progress :leftTimeToProg="leftTimeToProg"></Progress>
       <button class="mt48">大学から帰る<div class="triangle">▼</div></button>
-      <div class="middleContainer mt48">
-        <div class="smallContainer">
-          <div class="text">前のバス</div>
-          <div class="text bkNone mt4">9:32</div>
-        </div>
-        <div class="smallContainer">
-          <div class="text">次のバス</div>
-          <div class="text bkWhite mt4">9:52</div>
-        </div>
-        <div class="smallContainer" v-for="hour in hourArray">
-          <div class="text">さらに次</div>
-          <div class="text bkNone mt4">{{ hour }}</div>
-        </div>
-      </div>
+      <Footer></Footer>
     </div>
   </div>
 </template>
 
 <script>
 import Progress from "../components/Progress"
+import Footer from "../components/Footer"
 
 export default {
   name: "timetable0",
@@ -192,6 +180,7 @@ export default {
   },
   components: {
     Progress: Progress,
+    Footer: Footer,
   }
 };
 
@@ -211,7 +200,7 @@ export default {
 }
 
 .largeContainer {
-    width: calc(100% - 16px);
+    width: 100%;
     max-width: 500px;
     height: calc(100% - 16px);
     background-color: #FAFAFA;
@@ -257,7 +246,7 @@ header {
 
 button {
     position: relative;
-    width: 80%;
+    width: calc(80% - 16px);
     height: 52px;
     border: none;
     border-radius: 43px;
@@ -315,8 +304,12 @@ button:active {
 }
 
 .bkNone {
-  background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
     color: #FAFAFA;
+}
+
+.width100-16 {
+    width: calc(100% - 16px);
 }
 
 .mt-4 {

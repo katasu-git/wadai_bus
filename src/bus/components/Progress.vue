@@ -1,6 +1,7 @@
 <template>
   <div id="progress">
-    <div class="progressBarBottom mt8">
+    <div class="">{{ getComment() }}</div>
+    <div class="progressBarBottom mt16">
         <div class="progressBarTop" v-bind:style="{width: getWidth(), background: getColor()}"></div>
     </div>
   </div>
@@ -22,18 +23,25 @@ export default {
         getWidth: function() {
             let par;
             if(this.leftTimeToProg > 600) {
-                return '0%';
+                return '0%'
             } else {
                 //100(%) / 600 = 0.1666...
                 par = 100 - 0.16666 * this.leftTimeToProg;
-                return `${par}%`;
+                return `${par}%`
             }
         },
         getColor: function() {
             if(this.leftTimeToProg > 180) {
-                return '#45B5AA';
+                return '#45B5AA'
             } else {
                 return '#D94F70'
+            }
+        },
+        getComment: function() {
+            if(this.leftTimeToProg > 180) {
+                return 'のんびり待とう';
+            } else {
+                return 'そろそろ来るよ！急いで！'
             }
         }
     }
@@ -44,8 +52,10 @@ export default {
 <style lang="scss" scoped>
 
 #progress {
-    width: 100%;
+    width: calc(100% - 16px);
+    color: rgba(#374149, .54);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
