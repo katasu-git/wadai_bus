@@ -9,9 +9,9 @@
           <div class="text">次のバス</div>
           <div class="text bkWhite mt4">{{ nextBus[0] }}:{{ nextBus[1] }}</div>
         </div>
-        <div class="smallContainer" v-for="hour in hourArray">
+        <div class="smallContainer" v-for="after in afterBus">
           <div class="text">さらに次</div>
-          <div class="text bkNone mt4">{{ hour }}</div>
+          <div class="text bkNone mt4">{{ after }}</div>
         </div>
       </div>
   </div>
@@ -29,7 +29,7 @@ export default {
         return {
             nextBus: [], //[hour, min]
             preBus: [], //[hour, min]
-            hourArray: ['10:12', '12:54', '13:23', '13:52', '14:56', '15:34'],
+            afterBus: [],
         }
     },
     created: function() {
@@ -43,6 +43,8 @@ export default {
         pre = this.getPreBus(next[0], next[2]);
         this.preBus[0] = this.getDouble(pre[0]);
         this.preBus[1] = this.getDouble(pre[1]);
+
+        this.getAfterBus(next[0], next[2]);
     },
     methods: {
         getDouble: function(number) {
@@ -71,8 +73,6 @@ export default {
                     break;
                 }
             }
-            //console.log(nextHour + ":" + nextMin);
-            console.log(nextHour + ":" + timeTable[nextHour][minArrayNum]);
             return [nextHour, nextMin, minArrayNum];
         },
         skipNull: function(nextHour, timeTable) {
@@ -110,6 +110,31 @@ export default {
             }
             preMin = timeTable[preHour].slice(-1)[0];
             return [preHour, preMin]
+        },
+        getAfterBus :function(afterHour, minArrayNum) {
+            const timeTable = this.timeTable;
+            let afterArray = [];
+
+            for(let i=0; i<15; i++) {
+                let afterMin;
+                minArrayNum++;
+                if(timeTable[afterHour][minArrayNum] == null) {
+                    afterHour++;
+                    minArrayNum = 0;
+                }
+                for(;;) {
+                    if(timeTable[afterHour][minArrayNum] == null) {
+                        afterHour++;
+                        if(afterHour > 23) {
+                            afterHour = 0;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+                afterMin = timeTable[afterHour][minArrayNum];
+                this.afterBus.push(`${afterHour}:${afterMin}`);
+            }
         }
     }
 };

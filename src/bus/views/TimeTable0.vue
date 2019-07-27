@@ -29,7 +29,6 @@ export default {
   name: "timetable0",
   data() {
     return {
-      hourArray: ['10:12', '12:54', '13:23', '13:52', '14:56', '15:34'],
       leftTime: '',
       leftTimeToProg: 0,
     }
