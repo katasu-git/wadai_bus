@@ -31,8 +31,10 @@ export default {
             }
         },
         getColor: function() {
-            if(this.leftTimeToProg > 180) {
+            if(this.leftTimeToProg > 300) {
                 return '#45B5AA'
+            } else if(this.leftTimeToProg > 120) {
+                return '#F0C05A'
             } else {
                 return '#D94F70'
             }

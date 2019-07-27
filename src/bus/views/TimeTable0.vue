@@ -1,16 +1,7 @@
 <template>
   <div id="timetable0">
     <div class="largeContainer">
-      <header class="width100-16">
-        <div class="smallContainer posTopLeft">
-          <img src="../../assets/wadai.png" />
-          <span class="text mt4">WADAI BUS</span>
-        </div>
-        <div class="smallContainer posTopRight">
-          <img class="mt4" src="../../assets/jr.png" />
-          <img src="../../assets/nankai.png" />
-        </div>
-      </header>
+      <Header></Header>
       <div class="subHeader mt8 width100-16">
         <div class="text minText posTopLeft">次のバスが来るで</div>
         <div class="text minText posTopRight">路線切替</div>
@@ -27,6 +18,7 @@
 </template>
 
 <script>
+import Header from "../components/Header"
 import Progress from "../components/Progress"
 import Footer from "../components/Footer"
 
@@ -179,6 +171,7 @@ export default {
     }
   },
   components: {
+    Header: Header,
     Progress: Progress,
     Footer: Footer,
   }
@@ -208,20 +201,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.smallContainer {
-  display: flex;
-  align-items: flex-start;
-}
-
-header {
-    position: relative;
-    width: 100%;
-    height: 52px;
-    img {
-      width: 40px;
-    }
 }
 
 .subHeader {
