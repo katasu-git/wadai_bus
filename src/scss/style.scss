@@ -1,5 +1,5 @@
 /*全体に適応されるscss*/
-@font-face {
+/*@font-face {
   font-family: "Yu Gothic";
   src: local("Yu Gothic Medium");
   font-weight: 100;
@@ -222,22 +222,18 @@ html, body {
 }
 
 .d-087 {
-  /*普通のテキスト*/
   color: rgba(0,0,0,0.87);
 }
 
 .d-054 {
-  /*サブテキスト*/
   color: rgba(0,0,0,0.54);
 }
 
 .d-026 {
-  /*使えない、押せない、存在感薄*/
   color: rgba(0,0,0,0.26);
 }
 
 .d-012 {
-  /*この世のすべてのボーダー*/
   color: rgba(0,0,0,0.12);
 }
 
@@ -373,4 +369,4 @@ font-size: 0.8rem;
 
 .u-fs070 {
 font-size: 0.7rem;
-}
+}*/

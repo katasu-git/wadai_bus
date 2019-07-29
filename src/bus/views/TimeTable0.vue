@@ -5,11 +5,11 @@
     </transition>
     <div class="largeContainer">
       <Header></Header>
-      <div class="subHeader mt4 width100-16">
+      <div class="subHeader width100-16">
         <div class="text minText posTopLeft">次のバスが来るで</div>
         <div class="text minText posTopRight">路線切替</div>
       </div>
-      <div class="subHeader width100-16 mt8">
+      <div class="subHeader width100-16 mt4">
         <div class="text timer posTopLeft">{{ leftTime }}</div>
       </div>
       <img class="mainImg mt16 width100-16" src="../../assets/clip-waiting.png" />
@@ -207,10 +207,6 @@ export default {
     height: 100%;
     background-color: #FAFAFA;
     color: rgba(#374149, .87);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .largeContainer {

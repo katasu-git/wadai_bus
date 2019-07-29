@@ -1,9 +1,9 @@
 <template>
   <div id="header">
-      <header class="width100-16 mt32">
+      <header class="width100-16 mt16">
         <div class="smallContainer posTopLeft">
-          <img src="../../assets/wadai.png" />
-          <span class="text mt4">WADAI BUS</span>
+          <img class="mikan" src="../../assets/wadai.png" />
+          <span class="text ml4">WADAI BUS</span>
         </div>
         <div class="smallContainer posTopRight">
           <img class="mt4" src="../../assets/jr.png" />
@@ -34,10 +34,19 @@ export default {
 header {
     position: relative;
     width: 100%;
-    min-height: 52px;
+    height: 52px;
     img {
-      width: 40px;
+      width: 36px;
     }
+}
+
+.mikan {
+    width: 24px;
+}
+
+.text {
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .smallContainer {
@@ -45,6 +54,9 @@ header {
   align-items: flex-start;
 }
 
+.ml4 {
+    margin-left: 4px;
+}
 
 .mt-4 {
     margin-top: -4px;
