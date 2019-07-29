@@ -134,6 +134,7 @@ export default {
         getAfterBus :function(afterHour, minArrayNum) {
             const timeTable = this.timeTable;
             let afterArray = [];
+            this.afterBus = [];  //配列の初期化
 
             for(let i=0; i<15; i++) {
                 let afterMin;
