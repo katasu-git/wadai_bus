@@ -1,17 +1,20 @@
 <template>
   <div id="timetable0">
+    <transition name="trModal">
+      <Modal v-show="modalFlag" @hide="hideModal"></Modal>
+    </transition>
     <div class="largeContainer">
       <Header></Header>
       <div class="subHeader mt4 width100-16">
         <div class="text minText posTopLeft">次のバスが来るで</div>
         <div class="text minText posTopRight">路線切替</div>
       </div>
-      <div class="subHeader width100-16 mt16">
+      <div class="subHeader width100-16 mt8">
         <div class="text timer posTopLeft">{{ leftTime }}</div>
       </div>
       <img class="mainImg mt16 width100-16" src="../../assets/clip-waiting.png" />
       <Progress :leftTimeToProg="leftTimeToProg"></Progress>
-      <button class="mt48">大学から帰る<div class="triangle">▼</div></button>
+      <button class="mt48" v-on:click="showModal()">大学から帰る<div class="triangle">▼</div></button>
       <Footer
         :timeTable="timeTable"
         :leftTimeToProg="leftTimeToProg">
@@ -24,6 +27,8 @@
 import Header from "../components/Header"
 import Progress from "../components/Progress"
 import Footer from "../components/Footer"
+import Modal from "../components/Modal"
+import { setTimeout } from 'timers';
 
 export default {
   name: "timetable0",
@@ -31,6 +36,7 @@ export default {
     return {
       leftTime: '',
       leftTimeToProg: 0,
+      modalFlag: false,
     }
   },
   created: function () {
@@ -40,6 +46,16 @@ export default {
     }, 1000);
   },
   methods: {
+    showModal: function() {
+      setTimeout(()=> {
+        this.modalFlag = true;
+      },150);
+    },
+    hideModal: function() {
+      setTimeout(()=> {
+        this.modalFlag = false;
+      },50);
+    },
     getDouble: function(number) {
       return ("0" + number).slice(-2)
     },
@@ -178,6 +194,7 @@ export default {
     Header: Header,
     Progress: Progress,
     Footer: Footer,
+    Modal: Modal,
   }
 };
 
@@ -289,6 +306,14 @@ button:active {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.trModal-enter-active, .trModal-leave-active {
+  transition: opacity .5s;
+}
+
+.trModal-enter, .trModal-leave-to {
+  opacity: 0;
 }
 
 </style>

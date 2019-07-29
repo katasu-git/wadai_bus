@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-      <header class="width100-16">
+      <header class="width100-16 mt32">
         <div class="smallContainer posTopLeft">
           <img src="../../assets/wadai.png" />
           <span class="text mt4">WADAI BUS</span>
@@ -34,7 +34,7 @@ export default {
 header {
     position: relative;
     width: 100%;
-    height: 52px;
+    min-height: 52px;
     img {
       width: 40px;
     }
