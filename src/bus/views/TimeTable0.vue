@@ -34,6 +34,7 @@ export default {
     }
   },
   created: function () {
+    this.getLeftTime();
     setInterval(()=> {
       this.getLeftTime();
     }, 1000);

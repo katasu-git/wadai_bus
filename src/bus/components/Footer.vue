@@ -36,20 +36,21 @@ export default {
     },
     created: function() {
         this.doGetBus();
-    },
-    computed: {
-        watchLeftTime: function() {
-            if(this.leftTimeToProg <= 0) {
-                setTimeout(()=> {
-                    this.doGetBus();
-                },100);
-            }
-        }
+        setInterval(()=> {
+            this.watchLeftTime();
+        }, 1000);
     },
     methods: {
         getDouble: function(number) {
             number = Number(number);
             return ("0" + number).slice(-2)
+        },
+        watchLeftTime: function() {
+            if(this.leftTimeToProg <= 0) {
+                setTimeout(()=> {
+                    this.doGetBus();
+                },1000);
+            }
         },
         doGetBus: function() {
             let next = [];
