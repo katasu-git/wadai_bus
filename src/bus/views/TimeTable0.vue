@@ -2,11 +2,11 @@
   <div id="timetable0">
     <div class="largeContainer">
       <Header></Header>
-      <div class="subHeader mt8 width100-16">
+      <div class="subHeader mt4 width100-16">
         <div class="text minText posTopLeft">次のバスが来るで</div>
         <div class="text minText posTopRight">路線切替</div>
       </div>
-      <div class="subHeader width100-16">
+      <div class="subHeader width100-16 mt16">
         <div class="text timer posTopLeft">{{ leftTime }}</div>
       </div>
       <img class="mainImg mt16 width100-16" src="../../assets/clip-waiting.png" />
@@ -198,7 +198,6 @@ export default {
 .largeContainer {
     width: 100%;
     max-width: 500px;
-    height: calc(100% - 16px);
     background-color: #FAFAFA;
 
     display: flex;
@@ -229,7 +228,7 @@ export default {
 button {
     position: relative;
     width: calc(80% - 16px);
-    height: 52px;
+    min-height: 52px;
     border: none;
     border-radius: 43px;
     background-color: #45B5AA;

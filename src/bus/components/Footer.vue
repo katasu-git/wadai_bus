@@ -14,10 +14,12 @@
           <div class="text bkNone mt4">{{ after }}</div>
         </div>
       </div>
+      <div class="copyRight"></div>
   </div>
 </template>
 
 <script>
+import { setTimeout } from 'timers';
 
 export default {
     name: "footer",
@@ -33,23 +35,35 @@ export default {
         }
     },
     created: function() {
-        let next = [];
-        let pre = [];
-
-        next = this.getNextBus();
-        this.nextBus[0] = this.getDouble(next[0]);
-        this.nextBus[1] = this.getDouble(next[1]);
-
-        pre = this.getPreBus(next[0], next[2]);
-        this.preBus[0] = this.getDouble(pre[0]);
-        this.preBus[1] = this.getDouble(pre[1]);
-
-        this.getAfterBus(next[0], next[2]);
+        this.doGetBus();
+    },
+    computed: {
+        watchLeftTime: function() {
+            if(this.leftTimeToProg <= 0) {
+                setTimeout(()=> {
+                    this.doGetBus();
+                },100);
+            }
+        }
     },
     methods: {
         getDouble: function(number) {
             number = Number(number);
             return ("0" + number).slice(-2)
+        },
+        doGetBus: function() {
+            let next = [];
+            let pre = [];
+
+            next = this.getNextBus();
+            this.nextBus[0] = this.getDouble(next[0]);
+            this.nextBus[1] = this.getDouble(next[1]);
+
+            pre = this.getPreBus(next[0], next[2]);
+            this.preBus[0] = this.getDouble(pre[0]);
+            this.preBus[1] = this.getDouble(pre[1]);
+
+            this.getAfterBus(next[0], next[2]);
         },
         getNextBus: function() {
             const timeTable = this.timeTable;
@@ -91,8 +105,9 @@ export default {
             }
             return nextHour;
         },
-        getPreBus: function(preHour, minArrayNum) {
+        getPreBus: function(nextHour, minArrayNum) {
             const timeTable = this.timeTable;
+            let preHour =  nextHour;
             let preMin;
             if(minArrayNum == 0) {
                 preHour--;
@@ -108,7 +123,11 @@ export default {
                     break;
                 }
             }
-            preMin = timeTable[preHour].slice(-1)[0];
+            if(preHour != nextHour) {
+                preMin = timeTable[preHour].slice(-1)[0];
+            } else {
+                preMin = timeTable[preHour][minArrayNum];
+            }
             return [preHour, preMin]
         },
         getAfterBus :function(afterHour, minArrayNum) {
@@ -133,7 +152,7 @@ export default {
                     }
                 }
                 afterMin = timeTable[afterHour][minArrayNum];
-                this.afterBus.push(`${afterHour}:${afterMin}`);
+                this.afterBus.push(`${this.getDouble(afterHour)}:${this.getDouble(afterMin)}`);
             }
         }
     }
@@ -145,11 +164,12 @@ export default {
 
 #footer {
     width: 100%;
+    color: #FAFAFA;
 }
 
 .middleContainer {
     width: 100%;
-    height: 104px;
+    min-height: 104px;
     background-color: #374149;
     border-radius: 43px 0 0 0;
 
@@ -159,7 +179,6 @@ export default {
     .smallContainer {
         margin: 0 16px;
         min-width: 20%;
-        color: #FAFAFA;
         font-size: 12px;
 
         display: flex;
@@ -184,6 +203,11 @@ export default {
 .bkNone {
     background-color: rgba(0, 0, 0, 0);
     color: #FAFAFA;
+}
+
+.copyRight {
+    width: 100%;
+    background-color: #374149;
 }
 
 .mt-4 {

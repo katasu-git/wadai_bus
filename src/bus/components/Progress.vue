@@ -21,21 +21,21 @@ export default {
     },
     mounted: function() {
         //初期値
-        this.leftTimeToProg = 800;
+        this.leftTimeToProg = 1000;
     },
     methods: {
         getWidth: function() {
             let par;
-            if(this.leftTimeToProg > 600) {
+            if(this.leftTimeToProg > 900) {
                 return '0%'
             } else {
-                //100(%) / 600 = 0.1666...
-                par = 100 - 0.16666 * this.leftTimeToProg;
+                //100(%) / 900 = 0.111111...
+                par = 100 - 0.1111111 * this.leftTimeToProg;
                 return `${par}%`
             }
         },
         getColor: function() {
-            if(this.leftTimeToProg > 300) {
+            if(this.leftTimeToProg > 360) {
                 return '#45B5AA'
             } else if(this.leftTimeToProg > 120) {
                 return '#F0C05A'
@@ -44,10 +44,12 @@ export default {
             }
         },
         getComment: function() {
-            if(this.leftTimeToProg > 180) {
+            if(this.leftTimeToProg > 360) {
                 return 'のんびり待とう';
-            } else {
-                return 'そろそろ来るよ！急いで！'
+            } else if(this.leftTimeToProg > 120) {
+                return 'もうすぐ来るよ！';
+            }  else {
+                return 'やばい！急いで！'
             }
         }
     }
@@ -64,6 +66,10 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.mainImg {
+  width: 100%;
 }
 
 .progressBarTop,  .progressBarBottom{
