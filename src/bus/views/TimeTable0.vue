@@ -1,7 +1,7 @@
 <template>
   <div id="timetable0">
     <transition name="trModal">
-      <Modal v-show="modalFlag" @hide="hideModal"></Modal>
+      <Modal v-show="modalFlag" @hide="hideModal" @to="toUniv" @from="fromUniv" :fromUnivFlag="fromUnivFlag"></Modal>
     </transition>
     <div class="largeContainer">
       <Header @change="changeLine" :nankaiFlag="nankaiFlag"></Header>
@@ -14,7 +14,7 @@
       </div>
       <img class="mainImg mt16 width100-16" src="../../assets/clip-waiting.png" />
       <Progress :leftTimeToProg="leftTimeToProg"></Progress>
-      <button class="mt48" v-on:click="showModal()">大学から帰る<div class="triangle">▼</div></button>
+      <button class="mt48" v-on:click="showModal()">{{ returnBtnText() }}<div class="triangle">▼</div></button>
       <Footer
         :timeTable="timeTable"
         :leftTimeToProg="leftTimeToProg">
@@ -37,7 +37,6 @@ export default {
       leftTime: '',
       leftTimeToProg: 0,
       modalFlag: false,
-      //timeTable: [],
       nankaiFlag: true,
       fromUnivFlag: true,
     }
@@ -65,12 +64,25 @@ export default {
         this.modalFlag = false;
       },50);
     },
+    returnBtnText: function() {
+      if(this.fromUnivFlag) {
+        return '大学から帰る'
+      } else {
+        return '大学に行く'
+      }
+    },
     changeLine: function(jrFlag) {
       if(jrFlag) {
         this.nankaiFlag = false;
       } else {
         this.nankaiFlag = true;
       }
+    },
+    fromUniv: function() {
+      this.fromUnivFlag = true;
+    },
+    toUniv: function() {
+      this.fromUnivFlag = false;
     },
     getDouble: function(number) {
       return ("0" + number).slice(-2)

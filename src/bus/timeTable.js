@@ -55,6 +55,7 @@ function returnTimeTable(nankaiFlag, fromUnivFlag) {
             [null],
             [null],
         ];
+        console.log("南海で帰る");
         if(dayOfWeek === 0 || dayOfWeek === 6) {
             return holiday;
         } else {
@@ -113,6 +114,7 @@ function returnTimeTable(nankaiFlag, fromUnivFlag) {
             [19],
             [null],
         ];
+        console.log("南海からいく");
         if(dayOfWeek === 0 || dayOfWeek === 6) {
             return holiday;
         } else {
@@ -171,6 +173,7 @@ function returnTimeTable(nankaiFlag, fromUnivFlag) {
             [24],
             [null],
         ];
+        console.log("JRで帰る");
         if(dayOfWeek === 0 || dayOfWeek === 6) {
             return holiday;
         } else {
@@ -229,6 +232,7 @@ function returnTimeTable(nankaiFlag, fromUnivFlag) {
             [null],
             [null],
         ];
+        console.log("JRから行く");
         if(dayOfWeek === 0 || dayOfWeek === 6) {
             return holiday;
         } else {

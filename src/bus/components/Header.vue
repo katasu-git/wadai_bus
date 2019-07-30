@@ -23,6 +23,7 @@ export default {
     },
     props: {
         nankaiFlag: true,
+        fromUnivFlag: true,
     },
     methods: {
         changeLogo: function(jrButton) {

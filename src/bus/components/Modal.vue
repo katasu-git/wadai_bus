@@ -1,9 +1,9 @@
 <template>
   <div id="modal" v-on:click="$emit('hide')">
       <div class="container">
-        <div class="text" v-on:click="fromUniv()">大学から帰る</div>
+        <div class="text" v-on:click="$emit('from')">大学から帰る</div>
         <div class="border mt32"></div>
-        <div class="text mt32" v-on:click="toUniv()">大学に行く</div>
+        <div class="text mt32" v-on:click="$emit('to')">大学に行く</div>
       </div>
   </div>
 </template>
@@ -14,16 +14,9 @@ export default {
     name: "modal",
     data() {
         return {
+            fromUnivFlag: true,
         }
     },
-    methods: {
-        fromUniv: function() {
-            console.log("帰るー");
-        },
-        toUniv: function() {
-            console.log("いくー");
-        }
-    }
 };
 
 </script>
