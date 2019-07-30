@@ -17,7 +17,8 @@
       <button class="mt48" v-on:click="showModal()">{{ returnBtnText() }}<div class="triangle">▼</div></button>
       <Footer
         :timeTable="timeTable"
-        :leftTimeToProg="leftTimeToProg">
+        :leftTimeToProg="leftTimeToProg"
+        :buttonFlag="buttonFlag">
       </Footer>
     </div>
   </div>
@@ -39,6 +40,7 @@ export default {
       modalFlag: false,
       nankaiFlag: true,
       fromUnivFlag: true,
+      buttonFlag: false,
     }
   },
   created: function () {
@@ -72,6 +74,7 @@ export default {
       }
     },
     changeLine: function(jrFlag) {
+      this.buttonFlag = true;
       if(jrFlag) {
         this.nankaiFlag = false;
       } else {
@@ -79,9 +82,11 @@ export default {
       }
     },
     fromUniv: function() {
+      this.buttonFlag = true;
       this.fromUnivFlag = true;
     },
     toUniv: function() {
+      this.buttonFlag = true;
       this.fromUnivFlag = false;
     },
     getDouble: function(number) {

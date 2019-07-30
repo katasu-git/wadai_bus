@@ -32,6 +32,7 @@ export default {
             nextBus: [], //[hour, min]
             preBus: [], //[hour, min]
             afterBus: [],
+            buttonFlag: Boolean,
         }
     },
     created: function() {
@@ -46,7 +47,8 @@ export default {
             return ("0" + number).slice(-2)
         },
         watchLeftTime: function() {
-            if(this.leftTimeToProg <= 0) {
+            if(this.leftTimeToProg <= 0 || this.buttonFlag) {
+                this.$parent.buttonFlag = false;  //親の変数を書き換え
                 setTimeout(()=> {
                     this.doGetBus();
                 },1000);
