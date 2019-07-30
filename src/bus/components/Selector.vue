@@ -39,7 +39,7 @@ export default {
           this.toggle();
         } else if(this.routeNum === 0 || this.routeNum === 2) {
           //今いるページが南海のとき
-          this.$router.push({ path: '/' });
+          this.$router.push({ path: 'timetable0' });
         } else {
           this.$router.push({ path: 'timetable1' });
         }

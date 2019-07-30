@@ -18,7 +18,6 @@ import HeadParts from "../components/HeadParts.vue";
 import MainCircle from "../components/MainCircle.vue";
 import Selector from "../components/Selector.vue";
 import FAB from "../components/FAB.vue";
-
 export default {
   name: "timetable0",
   data() {
@@ -97,16 +96,13 @@ export default {
     FAB: FAB
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
-
 #timetable0 {
   position: absolute;
   height: 100%;
   width: 100vw;
   background-color: #FAFAFA;
 }
-
 </style>
