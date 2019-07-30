@@ -4,7 +4,7 @@
       <Modal v-show="modalFlag" @hide="hideModal"></Modal>
     </transition>
     <div class="largeContainer">
-      <Header></Header>
+      <Header @change="changeLine" :nankaiFlag="nankaiFlag"></Header>
       <div class="subHeader width100-16">
         <div class="text minText posTopLeft">次のバスが来るで</div>
         <div class="text minText posTopRight">路線切替</div>
@@ -28,7 +28,7 @@ import Header from "../components/Header"
 import Progress from "../components/Progress"
 import Footer from "../components/Footer"
 import Modal from "../components/Modal"
-import { setTimeout } from 'timers';
+import TimeTable from "../timeTable"
 
 export default {
   name: "timetable0",
@@ -37,13 +37,22 @@ export default {
       leftTime: '',
       leftTimeToProg: 0,
       modalFlag: false,
+      //timeTable: [],
+      nankaiFlag: true,
+      fromUnivFlag: true,
     }
   },
   created: function () {
+    this.timeTable = TimeTable.returnTimeTable(this.nankaiFlag, this.fromUnivFlag);
     this.getLeftTime();
     setInterval(()=> {
       this.getLeftTime();
     }, 1000);
+  },
+  computed: {
+    timeTable: function() {
+      return TimeTable.returnTimeTable(this.nankaiFlag, this.fromUnivFlag);
+    }
   },
   methods: {
     showModal: function() {
@@ -55,6 +64,13 @@ export default {
       setTimeout(()=> {
         this.modalFlag = false;
       },50);
+    },
+    changeLine: function(jrFlag) {
+      if(jrFlag) {
+        this.nankaiFlag = false;
+      } else {
+        this.nankaiFlag = true;
+      }
     },
     getDouble: function(number) {
       return ("0" + number).slice(-2)
@@ -124,69 +140,6 @@ export default {
         this.leftTime = this.getDouble(lefHour) + "h" + this.getDouble(lefMin) + "m" + this.getDouble(lefSec) + "s";
       } else {
         this.leftTime = this.getDouble(lefMin) + "m" + this.getDouble(lefSec) + "s";
-      }
-    }
-  },
-  computed: {
-    timeTable: function() {
-      const nowTime = new Date();
-      const dayOfWeek = nowTime.getDay();//6が土曜 0が日曜
-      const weekday = [ //平日ダイヤ
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [24, 52], //7時
-          [30, 39, 55],
-          [2, 32, 54],
-          [8, 28, 38],
-          [13, 52],
-          [29, 52],//12
-          [22, 52],
-          [22, 48],
-          [22, 52],
-          [25, 35, 52],//16
-          [22, 48],
-          [9, 20, 50],
-          [20, 51],
-          [21, 51],
-          [21, 45],
-          [null],
-          [null],
-      ];
-      const holiday = [ //休日ダイヤ
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [null],
-          [5, 53], //8
-          [13, 46],
-          [13, 38, 58],
-          [18, 38, 58],
-          [18, 46, 58],
-          [18, 38, 58],
-          [18, 38, 58],
-          [18, 38, 58],
-          [18, 38, 58],
-          [19, 38, 58],
-          [18, 38, 59],
-          [18, 45],
-          [16, 45],
-          [15, 45],
-          [null],
-          [null],
-      ];
-      if(dayOfWeek === 0 || dayOfWeek === 6) {
-        return holiday;
-      } else {
-        return weekday;
       }
     }
   },

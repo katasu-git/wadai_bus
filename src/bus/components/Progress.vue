@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { setInterval } from 'timers';
 
 export default {
     name: "progress",
@@ -18,10 +17,6 @@ export default {
     data() {
         return {
         }
-    },
-    mounted: function() {
-        //初期値
-        this.leftTimeToProg = 1000;
     },
     methods: {
         getWidth: function() {

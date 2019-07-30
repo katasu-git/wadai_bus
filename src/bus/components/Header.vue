@@ -6,8 +6,8 @@
           <span class="text ml4">WADAI BUS</span>
         </div>
         <div class="smallContainer posTopRight">
-          <img class="mt4" src="../../assets/jr.png" />
-          <img src="../../assets/nankai.png" />
+          <img v-on:click="$emit('change', true)"  v-bind:style="{opacity: changeLogo(true)}" class="jr mt4" src="../../assets/jr.png" />
+          <img v-on:click="$emit('change', false)" v-bind:style="{opacity: changeLogo(false)}" class="nankai" src="../../assets/nankai.png" />
         </div>
       </header>
   </div>
@@ -21,6 +21,22 @@ export default {
         return {
         }
     },
+    props: {
+        nankaiFlag: true,
+    },
+    methods: {
+        changeLogo: function(jrButton) {
+            if(jrButton && this.nankaiFlag) {
+                return '.2'
+            } else if(jrButton && !this.nankaiFlag) {
+                return '1'
+            } else if (!jrButton && this.nankaiFlag) {
+                return '1'
+            } else {
+                return '.2'
+            }
+        },
+    }
 };
 
 </script>
@@ -52,6 +68,14 @@ header {
 .smallContainer {
   display: flex;
   align-items: flex-start;
+}
+
+img {
+    transition: all 300 linear;
+}
+
+img:active {
+    transform: scale(1.3, 1.3);
 }
 
 .ml4 {
