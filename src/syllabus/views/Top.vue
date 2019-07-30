@@ -194,6 +194,7 @@ export default {
 
 #s_top {
   position: relative;
+  width: 100%;
   height: 100%;
   background-color: #20526B;
 }
@@ -216,16 +217,24 @@ export default {
 
 .orange_area {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   height: 30vh;
-  width: 100vw;
-  padding: 32px;
+  width: 100%;
   border: solid 0 #EF8732;
   border-radius: 0 0 0 60px;
   background-color: #EF8732;
   z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
+  width: calc(100% - 32px);
   font-size: 5vh;
   font-weight: bold;
   white-space: nowrap;
@@ -366,6 +375,7 @@ input {
   margin: auto;
   width: 24px;
   color: rgba(255,255,255,.7);
+  fill: rgba(255,255,255,.7);
 }
 
 .search_icon:active {
