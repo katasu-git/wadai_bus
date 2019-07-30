@@ -44,7 +44,7 @@ export default {
     wakeRoute: function() {
       this.showSelector = false;
       if(this.routeNum === 0 || this.routeNum === 1) {
-        this.$router.push({ path: '/' });
+        this.$router.push({ path: '/timetable0' });
       } else {
         this.$router.push({ path: '/timetable2' });
       }

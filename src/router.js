@@ -7,11 +7,17 @@ import TimeTable3 from "./bus/views/TimeTable3";
 import Top from "./syllabus/views/Top.vue";
 import Result from "./syllabus/views/Result.vue";
 import Detail from "./syllabus/views/Detail.vue";
+import NewUI from "./bus/views/NewUI"
 
 Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "newUI",
+    component: NewUI
+  },
+  {
+    path: "/timetable0",
     name: "timetable0",
     component: TimeTable0
   },
