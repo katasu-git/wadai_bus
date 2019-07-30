@@ -12,9 +12,14 @@ import NewUI from "./bus/views/NewUI"
 Vue.use(VueRouter);
 const routes = [
   {
-    path: "/",
+    path: "/new",
     name: "newUI",
     component: NewUI
+  },
+  {
+    path: "/",
+    name: "timetable0",
+    component: TimeTable0
   },
   {
     path: "/timetable0",
