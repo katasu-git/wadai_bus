@@ -1,22 +1,13 @@
 # wadai_bus & syllabus
 
-和歌山大学に通う学生向けのバス時刻アプリ。 <br>
-南海、JR両線からの行き帰りに対応。 <br>
-<p>シラバスは "科目名検索" と "空きコマ検索" に対応</p>
-<p>https://www.wadai-apps.com</p>
-<p>https://www.wadai-apps.com/#/syllabus/top</p>
+<p>和歌山大学に通う学生向けのバス時刻アプリ</p>
 
-## Build Setup
+## バスの時刻表
 
-``` bash
-# install dependencies
-npm install
+<p>南海、JR 両線からの行き帰りに対応 </p>
+<p>https://wadai-bus-mikan.web.app/#/</p>
 
-# serve with hot reload at localhost:8080
-npm run dev
+## シラバス（授業科目検索）
 
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+<p>「科目名検索」と「空きコマ検索」に対応</p>
+<p>https://wadai-bus-mikan.web.app/#/syllabus/top</p>
